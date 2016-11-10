@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.IO.TableStore</name>
+    </assembly>
+    <members>
+        <member name="T:Xbim.IO.TableStore.ClassMapping">
+            <summary>
+            This class describes how to represent class as a table
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.Class">
+            <summary>
+            Name of the applicable class for property mappings 
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.IsRoot">
+            <summary>
+            If TRUE this class mapping doesn't require any parent context
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.TableName">
+            <summary>
+            Name of the target table
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.TableOrder">
+            <summary>
+            Name of the target table
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.TableStatus">
+            <summary>
+            Status of the target table
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.ParentClass">
+            <summary>
+            Name of the parent class used for serialization as a key or part of the key 
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.ParentPath">
+            <summary>
+            Path in parent class used get children instances
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.FallBackConcreteType">
+            <summary>
+            Type to be used for deserialization in case that the 'Class' is an abstract type and there is no [type] hint
+            in a property mappings
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.IsPartial">
+            <summary>
+            If class mapping is partial it won't be used to create new objects when the table is loaded
+            into object model. It will only be used to add additional information or references instead
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.PropertyMappings">
+            <summary>
+            Property mappings
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.ChildrenMappings">
+            <summary>
+            Children mappings where this mapping acts as a parent.
+            Only call this after ModelMappings are initialized.
+            </summary>
+        </member>
+        <member name="M:Xbim.IO.TableStore.ClassMapping.GetContext(Xbim.Common.IPersistEntity)">
+            <summary>
+            This will return all instances which are usable for this class mapping from parent
+            defined in this class mapping. It will use the path to get all instances. This might
+            be hierarchical search which will be represented in a context. Every segment of the
+            path might also be explicitly typed which will be used to filter instances on every level
+            of search. Types can be defined using backslash '\' operator in the path.
+            </summary>
+            <param name="parent"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.Type">
+            <summary>
+            ExpressType representing for this class mapping
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassMapping.ParentType">
+            <summary>
+            ExpressType of parent class for this class mapping
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassScope.Class">
+            <summary>
+            Name of the class
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ClassScope.Scope">
+            <summary>
+            Scope of the class
+            </summary>
+        </member>
+        <member name="M:Xbim.IO.TableStore.EntityContext.Add(Xbim.Common.IPersistEntity)">
+            <summary>
+            Adds entity as a child of this context and sets up the relations
+            </summary>
+            <param name="child">Child entity</param>
+            <returns>Child context</returns>
+        </member>
+        <member name="M:Xbim.IO.TableStore.EntityContext.Add(System.Collections.Generic.IEnumerable{Xbim.Common.IPersistEntity})">
+            <summary>
+            Adds entity as a child of this context and sets up the relations
+            </summary>
+            <param name="children"></param>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EntityContext.Root">
+            <summary>
+            Root context of the hierarchy
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EntityContext.RootEntity">
+            <summary>
+            Root entity of the hierarchy
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EntityContext.Leaves">
+            <summary>
+            Leaves on any level of context hierarchy
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EnumMapping.Enumeration">
+            <summary>
+            Name of the enumeration type 
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EnumMapping.Aliases">
+            <summary>
+            Name of the enumeration type 
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EnumNameAlias.EnumMember">
+            <summary>
+            Name of the enumeration member
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.EnumNameAlias.Alias">
+            <summary>
+            Alias of the enumeration member
+            </summary>
+        </member>
+        <member name="T:Xbim.IO.TableStore.ForwardReference">
+            <summary>
+            This class is used to resolve forward references in the model. It uses configuration from mapping and
+            row as a data context. Forward reference doesn't keep the reference to the entity so it is possible for 
+            the IModel to use memory optimizations while this reference exists. It will load the entity only when it is to
+            be resolved.
+            </summary>
+        </member>
+        <member name="F:Xbim.IO.TableStore.ForwardReference._handle">
+            <summary>
+            Handle to the object which will be resolved
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ForwardReference.Row">
+            <summary>
+            Row context of the referenced value
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ForwardReference.Model">
+            <summary>
+            Model of the entity
+            </summary>
+        </member>
+        <member name="M:Xbim.IO.TableStore.ForwardReference.Resolve">
+            <summary>
+            Resolves all references for the entity using configuration from class mapping and data from the row
+            </summary>
+        </member>
+        <member name="T:Xbim.IO.TableStore.ModelMapping">
+            <summary>
+            This class describes how to map selected data from the model to table representation
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.Name">
+            <summary>
+            Name of this mapping
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.ListSeparator">
+            <summary>
+            String to be used to separate lists of values if enumeration of values is to be stored in a single cell
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.PickTableName">
+            <summary>
+            Name of the table where pick values should be stored
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.StatusRepresentations">
+            <summary>
+            Mappings for classes in the model
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.ClassMappings">
+            <summary>
+            Mappings for classes in the model
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.PickClassMappings">
+            <summary>
+            Mappings for pick classes in the model (used as the enumerations)
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.EnumerationMappings">
+            <summary>
+            Mappings for enumeration members. This allows localization of enumerations.
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ModelMapping.Scopes">
+            <summary>
+            Scopes of classes. If no scope is defined it defaults to 'Local'. This is only important
+            for import of tabular data where this helpes to decide wheather to create new object
+            as a local to its parent or if the objec should be looked up in the model
+            </summary>
+        </member>
+        <member name="M:Xbim.IO.TableStore.ModelMapping.AsXMLString">
+            <summary>
+            Returns this object serialized as XML string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PickClassMapping.Class">
+            <summary>
+            Name of the class used as a pick value
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PickClassMapping.Column">
+            <summary>
+            Column for pick values of this type
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PickClassMapping.Header">
+            <summary>
+            Column header for pick values of this type
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PickClassMapping.ValueTemplate">
+            <summary>
+            Template will be used to assemble resulting pick-value string
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.Header">
+            <summary>
+            Name in the header of the column
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.Column">
+            <summary>
+            Column index [A-AZ]
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.ColumnIndex">
+            <summary>
+            Cached index to be used so that letter doesn't have to be converted to the index all the time
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.Status">
+            <summary>
+            Status of the column
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.MultiRow">
+            <summary>
+            If true but no value is found on any path, default value is used
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.DefaultValue">
+            <summary>
+            Default value to be used if this property is required but no value is available on any path
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.Hidden">
+            <summary>
+            If TRUE the column of this property will be hidden in the initial state
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping._Paths">
+            <summary>
+            List of paths to search for a value. First path containing data will be used.
+            Special variable 'parent' might be used to refer to the parent of this object.
+            Special attribute .[table] might be used to refer to the table where parent object is stored.
+            Special attribute .[type] might be used to refer to the Express type of the object.
+            Special variable '()' might be used to refer to object higher in the context of search path within the parent object.
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.IsKey">
+            <summary>
+            If TRUE the column of this property will be considered to be a key for deserialization
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.IsMultiRowIdentity">
+            <summary>
+            If TRUE the column will be used to recognize multi-row records
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.PropertyMapping.Paths">
+            <summary>
+            Preprocessed list of paths where value might be found.
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ReferenceContext.SegmentType">
+            <summary>
+            This should never return null if one of these is specified: 
+            TypeTypeHint ?? PathTypeHint ?? TableTypeHint ?? PropertyTypeHint
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ReferenceContext.SegmentTypeOf">
+            <summary>
+            This will return null if property type is to be used
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ReferenceContext.ScalarChildren">
+            <summary>
+            Only scalar children. These can be used to find an object or to fill in the data.
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ReferenceContext.EntityChildren">
+            <summary>
+            Only scalar children. These can be used to find an object or to fill in the data.
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.ReferenceContext.HasData">
+            <summary>
+            Any scalar child of any children has values loaded from a row
+            </summary>
+        </member>
+        <member name="T:Xbim.IO.TableStore.Resolvers.ITypeResolver">
+            <summary>
+            Implementatios of ITypeResolver can be used to resolve abstract types when data is being read into object model.
+            You can add as many resolvers as necessary to TableStore.
+            </summary>
+        </member>
+        <member name="M:Xbim.IO.TableStore.Resolvers.ITypeResolver.CanResolve(System.Type)">
+            <summary>
+            Checks if this resolver can resolve the type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.IO.TableStore.Resolvers.ITypeResolver.Resolve(System.Type,NPOI.SS.UserModel.ICell,Xbim.IO.TableStore.ClassMapping,Xbim.IO.TableStore.PropertyMapping)">
+            <summary>
+            Implementation should return a non-abstract type which can be initialized and used for a deserialization
+            </summary>
+            <param name="type">Abstract type or interface to be resolved</param>
+            <param name="cell">Cell containing target value. This might be used if you need to chect format and type of input data</param>
+            <param name="cMapping">Mapping for the table and class</param>
+            <param name="pMapping">Mapping for the current cell and property</param>
+            <returns>non-abstract type</returns>
+        </member>
+        <member name="P:Xbim.IO.TableStore.StatusRepresentation.Colour">
+            <summary>
+            Representation colour for data with the defined status
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.StatusRepresentation.FontWeight">
+            <summary>
+            Weight of the font
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.StatusRepresentation.Border">
+            <summary>
+            If TRUE thin solid black border will be created.
+            </summary>
+        </member>
+        <member name="P:Xbim.IO.TableStore.StatusRepresentation.Status">
+            <summary>
+            Status for which this representation is defined
+            </summary>
+        </member>
+        <member name="M:Xbim.IO.TableStore.TableStore.GetIdentityIndices(Xbim.IO.TableStore.ClassMapping)">
+            <summary>
+            All indices should be cached already
+            </summary>
+            <param name="mapping"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.IO.TableStore.TableStore.GetReferencedEntities(Xbim.IO.TableStore.ReferenceContext)">
+            <summary>
+            Search the model for the entities satisfying the conditions in context
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.IO.TableStore.TableStore.ResolveContext(Xbim.IO.TableStore.ReferenceContext,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="context">Reference context of the data</param>
+            <param name="scalarIndex">Index of value to be used in a value list in case of multi values</param>
+            <param name="onlyScalar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.IO.TableStore.TableStore.ResolveMultiContext(Xbim.IO.TableStore.ReferenceContext,Xbim.Common.IPersistEntity)">
+            <summary>
+            This is used for a multi-row instances where only partial context needs to be processed
+            </summary>
+            <param name="subContext"></param>
+            <param name="rootEntity"></param>
+        </member>
+        <member name="M:Xbim.IO.TableStore.TableStore.GetOrCreateGlobalEntity(Xbim.IO.TableStore.ReferenceContext,Xbim.Common.IPersistEntity@,Xbim.Common.Metadata.ExpressType,System.Int32)">
+            <summary>
+            Returns true if it exists, FALSE if new entity fas created and needs to be filled in with data
+            </summary>
+            <param name="context"></param>
+            <param name="entity"></param>
+            <param name="type"></param>
+            <param name="scalarIndex">Index to field of values to be used to create the key. If -1 no index is used and all values are used.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Xbim.IO.TableStore.TableStore.CellTextLimit">
+            <summary>
+            Limit of the length of the text in a cell before the row gets repeated if MultiRow == MultiRow.IfNecessary
+            </summary>
+        </member>
+    </members>
+</doc>

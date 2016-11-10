@@ -1,0 +1,775 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.DPoW</name>
+    </assembly>
+    <members>
+        <member name="T:Xbim.DPoW.AssemblyType">
+            <summary>
+            Assembly type represents aggregation of asset types
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.AssemblyType.AggregationOfAssetTypes">
+            <summary>
+            List of Asset types which are agregated in this assembly. This set should always contain at least one asset type.
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.AssemblyType.GetAggregationOfAssetTypes(Xbim.DPoW.ProjectStage)">
+            <summary>
+            Gets real asset types which should live in the same project stage as this assembly
+            </summary>
+            <param name="stage">Project stage where this assembly lives alongside with asset types it aggregates.</param>
+            <returns>Enumeration of aggregated asset types</returns>
+        </member>
+        <member name="T:Xbim.DPoW.AssetType">
+            <summary>
+            This class represents asset types in DPoW
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.AssetType.Variant">
+            <summary>
+            Variant of this asset type. This is typicaly something like 'A', 'B', 'C' or some other 
+            distinquisher between different types of the same type
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.Attribute">
+            <summary>
+            Arbitrary attributes which can be assigned to any object implementing abstract class DPoWAttributableObject
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Attribute.Name">
+            <summary>
+            Name of attribute
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Attribute.Definition">
+            <summary>
+            Description of attribute
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Attribute.Value">
+            <summary>
+            Value of attribute. This is always string for the sake of simplicity
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Attribute.ValueType">
+            <summary>
+            Enumeration of basic value types. This is a hint for eventual conversion of string value to other types
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.Classification">
+            <summary>
+            Classification system like Uniclass2, NRM, Omniclass or any other. It contains classification references
+            which represent single classification nodes
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.URI">
+            <summary>
+            URI representing classification
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.EditionDate">
+            <summary>
+            Edition date
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.Name">
+            <summary>
+            Name of the classification
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.Edition">
+            <summary>
+            Edition of this classification
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.Publisher">
+            <summary>
+            Publisher of this classification
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.ClassificationReferences">
+            <summary>
+            List of classification references. These references are referenced in DPoW by their IDs
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Classification.Id">
+            <summary>
+            Id of this classification. This value is initialized to new unique ID in constructor.
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Classification.#ctor">
+            <summary>
+            Constructor initializes new unique ID
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.ClassificationReference">
+            <summary>
+            Classification reference
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ClassificationReference.Sort">
+            <summary>
+            Sort
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ClassificationReference.ClassificationCode">
+            <summary>
+            Classification code like 12-45-98 or 78.78.65
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ClassificationReference.ClassificationDescription">
+            <summary>
+            Description of this classification node
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ClassificationReference.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.ClassificationReference.#ctor">
+            <summary>
+            Constructor initializes ID to new unique value.
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.Contact">
+            <summary>
+            Contact represents person in DPoW. E-mail is essential field to fill in
+            to keep COBie happy.
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.CompanyName">
+            <summary>
+            Company name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.DepartmentName">
+            <summary>
+            Department name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.TownName">
+            <summary>
+            Town name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.GivenName">
+            <summary>
+            Given name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.FamilyName">
+            <summary>
+            Family name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.Email">
+            <summary>
+            E-mail is essential field to fill in. It is used as a reference value in COBie
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.PhoneNumber">
+            <summary>
+            Phone number
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.URL">
+            <summary>
+            URL representing person or company
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.Street">
+            <summary>
+            Street
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.PostCode">
+            <summary>
+            Post code
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.Country">
+            <summary>
+            Country
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.Region">
+            <summary>
+            Region
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.PostalBox">
+            <summary>
+            Postal box
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Contact.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Contact.#ctor">
+            <summary>
+            Constructor initializes ID to new unique value
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Documentation.Description">
+            <summary>
+            Description of documentation
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Documentation.URI">
+            <summary>
+            URI identifying this documentation
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Documentation.ClassificationReferenceIds">
+            <summary>
+            Classification references assigned to this documentation. It is possible to assign multiple classification
+            references from multiple classification systems if necessary. Use 'GetClassificationReferences' method
+            to get real objects instead of their IDs.
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Documentation.Name">
+            <summary>
+            Name of this documentation
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Documentation.Id">
+            <summary>
+            ID of this documentation object
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Documentation.GetClassificationReferences(Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Gets all classification references based on IDs
+            </summary>
+            <param name="pow">Plan of work in which this object and classification references live</param>
+            <returns>Enumeration of classification references</returns>
+        </member>
+        <member name="P:Xbim.DPoW.Documentation.Jobs">
+            <summary>
+            Jobs associated with this document.
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Documentation.#ctor">
+            <summary>
+            Constructor of documentation object. It sets Id to new GUID.
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.DPoWAttributableObject">
+            <summary>
+            Abstract class containing set of attributes. All descendants of this class can have an arbitrary list of attributes
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWAttributableObject.Attributes">
+            <summary>
+            Arbitrary list of attributes
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.DPoWObject">
+            <summary>
+            Abstract class for space types, asset types and assembly types
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.ClassificationReferenceIds">
+            <summary>
+            Classification reference IDs. These hold IDs of classification references from diferent classification systems
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.Name">
+            <summary>
+            Name of the object
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.Description">
+            <summary>
+            Description of the object
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.RequiredLOD">
+            <summary>
+            Required LOD of this object representing detail of geometry as a code
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.RequiredLOI">
+            <summary>
+            Required LOI of this object representing required attributes as an ammount of information for specific level
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.DPoWObject.Jobs">
+            <summary>
+            Jobs related to this object. This is used to assign responsibility to people and/or roles for specific actions.
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.DPoWObject.#ctor">
+            <summary>
+            Constructor initializes ID to new unique value
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.Facility">
+            <summary>
+            Facility
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Facility.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Facility.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Facility.CategoryId">
+            <summary>
+            Category ID
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Facility.SiteName">
+            <summary>
+            Sita name
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Facility.SiteDescription">
+            <summary>
+            Site description
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Facility.GetCategory(Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Gets category from actual plan of work by it's ID
+            </summary>
+            <param name="pow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.DPoW.Facility.GetClassificationAndReference(Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Gets category from actual plan of work by it's ID
+            </summary>
+            <param name="pow"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.DPoW.Job">
+            <summary>
+            Job is used to represent required action with responsibility and other related information.
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Job.Name">
+            <summary>
+            Name of the job
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Job.Description">
+            <summary>
+            Description of the job
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Job.Responsibility">
+            <summary>
+            Responsibility assignment
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Job.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Job.#ctor">
+            <summary>
+            ID initialized to unique value
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.PlanOfWork">
+            <summary>
+            Root object of this data schema
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.ClassificationSystems">
+            <summary>
+            Classification systems defined in this plan of work
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.Project">
+            <summary>
+            Project information invariant between project stages
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.Facility">
+            <summary>
+            Facility information invariant between project stages
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.ProjectStages">
+            <summary>
+            Project stages representing time based development of requirements
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.ClientContactId">
+            <summary>
+            ID of client
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.Client">
+            <summary>
+            Client of this plan of work. Use 'ClientContactId' to set client. 
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.Contacts">
+            <summary>
+            List of contacts for this plan of work. Contacts are referenced by their IDs on other places in the schema.
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.Roles">
+            <summary>
+            Roles on this plan of work. Roles are used for example to assign responsibility when there is no specific person defined at particular point in time
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.PlanOfWork.CreatedOn">
+            <summary>
+            The date when this plan of work fas created
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.#ctor">
+            <summary>
+            Initializes ID to new unique value
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.OpenXml(System.IO.Stream)">
+            <summary>
+            Creates Plan of work from serialized XML stream
+            </summary>
+            <param name="stream">input stream</param>
+            <returns>Plan of work</returns>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.OpenXml(System.String)">
+            <summary>
+            Creates Plan of work from serialized XML file
+            </summary>
+            <param name="path">Path to XML file</param>
+            <returns>Plan of work</returns>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.OpenJson(System.String)">
+            <summary>
+            Creates plan of work from serialized JSON file
+            </summary>
+            <param name="path">Path to JSON file</param>
+            <returns>Plan of work</returns>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.OpenJson(System.IO.Stream)">
+            <summary>
+            Creates plan of work from serialized JSON stream
+            </summary>
+            <param name="stream">stream</param>
+            <returns>Plan of work</returns>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.SaveJson(System.String)">
+            <summary>
+            Saves Plan of work to file as JSON string
+            </summary>
+            <param name="path">Path to resulting file</param>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.SaveJson(System.IO.Stream)">
+            <summary>
+            Saves Plan of work to stream as JSON string
+            </summary>
+            <param name="stream">output stream</param>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.SaveXml(System.IO.Stream)">
+            <summary>
+            Saves Plan of work to stream as XML
+            </summary>
+            <param name="stream">Output steam</param>
+        </member>
+        <member name="M:Xbim.DPoW.PlanOfWork.SaveXml(System.String)">
+            <summary>
+            Saves Plan of work to file as XML
+            </summary>
+            <param name="path">Path to file</param>
+        </member>
+        <member name="T:Xbim.DPoW.Project">
+            <summary>
+            This holds information which is supposed to be invariant during the project
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.Code">
+            <summary>
+            Code of the project
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.LinearUnits">
+            <summary>
+            Linear units used on the project by default
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.AreaUnits">
+            <summary>
+            Area units used on the project by default
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.Name">
+            <summary>
+            Name of the project
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.VolumeUnits">
+            <summary>
+            Volume units used on the project by default
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.ProjectURI">
+            <summary>
+            Project URI
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.Description">
+            <summary>
+            Brief description of the project
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.CurrencyUnits">
+            <summary>
+            Currency units used on the project by default
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Project.CurrentProjectStageId">
+            <summary>
+            Pointer to current project stage
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Project.GetCurrentProjectStage(Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Gets current project stage. Use 'CurrentProjectStageId' to set current project stage.
+            </summary>
+            <param name="pow">Plan of work</param>
+            <returns>Current project stage</returns>
+        </member>
+        <member name="P:Xbim.DPoW.Project.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Project.#ctor">
+            <summary>
+            Initializes ID to new unique ID
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.Name">
+            <summary>
+            Name of this project stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.Code">
+            <summary>
+            Code of this projec stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.Description">
+            <summary>
+            Description of this project stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.Id">
+            <summary>
+            Unique ID of this project stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.SpaceTypes">
+            <summary>
+            Space types defined at this stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.AssetTypes">
+            <summary>
+            Asset types defined at this project stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.AssemblyTypes">
+            <summary>
+            Assembly types defined at this stage
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.ProjectStage.DocumentationSet">
+            <summary>
+            Set of documentation defined at this stage
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.ProjectStage.#ctor">
+            <summary>
+            Initializes ID to new unique GUID
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.RequiredAttribute">
+            <summary>
+            This class represents required attribute from Digital Plan of Work
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredAttribute.Name">
+            <summary>
+            Name of attribute
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredAttribute.Description">
+            <summary>
+            Description of attribute
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredAttribute.PropertySetName">
+            <summary>
+            Variant set name. This helps to convert data between DPoW, IFC and COBie
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.RequiredLOD">
+            <summary>
+            Required Level of Detail
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredLOD.Code">
+            <summary>
+            LOD code
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredLOD.URI">
+            <summary>
+            LOD URI
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredLOD.Description">
+            <summary>
+            LOD description
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.RequiredLOI">
+            <summary>
+            Required Level of Information
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredLOI.Code">
+            <summary>
+            LOI code
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredLOI.Description">
+            <summary>
+            LOI description
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.RequiredLOI.RequiredAttributes">
+            <summary>
+            Required attributes
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.Responsibility">
+            <summary>
+            Responsibility to do a job
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Responsibility.ResponsibleRoleId">
+            <summary>
+            ID of the role which is assigned to be responsible
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Responsibility.ResponsibleContactId">
+            <summary>
+            ID of the person who is assigned to be responsible
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Responsibility.GetResponsibleContact(Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Gets responsible contact from plan of work
+            </summary>
+            <param name="pow">Plan of work</param>
+            <returns>Responsible contact</returns>
+        </member>
+        <member name="M:Xbim.DPoW.Responsibility.GetResponsibleRole(Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Gets responsible role from plan of work
+            </summary>
+            <param name="pow">Plan of work</param>
+            <returns>Responsible role</returns>
+        </member>
+        <member name="T:Xbim.DPoW.Role">
+            <summary>
+            Role represents abstract role in the project and plan of work. It can be assigned to a job in it's responsibility field.
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Role.Id">
+            <summary>
+            Unique ID
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Role.Name">
+            <summary>
+            Name of this role
+            </summary>
+        </member>
+        <member name="P:Xbim.DPoW.Role.Description">
+            <summary>
+            Rescription of this role
+            </summary>
+        </member>
+        <member name="M:Xbim.DPoW.Role.#ctor">
+            <summary>
+            Initializes new unique ID
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.ValueTypeEnum">
+            <summary>
+            Basic value types
+            </summary>
+        </member>
+        <member name="F:Xbim.DPoW.ValueTypeEnum.NotDefined">
+            <summary>
+            Type is not defined
+            </summary>
+        </member>
+        <member name="F:Xbim.DPoW.ValueTypeEnum.Boolean">
+            <summary>
+            Boolean type
+            </summary>
+        </member>
+        <member name="F:Xbim.DPoW.ValueTypeEnum.DateTime">
+            <summary>
+            DateTime type
+            </summary>
+        </member>
+        <member name="F:Xbim.DPoW.ValueTypeEnum.Decimal">
+            <summary>
+            Decimal type
+            </summary>
+        </member>
+        <member name="F:Xbim.DPoW.ValueTypeEnum.Integer">
+            <summary>
+            Integer type
+            </summary>
+        </member>
+        <member name="F:Xbim.DPoW.ValueTypeEnum.String">
+            <summary>
+            String type
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.VolumeUnits">
+            <summary>
+            Volume units for DPoW. This is a subset of COBie units
+            </summary>
+        </member>
+        <member name="T:Xbim.DPoW.SpaceType">
+            <summary>
+            Represents spatial structure unit in plan of work. It can be used to define required attributes.
+            It is attributable object so it can contain arbitrary descriptive data about itself.
+            </summary>
+        </member>
+    </members>
+</doc>

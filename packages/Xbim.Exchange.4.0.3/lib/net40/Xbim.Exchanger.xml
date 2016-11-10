@@ -1,0 +1,2397 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.Exchanger</name>
+    </assembly>
+    <members>
+        <member name="M:XbimExchanger.COBieLiteHelpers.ValueBaseTypeExtensions.HasValue(Xbim.COBieLite.ValueBaseType)">
+            <summary>
+            Returns true if the value base type has a value, empty strings return false
+            </summary>
+            <param name="valueBaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteHelpers.ValueBaseTypeExtensions.ConvertTo``1(Xbim.COBieLite.ValueBaseType)">
+            <summary>
+            Converts to the template type, valid types are double, int, string, bool
+            </summary>
+            <typeparam name="TType"></typeparam>
+            <param name="valueBaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteHelpers.ValueBaseTypeExtensions.ConvertToIfcValue(Xbim.COBieLite.ValueBaseType)">
+            <summary>
+            Converts to an IfcValue type, IfcText, IfcInteger, IfcBoolean or IfcReal
+            </summary>
+            <param name="valueBaseType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToDPoW.COBieLiteToDPoWExchanger.#ctor(Xbim.COBieLite.FacilityType,Xbim.DPoW.PlanOfWork)">
+            <summary>
+            Constructor of the exchanger class for conversion from COBieLite to Digital Plan of Work.
+            </summary>
+            <param name="facility">Input facility (root object of COBieLite data model)</param>
+            <param name="plan">Output DPoW model - this is supposed to be an empty model.</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToDPoW.COBieLiteToDPoWExchanger.Convert">
+            <summary>
+            Converts COBieLite model defined in constructor into DPoW.
+            </summary>
+            <returns>Digital Plan of Work</returns>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteToDPoW.MappingFacilityTypeToPlanOfWork">
+            <summary>
+            This is the main class used to convert COBieLite to DPoW. It does all the branching for different parts of the model 
+            on the first level of object hierarchy.
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger">
+            <summary>
+            Constructs the exchanger
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.NamedProperty">
+            <summary>
+            A helper struct to handle property sets and their proper property names
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.NamedProperty.PropertySetName">
+            <summary>
+            The name of the Property Set
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.NamedProperty.PropertyName">
+            <summary>
+            The name of the Property Name
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.NamedProperty.#ctor(System.String,System.String)">
+            <summary>
+            Constructs the named property
+            </summary>
+            <param name="propertySetName"></param>
+            <param name="propertyName"></param>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.DefaultLinearUnit">
+            <summary>
+            The default units of length
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.DefaultAreaUnit">
+            <summary>
+            The default units of area
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.DefaultVolumeUnit">
+            <summary>
+            The default units of volume
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.DefaultCurrencyUnit">
+            <summary>
+            The default currency
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.#ctor(Xbim.COBieLite.FacilityType,Xbim.Ifc.IfcStore)">
+            <summary>
+            Constructs the exchanger
+            </summary>
+            <param name="facility"></param>
+            <param name="repository"></param>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.Origin3D">
+            <summary>
+            Returns the origin for world coordinate system
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.Origin2D">
+            <summary>
+            The 2D origin
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.Model3DContext">
+            <summary>
+            The Geometric Representation sub context for this exchange
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.Spaces">
+            <summary>
+            Returns the spaces successfully added to the model
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.Convert(Xbim.COBieLite.FacilityType)">
+            <summary>
+            Converts the facility to an IfcBuilding
+            </summary>
+            <param name="facility"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.Convert">
+            <summary>
+            Converts the facility to an IfcBuilding
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.TryCreatePropertySingleValue(Xbim.Ifc2x3.Kernel.IfcObject,Xbim.COBieLite.ValueBaseType,System.String,System.Nullable{XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter})">
+            <summary>
+            Creates the property and if required the property set, populates them with the correct values and adds them to the IfcObject
+            If the value is null or empty no property is created
+            </summary>
+            <param name="ifcObject">Object to associate the property with</param>
+            <param name="valueBaseType">COBie value to populate the property with</param>
+            <param name="cobiePropertyName">Name of the COBie property being mapped</param>
+            <param name="defaultUnits">Units to use if the COBie property does not specify</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.ConvertAttributeTypeToIfcSimpleProperty(Xbim.COBieLite.AttributeType)">
+            <summary>
+            Converts an attribute in to an Ifc Property, still needs support for units adding
+            </summary>
+            <param name="attributeType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.CreateObjectGeometry(Xbim.Ifc2x3.ProductExtension.IfcElement,System.Int32)">
+            <summary>
+            Creates a number in ifc geometry representing the element, the next number is incremented
+            </summary>
+            <param name="ifcElement"></param>
+            <param name="index">The index of the element in the type collection</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.BeginAssetTypeInfoType">
+            <summary>
+            Increments counters and state for processing an AssetTypeInfoType
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.AddToSpaceMap(Xbim.Ifc2x3.ProductExtension.IfcBuildingStorey,Xbim.Ifc2x3.ProductExtension.IfcSpace)">
+            <summary>
+            Adds the space to the space map if the storey name plus the space name is not unique returns false
+            </summary>
+            <param name="storey"></param>
+            <param name="space"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.CoBieLiteToIfcExchanger.GetIfcSpace(Xbim.COBieLite.SpaceKeyType)">
+            <summary>
+            Returns the IfcSpace created for this key
+            </summary>
+            <param name="spacekey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteToIfc.MappingFacilityTypeToIfcBuilding.CreateSpaceProxies">
+            <summary>
+            Creates proxy object for each type of space based on the space category
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.AttributeValueExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.AttributeValueExtensions.SimplePropertyType(Xbim.CobieLiteUk.AttributeValue)">
+            <summary>
+            
+            </summary>
+            <param name="valueType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkIfcMappings`3">
+            <summary>
+            
+            </summary>
+            <typeparam name="TFromKey"></typeparam>
+            <typeparam name="TFromObject"></typeparam>
+            <typeparam name="TToObject"></typeparam>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkIfcMappings`3.Exchanger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger">
+            <summary>
+            Constructs the exchanger
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.NamedProperty">
+            <summary>
+            A helper struct to handle property sets and their proper property names
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.NamedProperty.PropertySetName">
+            <summary>
+            The name of the Property Set
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.NamedProperty.PropertyName">
+            <summary>
+            The name of the Property Name
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.NamedProperty.#ctor(System.String,System.String)">
+            <summary>
+            Constructs the named property
+            </summary>
+            <param name="propertySetName"></param>
+            <param name="propertyName"></param>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.DefaultLinearUnit">
+            <summary>
+            The default units of length
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.DefaultAreaUnit">
+            <summary>
+            The default units of area
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.DefaultVolumeUnit">
+            <summary>
+            The default units of volume
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.DefaultCurrencyUnit">
+            <summary>
+            The default currency
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.#ctor(Xbim.CobieLiteUk.Facility,Xbim.Ifc.IfcStore)">
+            <summary>
+            Constructs the exchanger
+            </summary>
+            <param name="facility"></param>
+            <param name="repository"></param>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Origin3D">
+            <summary>
+            Returns the origin for world coordinate system
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Origin2D">
+            <summary>
+            The 2D origin
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Model3DContext">
+            <summary>
+            The Geometric Representation sub context for this exchange
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Spaces">
+            <summary>
+            Returns the spaces successfully added to the model
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.OwnerHistories">
+            <summary>
+            Mapping of OwnerHistory fields to IfcOwnerHistory Objects
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Contacts">
+            <summary>
+            Contacts Lookup
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Convert(Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Converts the facility to an IfcBuilding
+            </summary>
+            <param name="facility"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.Convert">
+            <summary>
+            Converts the facility to an IfcBuilding
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.TryCreatePropertySingleValue(Xbim.Ifc2x3.Kernel.IfcObject,Xbim.CobieLiteUk.AttributeValue,System.String,System.Nullable{XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter})">
+            <summary>
+            Creates the property and if required the property set, populates them with the correct values and adds them to the IfcObject
+            If the value is null or empty no property is created
+            </summary>
+            <param name="ifcObject">Object to associate the property with</param>
+            <param name="valueBaseType">COBie value to populate the property with</param>
+            <param name="cobiePropertyName">Name of the COBie property being mapped</param>
+            <param name="defaultUnits">Units to use if the COBie property does not specify</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.ConvertAttributeToIfcSimpleProperty(Xbim.CobieLiteUk.Attribute)">
+            <summary>
+            Converts an attribute in to an Ifc Property, still needs support for units adding
+            </summary>
+            <param name="attributeType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.CreateObjectGeometry(Xbim.Ifc2x3.ProductExtension.IfcElement,System.Int32)">
+            <summary>
+            Creates a number in ifc geometry representing the element, the next number is incremented
+            </summary>
+            <param name="ifcElement"></param>
+            <param name="index">The index of the element in the type collection</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.BeginAssetTypeInfoType">
+            <summary>
+            Increments counters and state for processing an AssetTypeInfoType
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.AddToSpaceMap(Xbim.Ifc2x3.ProductExtension.IfcSpatialStructureElement)">
+            <summary>
+            Adds the space to the space map if the storey name plus the space name is not unique returns false
+            </summary>
+            <param name="space"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.GetIfcSpace(Xbim.CobieLiteUk.SpaceKey)">
+            <summary>
+            Returns the IfcSpace created for this key
+            </summary>
+            <param name="spacekey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.ConvertCategoryToClassification(Xbim.CobieLiteUk.Category,Xbim.Ifc2x3.Kernel.IfcRoot)">
+            <summary>
+            Converts a category to a classification
+            </summary>
+            <param name="category"></param>
+            <param name="ifcElement"></param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.ConvertTo``1(Xbim.CobieLiteUk.AttributeValue)">
+            <summary>
+            Converts an attribute to the required type if possible
+            </summary>
+            <param name="attributeValue"></param>
+            <typeparam name="TType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.SetOwnerHistory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String,System.String,System.DateTime)">
+            <summary>
+            Set an existing or create a new owner history if no match is found
+            </summary>
+            <param name="ifcRoot">Object to add the owner history</param>
+            <param name="externalSystem">Application used to modify/create</param>
+            <param name="createdBy">IfcPersonAndOrganization object</param>
+            <param name="createdOn">Date the object was created on</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.CreateOwnerHistory(System.String,Xbim.Ifc2x3.ActorResource.IfcPersonAndOrganization,System.DateTime)">
+            <summary>
+            Create the owner history
+            </summary>
+            <param name="ifcRoot">Object to add the owner history</param>
+            <param name="externalSystem">Application used to modify/create</param>
+            <param name="createdBy">IfcPersonAndOrganization object</param>
+            <param name="createdOn">Date the object was created on</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.SetUserHistory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String,System.String,System.DateTime)">
+            <summary>
+            Set the user history to a IfcRoot object
+            </summary>
+            <param name="ifcRoot">Object to set owner history</param>
+            <param name="extSystem">External system string</param>
+            <param name="createdBy">Email address of creator</param>
+            <param name="createdOn">Created on date as string</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.SetEmailUser(System.String)">
+            <summary>
+            Set the IfcPersonAndOrganization from using email only
+            </summary>
+            <param name="email">email</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.CoBieLiteUkToIfcExchanger.ConvertDocumentsToDocumentSelect(Xbim.Ifc2x3.Kernel.IfcRoot,System.Collections.Generic.List{Xbim.CobieLiteUk.Document})">
+            <summary>
+            Convert/Import a Document List into the model repository 
+            </summary>
+            <param name="ifcRootObj">IfcRoot object to link the document list too</param>
+            <param name="docs">List of document to convert and import into the model</param>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.MappingFacilityToIfcBuilding.CreateSpaceProxies">
+            <summary>
+            Creates proxy object for each type of space based on the space category
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.MappingFloorToIfcBuildingStorey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.COBieLiteUkToIfc.MappingFloorToIfcBuildingStorey.Mapping(Xbim.CobieLiteUk.Floor,Xbim.Ifc2x3.ProductExtension.IfcBuildingStorey)">
+            <summary>
+            
+            </summary>
+            <param name="floor"></param>
+            <param name="buildingStorey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.OwnerHistoryEditScope">
+            <summary>
+            Class to allow setting of a given OwnerHistory
+            Note: Class used in Using statement, will set the Model.OwnerHistoryAddObject to IfcConstructionProductResource.OwnerHistory then reset OwnerHistoryAddObject back in the dispose. Needed because history is set to OwnerHistoryAddObject on any property changes which loses the currently set owner history, 
+            OK on new files, but on round trip not so good.So set any properties within a using statement to keep user history set on the object without reset to default history (OwnerHistoryAddObject)
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.COBieLiteUkToIfc.OwnerHistoryKey">
+            <summary>
+            Class used as key to reference IfcOwnerHistory Objects
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLiteUK.DPoWToCOBieLiteUKExchanger.#ctor(Xbim.DPoW.PlanOfWork,Xbim.CobieLiteUk.Facility,Xbim.DPoW.ProjectStage)">
+            <summary>
+            Constructs new exchanger. When converting data from DPoW to COBieLite it is possible to convert only one stage to COBieLite
+            as there is no concept of project stages in COBieLite schema which is more focused on exchange of actual existing data at certain
+            project stage rather than modelling multiple stages.
+            </summary>
+            <param name="source">Source DPoW model</param>
+            <param name="target">Target COBieLite model</param>
+            <param name="stage">Specific project stage</param>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLiteUK.DPoWToCOBieLiteUKExchanger.#ctor(Xbim.DPoW.PlanOfWork,Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Constructs new exchanger. When converting data from DPoW to COBieLite it is possible to convert only one stage to COBieLite
+            as there is no concept of project stages in COBieLite schema which is more focused on exchange of actual existing data at certain
+            project stage rather than modelling multiple stages. If you don't specify a project stage only current project stage will be converted.
+            </summary>
+            <param name="source">Source DPoW model</param>
+            <param name="target">Target COBieLite model</param>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLiteUK.DPoWToCOBieLiteUKExchanger.Convert">
+            <summary>
+            Converts DPoW model to COBieLite where FacilityType is the root element of the data model
+            </summary>
+            <returns>COBieLite root element</returns>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLiteUK.DPoWToCOBieLiteUKExchanger.Convert(System.DateTime)">
+            <summary>
+            Converts DPoW model to COBieLite where FacilityType is the root element of the data model
+            </summary>
+            <param name="createdOn">Date when Plan of Work has been created</param>
+            <returns>COBieLite root element</returns>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLite.DPoWToCOBieLiteExchanger.#ctor(Xbim.DPoW.PlanOfWork,Xbim.COBieLite.FacilityType,Xbim.DPoW.ProjectStage)">
+            <summary>
+            Constructs new exchanger. When converting data from DPoW to COBieLite it is possible to convert only one stage to COBieLite
+            as there is no concept of project stages in COBieLite schema which is more focused on exchange of actual existing data at certain
+            project stage rather than modelling multiple stages.
+            </summary>
+            <param name="source">Source DPoW model</param>
+            <param name="target">Target COBieLite model</param>
+            <param name="stage">Specific project stage</param>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLite.DPoWToCOBieLiteExchanger.#ctor(Xbim.DPoW.PlanOfWork,Xbim.COBieLite.FacilityType)">
+            <summary>
+            Constructs new exchanger. When converting data from DPoW to COBieLite it is possible to convert only one stage to COBieLite
+            as there is no concept of project stages in COBieLite schema which is more focused on exchange of actual existing data at certain
+            project stage rather than modelling multiple stages. If you don't specify a project stage only current project stage will be converted.
+            </summary>
+            <param name="source">Source DPoW model</param>
+            <param name="target">Target COBieLite model</param>
+        </member>
+        <member name="M:XbimExchanger.DPoWToCOBieLite.DPoWToCOBieLiteExchanger.Convert">
+            <summary>
+            Converts DPoW model to COBieLite where FacilityType is the root element of the data model
+            </summary>
+            <returns>COBieLite root element</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Conversion.CobieExpressConverter.Run(XbimExchanger.IfcHelpers.CobieConversionParams)">
+            <summary>
+            Run the worker
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Conversion.CobieExpressConverter.CobiekWorker(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            DOWork function for worker, generate excel COBie
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Conversion.CobieExpressConverter.GenerateFile(XbimExchanger.IfcHelpers.CobieConversionParams)">
+            <summary>
+            Create XLS file from ifc/xbim files
+            </summary>
+            <param name="parameters">Params</param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Conversion.CobieExpressConverter.GetCobieModelsFromExcelFilename(System.String,System.String)">
+            <summary>
+            Get the facility from the COBie Excel sheets
+            </summary>
+            <param name="parameters"></param>
+            <param name="templateFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Conversion.CobieExpressConverter.CreateExcelFile(System.String,XbimExchanger.IfcHelpers.CobieConversionParams,Xbim.CobieExpress.IO.CobieModel,System.String@)">
+            <summary>
+            Generate a Excel File
+            </summary>
+            <param name="fileName">Root file name</param>
+            <param name="parameters">Params</param>
+            <param name="facility">Facility</param>
+            <returns>file name</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Conversion.CobieExpressConverter.CreateStepFile(System.String,XbimExchanger.IfcHelpers.CobieConversionParams,Xbim.CobieExpress.IO.CobieModel)">
+            <summary>
+            Generate a Step File
+            </summary>
+            <param name="fileName">Root file name</param>
+            <param name="parameters">Params</param>
+            <param name="facility">Facility</param>
+            <returns>file name</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.ClassificationMappingReader.CheckMappingsForClassifications">
+            <summary>
+            Reads the Data from 1..* DataFiles and builds a
+            Dictionary of Classification numbers and a
+            reference pointer to the file they come from.
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.ClassificationMappingReader.FindColumnNumbers(System.String)">
+            <summary>
+            Finds whether the data contains valid
+            classifications and stores the column
+            number of where they exist in the file.
+            </summary>
+            <param name="DataFile">The URI of the data file as a string.</param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.ClassificationMappingReader.AddConditionalMapping(System.String,XbimExchanger.IfcToCOBieExpress.Classifications.Components.ClassificationSystem,System.Int32,System.Int32)">
+            <summary>
+            This checks to see if the Classification number already
+            exists as a unique Key in the Dictionary. It also checks
+            any NRM inputs to see if they contain multiples and only
+            uses the 'NRM (default)' as a key.
+            </summary>
+            <param name="classReference">The Uniclass, NBS or NRM classification number.</param>
+            <param name="classifier">Enum of type Classifier.</param>
+            <param name="row">The current row number in the file.</param>
+            <param name="fileNumber">The array index in DataFile which matches the current file.</param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.ClassificationMappingReader.UnsetColumns">
+            <summary>
+            Resets the ColumnIsSet booleans
+            at the start of reading a new file.
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.ClassificationMappingReader.GetDataFile(System.Int32)">
+            <summary>
+            Returns the string URL of the file
+            located at a 0 based index in the 
+            array of DataFiles
+            </summary>
+            <param name="fileNumber">0 based integer pointer</param>
+            <returns>URL of the data file as a string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.Classifier.Classify(Xbim.CobieExpress.CobieFacility)">
+            <summary>
+            This is the constructor for the Classifier Class
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.Classifier.AddClassificationsToAssets(Xbim.CobieExpress.CobieFacility)">
+            <summary>
+            This method searches through the facilities to look
+            for properties inside the property sets of Assets
+            to look for values that match Regex classification 
+            formats, set out in the DataReader. It then adds any
+            values that match the Regular Expression as a category
+            of assets which conforms with the Schema.
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.Classifications.Classifier.FindInferredClassifications(System.String,XbimExchanger.IfcToCOBieExpress.Classifications.ClassificationMappingReader)">
+            <summary>
+            Checks the property passed in as a parement to see
+            if the property value matches the format of either
+            Uniclass, NBS or NRM.
+            </summary>
+            <param name="property">A string value of the assets property</param>
+            <param name="dataReader"></param>
+            <returns>An InferredClassification which contains the classification mappings</returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.Classifications.Components.ClassificationSystem">
+            <summary>
+            Enum of classifiers which refers
+            to the column number of each file
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.Classifications.Components.Pointer">
+            <summary>
+            Struct for storing pointer data into the
+            Dictionary of mappings.
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.ExternalReferenceMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieExpress.ExternalReferenceMode.IgnoreSystemAndEntityName">
+            <summary>
+            Does not write out the External Entity Type Name or the External System Name
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieExpress.ExternalReferenceMode.IgnoreSystem">
+            <summary>
+            Does not write out the External System Name but does write out the External Entity Type Name
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieExpress.ExternalReferenceMode.IgnoreEntityName">
+            <summary>
+            Does not write out the External Entity Type Name but does write the External System Name
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ReportProgress">
+            <summary>
+            Object to use to report progress on Exchangers
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.EntityIdentifierMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ExternalReferenceMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.DocumentLookup">
+            <summary>
+            Document to Object mapping
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.OrphanDocs">
+            <summary>
+            Documents not attached to ant IIfcRoot object
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.DocumentOwnerLookup">
+            <summary>
+            Document to IIfcRelAssociatesDocument mapping, fall back info from IIfcRelAssociatesDocument history, if nothing set on IIfcDocumentInformation dates
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.SystemViaPropAssignment">
+            <summary>
+            Property Sets used to establish systems as per responsibility matrix 
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper._xbimContact">
+            <summary>
+            Creates a default contact and adds it to the SundryContacts
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.#ctor(XbimExchanger.IfcToCOBieExpress.IfcToCoBieExpressExchanger,Xbim.CobieLiteUk.ProgressReporter,Xbim.CobieLiteUk.FilterHelper.OutPutFilters,System.String,XbimExchanger.IfcHelpers.EntityIdentifierMode,XbimExchanger.IfcHelpers.SystemExtractionMode)">
+            <summary>
+            
+            </summary>
+            <param name="filter"></param>
+            <param name="configurationFile"></param>
+            <param name="exchanger"></param>
+            <param name="reportProgress"></param>
+            <param name="extId"></param>
+            <param name="sysMode"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSpare">
+            <summary>
+            Get Spare lookup and set SpareLookup property
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.HasValueRelatedObjectsTypeFix(Xbim.Ifc4.Interfaces.IIfcRelAssignsToResource)">
+            <summary>
+            quick fix for bug in bim.Ifc2x3.Kernel.IfcRelAssigns get RelatedObjectsType exception on nullable enumeration
+            </summary>
+            <param name="res"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSpareResource">
+            <summary>
+            Convert all IIfcRelAssignsToResource to a dictionary of IIfcConstructionProductResource, List of IIfcRoot
+            </summary>
+            <returns>Dictionary of IIfcConstructionProductResource, List of IIfcRoot</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.AddDocuments(Xbim.CobieExpress.CobieAsset,Xbim.Ifc4.Interfaces.IIfcDefinitionSelect)">
+            <summary>
+            Add document to List of Documents
+            </summary>
+            <param name="target">Target object holding the document list - CobieObject</param>
+            <param name="ifcRoot">Object holding the documents</param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetDocuments(Xbim.Ifc4.Interfaces.IIfcDefinitionSelect)">
+            <summary>
+            Return the documents associated with the object
+            </summary>
+            <param name="ifcSelect">Object to get associated documents</param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetDocumentSelects">
+            <summary>
+            Extract Document information
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetOrphanDocuments(System.Collections.Generic.Dictionary{Xbim.Ifc4.Interfaces.IIfcDocumentSelect,System.Collections.Generic.List{Xbim.Ifc4.Interfaces.IIfcDefinitionSelect}})">
+            <summary>
+            Get Orphan documents
+            </summary>
+            <param name="docToObjs">Document linked to objects</param>
+            <returns>List of IIfcDocumentSelect</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetAssociatedDocuments">
+            <summary>
+            Document linked to objects
+            </summary>
+            <returns>IIfcDocumentSelect attached to IIfcRoot objects,</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetNextName(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get next name for duplicates
+            </summary>
+            <param name="name">name to check</param>
+            <param name="usedNames">List of names already used</param>
+            <returns>name to use</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetNextNo(System.String,System.String)">
+            <summary>
+            Get next number from string in a format Name(#), so "This Document(10)" should return 11
+            </summary>
+            <param name="prefix">string up to  and including'(', such as "Name(" </param>
+            <param name="number">string formated "Name(#)", such as "Name(10)" </param>
+            <returns>int</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetPropMap(System.String)">
+            <summary>
+            Get the property mappings for a given field name
+            </summary>
+            <param name="filedKey">Field name</param>
+            <returns>string[]</returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.DefiningTypeObjectMap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetProxyTypeObject(Xbim.Ifc4.Interfaces.IIfcElement)">
+            <summary>
+            For an element gets a XbimIfcProxyTypeObject for the asset
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetZones(Xbim.Ifc4.Interfaces.IIfcSpace)">
+            <summary>
+            
+            </summary>
+            <param name="space"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ModelLinearUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ModelAreaUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ModelVolumeUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ModelCurrencyUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.HasLinearUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.HasAreaUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.HasVolumeUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.HasCurrencyUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.AssetAsignments">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.SystemLookup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.SystemAssignment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.SpaceAssetLookup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.SpaceFloorLookup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ZoneSpaces">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.AdjustUnitName(System.String)">
+            <summary>
+            Xbim uses the ifc schema names for units, but these are british english, this corrects to international english and removes unwanted separators
+            </summary>
+            <param name="unitName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ConvertToCategories(System.String)">
+            <summary>
+            Set Category with code and description as single delimited string
+            </summary>
+            <param name="strRef">Uniclass string</param>
+            <returns>List of Category Objects</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ConvertToCategories(System.String,System.String)">
+            <summary>
+            Set Category with code and description
+            </summary>
+            <param name="code">Uniclass code</param>
+            <param name="desc">Uniclass description</param>
+            <returns>List of Category Objects</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetCategories(Xbim.Ifc4.Interfaces.IIfcDefinitionSelect,System.Boolean)">
+            <summary>
+            Returns the COBie Category for this object, based on the Ifc Classification
+            </summary>
+            <param name="classifiedObject"></param>
+            <param name="useProp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetCreatingApplication(Xbim.Ifc4.Interfaces.IIfcRoot)">
+            <summary>
+            
+            </summary>
+            <param name="ifcRootObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetAreaUnit(Xbim.Ifc4.Interfaces.IIfcQuantityArea)">
+            <summary>
+            
+            </summary>
+            <param name="areaUnit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetLinearUnit(Xbim.Ifc4.Interfaces.IIfcQuantityLength)">
+            <summary>
+            
+            </summary>
+            <param name="lengthUnit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetVolumeUnit(Xbim.Ifc4.Interfaces.IIfcQuantityVolume)">
+            <summary>
+            
+            </summary>
+            <param name="volumeUnit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.TrySetSimpleValue``1(System.String,Xbim.Ifc4.Interfaces.IIfcObjectDefinition,System.Action{``0})">
+            <summary>
+            
+            </summary>
+            <param name="valueName"></param>
+            <param name="ifcObjectDefinition"></param>
+            <param name="setter"></param>
+            <typeparam name="TSimpleType"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSimpleValue``1(System.String,Xbim.Ifc4.Interfaces.IIfcObject)">
+            <summary>
+            
+            </summary>
+            <param name="valueName"></param>
+            <param name="ifcObject"></param>
+            <typeparam name="TValue"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetAttributesObj(Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            Get the XbimAttributedObject object associated with the passed ifcObjectDefinition
+            </summary>
+            <param name="ifcObjectDefinition">ifcObjectDefinition, IfcTypeObject, IfcObject</param>
+            <returns>XbimAttributedObject</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetAttributes(Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObjectDefinition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.MakeAttribute(Xbim.Ifc4.Interfaces.IIfcObjectDefinition,System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObjectDefinition"></param>
+            <param name="attributeName"></param>
+            <param name="attributeValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ExternalEntityIdentity(Xbim.Ifc4.Interfaces.IIfcRoot)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.ExternalEntityName(Xbim.Ifc4.Interfaces.IIfcRoot)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetAllAssets(Xbim.Ifc4.Interfaces.IIfcBuilding)">
+            <summary>
+            Returns all assets in the building but removes
+            </summary>
+            <param name="ifcBuilding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetCoBieProperty(System.String,Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            
+            </summary>
+            <param name="valueName"></param>
+            <param name="ifcObjectDefinition"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetContacts">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSpaces(Xbim.Ifc4.Interfaces.IIfcZone)">
+            <summary>
+            
+            </summary>
+            <param name="ifcZone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSystemAssignments(Xbim.Ifc4.Interfaces.IIfcSystem)">
+            <summary>
+            
+            </summary>
+            <param name="ifcSystem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSystemAssignments(Xbim.Ifc4.Interfaces.IIfcPropertySet)">
+            <summary>
+            
+            </summary>
+            <param name="ifcPropertySet"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetSpaces(Xbim.Ifc4.Interfaces.IIfcElement)">
+            <summary>
+            Returns a list of spaces the element is in
+            </summary>
+            <param name="ifcElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetCreatedOnFromProp(Xbim.Ifc4.Interfaces.IIfcRoot,System.Nullable{System.DateTime}@)">
+            <summary>
+            Get CreateDate from properties
+            </summary>
+            <param name="ifcRoot">object to get properties on</param>
+            <param name="date">out Date</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.COBieExpressHelper.GetCreatedBy(Xbim.Ifc4.Interfaces.IIfcActorSelect,System.Boolean)">
+            <summary>
+            Get ContactKey for CreatedBy, first from IfcActor OwnerHistory if useOwnerHistory = true, then IfcActorSelect returning the ContactKey for the IfcActorSelect
+            </summary>
+            <param name="actorSelect">IfcActorSelect Object</param>
+            <param name="useOwnerHistory">bool true get created by from owner history</param>
+            <returns>ContactKey</returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.EqCompare.IfcRelAssignsToGroupRelatedGroupObjCompare">
+            <summary>
+            Compare IfcRelAssignsToGroup.RelatedGroup obj references
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.IfcToCoBieExpressExchanger.#ctor(Xbim.Ifc.IfcStore,Xbim.Common.IModel,Xbim.Common.ReportProgressDelegate,Xbim.CobieLiteUk.FilterHelper.OutPutFilters,System.String,XbimExchanger.IfcHelpers.EntityIdentifierMode,XbimExchanger.IfcHelpers.SystemExtractionMode,System.Boolean)">
+            <summary>
+            Instantiates a new IIfcToCOBieLiteUkExchanger class.
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.IfcToCoBieExpressExchanger.Convert">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.Helper">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.UsedNames">
+            <summary>
+            List of created documents names, used to get next duplicate name
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.Mapping(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource,Xbim.CobieExpress.CobieSpare)">
+            <summary>
+            Convert IfcConstructionProductResource to Spare
+            </summary>
+            <param name="source">IfcConstructionProductResource to convert</param>
+            <param name="target">Empty Spare Object</param>
+            <returns>Filled Spare Object</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.GetSuppliers(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the Supplier ContactKeys
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>List of suppliers ContactKeys</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.GetSetNumber(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the SetNumber string
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>SetNumber as a string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.GetPartNumber(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the PartNumber string
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>PartNumber as a string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcConstructionProductResourceToSpare.GetDescription(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the PartDescription string
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>Description</returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.Helper">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.UsedNames">
+            <summary>
+            List of created documents names, used to get next duplicate name
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.ChainInstMap">
+            <summary>
+            Stop infinite loops
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.Mapping(Xbim.Ifc4.Interfaces.IIfcDocumentSelect,System.Collections.Generic.List{Xbim.CobieExpress.CobieDocument})">
+            <summary>
+            Required by Interface
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.MappingMulti(Xbim.Ifc4.Interfaces.IIfcDocumentSelect)">
+            <summary>
+            Return a document object list, in case IfcDocumentInformation.DocumentReferences more than one file
+            </summary>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.GetChildDocs(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get the child documents with drill down into children of child....
+            </summary>
+            <param name="ifcDocumentInformation">IfcDocumentInformation</param>
+            <returns>List of Document</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.ConvertToDocument(Xbim.Ifc4.Interfaces.IIfcDocumentReference,Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Convert a IfcDocumentReference to Document
+            </summary>
+            <param name="docReference">Document Reference Object</param>
+            <param name="docInformation"></param>
+            <returns>Document</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.GetCreatedInfo(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get created by
+            </summary>
+            <param name="docInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.GetName(Xbim.Ifc4.Interfaces.IIfcExternalReference)">
+            <summary>
+            Get Name from IfcDocumentReference
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <returns>string or null</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.GetName(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get Name from IfcDocumentInformation
+            </summary>
+            <param name="ifcDocumentInformation">Document Information Object</param>
+            <returns>string or null</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.GetFileDirectory(Xbim.Ifc4.Interfaces.IIfcExternalReference)">
+            <summary>
+            Get the file directory/location
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingIfcDocumentSelectToDocument.GetFileName(Xbim.Ifc4.Interfaces.IIfcDocumentReference)">
+            <summary>
+            Get file name
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.MappingSystemViaIfcPropertyToSystem.GetSystemName(XbimExchanger.IfcToCOBieExpress.COBieExpressHelper,System.Collections.Generic.IEnumerable{Xbim.Ifc4.Interfaces.IIfcObjectDefinition})">
+            <summary>
+            Get system name from a IfcObjectDefinition
+            </summary>
+            <param name="helper">CoBieLiteUkHelper</param>
+            <param name="ifcObjects"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.MappingXbimIfcProxyTypeObjectToAssetType">
+            <summary>
+            Maps a list of IfcTypeObject that are all the same
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.#ctor(Xbim.Ifc4.Interfaces.IIfcObjectDefinition,Xbim.Common.IModel)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="targetModel"></param>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.IfcObject">
+            <summary />
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.AddPropertySetDefinition(Xbim.Ifc4.Interfaces.IIfcPropertySetDefinition)">
+            <summary />
+            <param name="pSetDef"></param>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.Quantities">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.Properties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.GetPropertySetDefinition(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pSetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.GetSimplePropertyValue``1(System.String,``0@)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+            <param name="val"></param>
+            <typeparam name="TValue"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.GetSimplePropertyValue(System.String,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.TryGetAttributeValue``1(System.String,``0@)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+            <param name="val"></param>
+            <typeparam name="TSimpleType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.TryGetAttributeValue``1(Xbim.Ifc4.Interfaces.IIfcProperty,``0@)">
+            <summary>
+            
+            </summary>
+            <param name="ifcProperty"></param>
+            <param name="result"></param>
+            <typeparam name="TSimpleType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.ConvertToSimpleType``1(Xbim.Ifc4.Interfaces.IIfcProperty)">
+            <summary>
+            Converts the property to a simple type, date, string
+            </summary>
+            <param name="ifcProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.ConvertToAttributeType(Xbim.Ifc4.Interfaces.IIfcProperty)">
+            <summary>
+            Converts an IfcProperty to a COBie Attribute
+            </summary>
+            <param name="ifcProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.ConvertToSimpleType``1(Xbim.Ifc4.Interfaces.IIfcPropertySingleValue)">
+            <summary>
+            
+            </summary>
+            <param name="ifcProperty"></param>
+            <typeparam name="TValue"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimAttributedObject.SetAttributeValueType(Xbim.Ifc4.Interfaces.IIfcPropertySingleValue,Xbim.CobieExpress.CobieAttribute)">
+            <summary>
+            
+            </summary>
+            <param name="ifcProperty"></param>
+            <param name="attribute"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject">
+            <summary>
+            Proxy for an IfcTypeObject, allows proxy types where none are defined in the Ifc File
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.#ctor(XbimExchanger.IfcToCOBieExpress.COBieExpressHelper,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="helper"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.#ctor(XbimExchanger.IfcToCOBieExpress.COBieExpressHelper,Xbim.Ifc4.Interfaces.IIfcTypeObject,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="helper"></param>
+            <param name="typeObject"></param>
+            <param name="typeName"></param>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.ExternalEntity">
+            <summary>
+            Returns the external name of the IfcTypeObject, if this is a generated type returns IfcTypeObject
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.ExternalId">
+            <summary>
+            returns the external id of the type or null if this is generated
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.ExternalSystem">
+            <summary>
+            Returns the external name of the IfcTypeObject, if this is a generated type returns xBIM
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.Name">
+            <summary>
+            returns the name of the type or the generated name if this is a generated type
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.Categories">
+            <summary>
+            Returns the categories for the type null if no Ifc Type exists
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.AccountingCategory">
+            <summary>
+            Returns the Accounting category, undefined if no type exists
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.GetObjPropByAssoc(System.String,Xbim.Ifc4.Interfaces.IIfcTypeObject)">
+            <summary>
+            Check all ifcElements associated with the pass ifcTypeObject for the passed property map key. 
+            If all found elements of the property are the same then we assume that the property applies to the type as well as all the elements 
+            </summary>
+            <param name="valueName">property map key</param>
+            <param name="ifcTypeObject">ifcTypeObject</param>
+            <returns>property value</returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.Description">
+            <summary>
+            Returns the description of the type, null if no type exists
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.IfcTypeObject">
+            <summary>
+            returns the type object null if this is a generated type
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.EntityLabel">
+            <summary>
+            Returns the entity label , -1 if this is a generated type </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieExpress.XbimIfcProxyTypeObject.TypeName">
+            <summary>
+            Returns the type name of the object, null if this is a generated type
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter">
+            <summary>
+            Helper to convert text descriptions to formal Units
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.UnitName">
+            <summary>
+            The name of the Unit, VOLUMEUNIT, LENGTHUNIT etc, 
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.SiUnitName">
+            <summary>
+            Name of the SI Unit, METRE, SQUARE_METRE etc null if not SI
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.UserDefinedSiUnitName">
+            <summary>
+            User defined unit name
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.SiPrefix">
+            <summary>
+            Sub-dicsion of unit MILLI, PICA etc, null if none
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.ConversionFactor">
+            <summary>
+            Conversion factor between unit
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.IsUndefined">
+            <summary>
+            The unit has no SIUnitName
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.Convert(System.String)">
+            <summary>
+            Converts a string
+            </summary>
+            <param name="name"></param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:XbimExchanger.IfcHelpers.Ifc2x3.IfcUnitConverter.IfcUnit(System.Collections.Generic.Dictionary{System.String,Xbim.Ifc2x3.MeasureResource.IfcUnit},Xbim.Ifc.IfcStore)">
+            <summary>
+            Creates an IfcUnit from the this object and adds it to the database, only works for SI at the moment
+            </summary>
+            <param name="units"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.IfcHelpers.CobieConversionParams">
+            <summary>
+            Params Class, holds parameters for worker to access
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcHelpers.CobieConversionParams.Log">
+            <summary>
+            Produce COBie validation log file
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.ExportFormatEnum.XLS">
+            <summary>
+            Binary excel file
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.ExportFormatEnum.XLSX">
+            <summary>
+            Xml excel file
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.ExportFormatEnum.JSON">
+            <summary>
+            Json format
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.ExportFormatEnum.XML">
+            <summary>
+            Xml format
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.ExportFormatEnum.IFC">
+            <summary>
+            Ifc format
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.ExportFormatEnum.STEP21">
+            <summary>
+            Step21 format
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcHelpers.EntityIdentifierMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.EntityIdentifierMode.IfcEntityLabels">
+            <summary>
+            Use the Entity Label in the Ifc file (e.g. #23)
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.EntityIdentifierMode.GloballyUniqueIds">
+            <summary>
+            Use the GlobalId of the Entity (e.g. "10mjSDZJj9gPS2PrQaxa3z")
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcHelpers.EntityIdentifierMode.None">
+            <summary>
+            Does not write any External Identifier for Entities
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcHelpers.SystemExtractionMode">
+            <summary>
+            Control what we extract from IFC as systems
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcHelpers.IfcStoreExtensions.GetFederatedFileRoles(Xbim.Ifc.IfcStore)">
+            <summary>
+            Get the file to roles information
+            </summary>
+            <returns>Dictionary or FileInfo to RoleFilter</returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.ExternalReferenceMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieLiteUK.ExternalReferenceMode.IgnoreSystemAndEntityName">
+            <summary>
+            Does not write out the External Entity Type Name or the External System Name
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieLiteUK.ExternalReferenceMode.IgnoreSystem">
+            <summary>
+            Does not write out the External System Name but does write out the External Entity Type Name
+            </summary>
+        </member>
+        <member name="F:XbimExchanger.IfcToCOBieLiteUK.ExternalReferenceMode.IgnoreEntityName">
+            <summary>
+            Does not write out the External Entity Type Name but does write the External System Name
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ReportProgress">
+            <summary>
+            Object to use to report progress on Exchangers
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.EntityIdentifierMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ExternalReferenceMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.DocumentLookup">
+            <summary>
+            Document to Object mapping
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.OrphanDocs">
+            <summary>
+            Documents not attached to ant IIfcRoot object
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.DocumentOwnerLookup">
+            <summary>
+            Document to IIfcRelAssociatesDocument mapping, fall back info from IIfcRelAssociatesDocument history, if nothing set on IIfcDocumentInformation dates
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.SystemViaPropAssignment">
+            <summary>
+            Property Sets used to establish systems as per responsibility matrix 
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.XbimCreatedBy">
+            <summary>
+            Creates a default contact and adds it to the SundryContacts
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetSpare">
+            <summary>
+            Get Spare lookup and set SpareLookup property
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetSpareResource">
+            <summary>
+            Convert all IIfcRelAssignsToResource to a dictionary of IIfcConstructionProductResource, List of IIfcRoot
+            </summary>
+            <returns>Dictionary of IIfcConstructionProductResource, List of IIfcRoot</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.AddDocuments(XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument,Xbim.CobieLiteUk.CobieObject,Xbim.Ifc4.Interfaces.IIfcDefinitionSelect)">
+            <summary>
+            Add document to List of Documents
+            </summary>
+            <param name="docsMappings">Mapping object</param>
+            <param name="target">Target object holding the document list - CobieObject</param>
+            <param name="ifcRoot">Object holding the documents</param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetDocuments(Xbim.Ifc4.Interfaces.IIfcDefinitionSelect)">
+            <summary>
+            Return the documents associated with the object
+            </summary>
+            <param name="ifcSelect">Object to get associated documents</param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetDocumentSelects">
+            <summary>
+            Extract Document information
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetOrphanDocuments(System.Collections.Generic.Dictionary{Xbim.Ifc4.Interfaces.IIfcDocumentSelect,System.Collections.Generic.List{Xbim.Ifc4.Interfaces.IIfcDefinitionSelect}})">
+            <summary>
+            Get Orphan documents
+            </summary>
+            <param name="docToObjs">Document linked to objects</param>
+            <returns>List of IIfcDocumentSelect</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetAssociatedDocuments">
+            <summary>
+            Document linked to objects
+            </summary>
+            <returns>IIfcDocumentSelect attached to IIfcRoot objects,</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetNextName(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get next name for duplicates
+            </summary>
+            <param name="name">name to check</param>
+            <param name="usedNames">List of names already used</param>
+            <returns>name to use</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetNextNo(System.String,System.String)">
+            <summary>
+            Get next number from string in a format Name(#), so "This Document(10)" should return 11
+            </summary>
+            <param name="prefix">string up to  and including'(', such as "Name(" </param>
+            <param name="number">string formated "Name(#)", such as "Name(10)" </param>
+            <returns>int</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetPropMap(System.String)">
+            <summary>
+            Get the property mappings for a given field name
+            </summary>
+            <param name="FiledKey">Field name</param>
+            <returns>string[]</returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.DefiningTypeObjectMap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetProxyTypeObject(Xbim.Ifc4.Interfaces.IIfcElement)">
+            <summary>
+            For an element gets a XbimIfcProxyTypeObject for the asset
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetZones(Xbim.Ifc4.Interfaces.IIfcSpace)">
+            <summary>
+            
+            </summary>
+            <param name="space"></param>
+            <returns></returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ModelLinearUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ModelAreaUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ModelVolumeUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ModelCurrencyUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.HasLinearUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.HasAreaUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.HasVolumeUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.HasCurrencyUnit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.Model">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.AssetAsignments">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.SystemLookup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.SystemAssignment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.SpaceAssetLookup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.SpaceFloorLookup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ZoneSpaces">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.AdjustUnitName(System.String)">
+            <summary>
+            Xbim uses the ifc schema names for units, but these are british english, this corrects to international english and removes unwanted separators
+            </summary>
+            <param name="unitName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ConvertToCategories(System.String)">
+            <summary>
+            Set Category with code and description as single delimited string
+            </summary>
+            <param name="strRef">Uniclass string</param>
+            <returns>List of Category Objects</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ConvertToCategories(System.String,System.String)">
+            <summary>
+            Set Category with code and description
+            </summary>
+            <param name="code">Uniclass code</param>
+            <param name="desc">Uniclass description</param>
+            <returns>List of Category Objects</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetCategories(Xbim.Ifc4.Interfaces.IIfcDefinitionSelect,System.Boolean)">
+            <summary>
+            Returns the COBie Category for this object, based on the Ifc Classification
+            </summary>
+            <param name="classifiedObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetCreatingApplication(Xbim.Ifc4.Interfaces.IIfcRoot)">
+            <summary>
+            
+            </summary>
+            <param name="ifcRootObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetAreaUnit(Xbim.Ifc4.Interfaces.IIfcQuantityArea)">
+            <summary>
+            
+            </summary>
+            <param name="areaUnit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetLinearUnit(Xbim.Ifc4.Interfaces.IIfcQuantityLength)">
+            <summary>
+            
+            </summary>
+            <param name="lengthUnit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetVolumeUnit(Xbim.Ifc4.Interfaces.IIfcQuantityVolume)">
+            <summary>
+            
+            </summary>
+            <param name="volumeUnit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetCoBieProperty``1(System.String,Xbim.Ifc4.Interfaces.IIfcObject)">
+            <summary>
+            
+            </summary>
+            <param name="valueName"></param>
+            <param name="ifcObject"></param>
+            <typeparam name="TValue"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetAttributesObj(Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            Get the XbimAttributedObject object associated with the passed ifcObjectDefinition
+            </summary>
+            <param name="ifcObjectDefinition">ifcObjectDefinition, IfcTypeObject, IfcObject</param>
+            <returns>XbimAttributedObject</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetAttributes(Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObjectDefinition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.MakeAttribute(Xbim.Ifc4.Interfaces.IIfcObjectDefinition,System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObjectDefinition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ExternalEntityIdentity(Xbim.Ifc4.Interfaces.IIfcRoot)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.ExternalEntityName(Xbim.Ifc4.Interfaces.IIfcRoot)">
+            <summary>
+            
+            </summary>
+            <param name="ifcObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetAllAssets(Xbim.Ifc4.Interfaces.IIfcBuilding)">
+            <summary>
+            Returns all assets in the building but removes
+            </summary>
+            <param name="ifcBuilding"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetCoBieProperty(System.String,Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            
+            </summary>
+            <param name="valueName"></param>
+            <param name="ifcObjectDefinition"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetContacts">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetSpaces(Xbim.Ifc4.Interfaces.IIfcZone)">
+            <summary>
+            
+            </summary>
+            <param name="ifcZone"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetSystemAssignments(Xbim.Ifc4.Interfaces.IIfcSystem)">
+            <summary>
+            
+            </summary>
+            <param name="ifcSystem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetSystemAssignments(Xbim.Ifc4.Interfaces.IIfcPropertySet)">
+            <summary>
+            
+            </summary>
+            <param name="ifcPropertySet"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetSpaces(Xbim.Ifc4.Interfaces.IIfcElement)">
+            <summary>
+            Returns a list of spaces the element is in
+            </summary>
+            <param name="ifcElement"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetCreatedOnFromProp(Xbim.Ifc4.Interfaces.IIfcRoot,System.Nullable{System.DateTime}@)">
+            <summary>
+            Get CreateDate from properties
+            </summary>
+            <param name="ifcRoot">object to get properties on</param>
+            <param name="date">out Date</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper.GetCreatedBy(Xbim.Ifc4.Interfaces.IIfcActorSelect,System.Boolean)">
+            <summary>
+            Get ContactKey for CreatedBy, first from IfcActor OwnerHistory if useOwnerHistory = true, then IfcActorSelect returning the ContactKey for the IfcActorSelect
+            </summary>
+            <param name="actorSelect">IfcActorSelect Object</param>
+            <param name="useOwnerHistory">bool true get created by from owner history</param>
+            <returns>ContactKey</returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.ContactConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.ContactConverter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.ContactConverter.#ctor(Xbim.Ifc4.Interfaces.IIfcActorSelect,XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper)">
+            <summary>
+            Writes out a contact, 
+            </summary>
+            <param name="actor"></param>
+            <param name="helper"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.Run(XbimExchanger.IfcHelpers.CobieConversionParams)">
+            <summary>
+            Run the worker
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.CobieLiteUkWorker(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            DOWork function for worker, generate excel COBie
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.GenerateFile(XbimExchanger.IfcHelpers.CobieConversionParams)">
+            <summary>
+            Create XLS file from ifc/xbim files
+            </summary>
+            <param name="parameters">Params</param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.CreateExcelFile(System.String,XbimExchanger.IfcHelpers.CobieConversionParams,Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Generate a Excel File
+            </summary>
+            <param name="fileName">Root file name</param>
+            <param name="parameters">Params</param>
+            <param name="facility">Facility</param>
+            <returns>file name</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.CreateJsonFile(System.String,Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Generate a JSON File
+            </summary>
+            <param name="fileName">Root file name</param>
+            <param name="facility">Facility</param>
+            <returns>file name</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.CreateXmlFile(System.String,Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Generate a XML File
+            </summary>
+            <param name="fileName">Root file name</param>
+            <param name="facility">Facility</param>
+            <returns>file name</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.GetFacilitiesFromExcelFilename(System.String,System.String)">
+            <summary>
+            Get the facility from the COBie Excel sheets
+            </summary>
+            <param name="parameters"></param>
+            <param name="templateFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.GetFacilitiesFromJsonFilename(System.String)">
+            <summary>
+            Get the facility from the COBie Excel sheets
+            </summary>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.GetFacilitiesFromXmlFilename(System.String)">
+            <summary>
+            Get the facility from the COBie Excel sheets
+            </summary>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.Conversion.CobieLiteConverter.GetFacilitiesFromIfcStoreFilename(System.String,XbimExchanger.IfcHelpers.CobieConversionParams)">
+            <summary>
+            Generate Facilities for a xbim or ifc type file
+            </summary>
+            <param name="sourceFile"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.EqCompare.IfcRelAssignsToGroupRelatedGroupObjCompare">
+            <summary>
+            Compare IfcRelAssignsToGroup.RelatedGroup obj references
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.IfcToCOBieLiteUkExchanger.#ctor(Xbim.Common.IModel,System.Collections.Generic.List{Xbim.CobieLiteUk.Facility},Xbim.Common.ReportProgressDelegate,Xbim.CobieLiteUk.FilterHelper.OutPutFilters,System.String,XbimExchanger.IfcHelpers.EntityIdentifierMode,XbimExchanger.IfcHelpers.SystemExtractionMode)">
+            <summary>
+            Instantiates a new IIfcToCOBieLiteUkExchanger class.
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.IfcToCOBieLiteUkExchanger.Convert">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.Helper">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.UsedNames">
+            <summary>
+            List of created documents names, used to get next duplicate name
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.Mapping(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource,Xbim.CobieLiteUk.Spare)">
+            <summary>
+            Convert IfcConstructionProductResource to Spare
+            </summary>
+            <param name="source">IfcConstructionProductResource to convert</param>
+            <param name="target">Empty Spare Object</param>
+            <returns>Filled Spare Object</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.GetSuppliers(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the Supplier ContactKeys
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>List of suppliers ContactKeys</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.GetSetNumber(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the SetNumber string
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>SetNumber as a string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.GetPartNumber(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the PartNumber string
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>PartNumber as a string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcConstructionProductResourceToSpare.GetDescription(Xbim.Ifc4.Interfaces.IIfcConstructionProductResource)">
+            <summary>
+            Get the PartDescription string
+            </summary>
+            <param name="source">IfcConstructionProductResource object</param>
+            <returns>Description</returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.Helper">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.UsedNames">
+            <summary>
+            List of created documents names, used to get next duplicate name
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.ChainInstMap">
+            <summary>
+            Stop infinite loops
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.Mapping(Xbim.Ifc4.Interfaces.IIfcDocumentSelect,Xbim.CobieLiteUk.Document)">
+            <summary>
+            Required by Interface
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.MappingMulti(Xbim.Ifc4.Interfaces.IIfcDocumentSelect)">
+            <summary>
+            Return a document object list, in case IfcDocumentInformation.DocumentReferences more than one file
+            </summary>
+            <param name="ifcDocumentSelect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetChildDocs(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get the child documents with drill down into children of child....
+            </summary>
+            <param name="ifcDocumentInformation">IfcDocumentInformation</param>
+            <returns>List of Document</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.ConvertToDocument(Xbim.Ifc4.Interfaces.IIfcDocumentReference,Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Convert a IfcDocumentReference to Document
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <param name="document">Document Object</param>
+            <returns>Document</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetCreatedOn(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get createdOn 
+            </summary>
+            <param name="ifcDocumentInformation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetCreatedBy(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get created by
+            </summary>
+            <param name="ifcDocumentInformation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetName(Xbim.Ifc4.Interfaces.IIfcDocumentReference)">
+            <summary>
+            Get Name from IfcDocumentReference
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <returns>string or null</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetName(Xbim.Ifc4.Interfaces.IIfcDocumentInformation)">
+            <summary>
+            Get Name from IfcDocumentInformation
+            </summary>
+            <param name="ifcDocumentInformation">Document Information Object</param>
+            <returns>string or null</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetFileDirectory(Xbim.Ifc4.Interfaces.IIfcDocumentReference)">
+            <summary>
+            Get the file directory/location
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingIfcDocumentSelectToDocument.GetFileName(Xbim.Ifc4.Interfaces.IIfcDocumentReference)">
+            <summary>
+            Get file name
+            </summary>
+            <param name="ifcDocumentReference">Document Reference Object</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.MappingSystemViaIfcPropertyToSystem.GetSystemName(XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper,System.Collections.Generic.IList{Xbim.Ifc4.Interfaces.IIfcObjectDefinition})">
+            <summary>
+            Get system name from a IfcObjectDefinition
+            </summary>
+            <param name="helper">CoBieLiteUkHelper</param>
+            <param name="ifcObject">IfcObjectDefinition</param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.MappingXbimIfcProxyTypeObjectToAssetType">
+            <summary>
+            Maps a list of IfcTypeObject that are all the same
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.#ctor(Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.IfcObject">
+            <summary />
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.AddPropertySetDefinition(Xbim.Ifc4.Interfaces.IIfcPropertySetDefinition)">
+            <summary />
+            <param name="pSetDef"></param>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.Quantities">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.Properties">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.GetPropertySetDefinition(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="pSetName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.GetSimplePropertyValue``1(System.String,``0@)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+            <param name="val"></param>
+            <typeparam name="TValue"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.GetSimplePropertyValue(System.String,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.GetAttributeValue``1(System.String,``0@)">
+            <summary>
+            
+            </summary>
+            <param name="propertyName"></param>
+            <param name="val"></param>
+            <typeparam name="TCoBieValueBaseType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.ConvertAttribute``1(Xbim.Ifc4.Interfaces.IIfcProperty)">
+            <summary>
+            
+            </summary>
+            <param name="ifcProperty"></param>
+            <typeparam name="TCoBieValueBaseType"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.ConvertToSimpleType``1(Xbim.Ifc4.Interfaces.IIfcProperty,``0@)">
+            <summary>
+            Attempts to convert the property to a simple type, date, string
+            </summary>
+            <param name="ifcProperty"></param>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.ConvertToAttributeType(Xbim.Ifc4.Interfaces.IIfcProperty)">
+            <summary>
+            Converts an IfcProperty to a COBie Attribute
+            </summary>
+            <param name="ifcProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.ConvertPropertySingleValueToSimpleType``1(Xbim.Ifc4.Interfaces.IIfcPropertySingleValue,``0@)">
+            <summary>
+            
+            </summary>
+            <param name="ifcProperty"></param>
+            <param name="value"></param>
+            <typeparam name="TValue"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimAttributedObject.GetAttributeValueType(Xbim.Ifc4.Interfaces.IIfcPropertySingleValue)">
+            <summary>
+            
+            </summary>
+            <param name="ifcProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="T:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject">
+            <summary>
+            Proxy for an IfcTypeObject, allows proxy types where none are defined in the Ifc File
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.#ctor(XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="helper"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.#ctor(XbimExchanger.IfcToCOBieLiteUK.CoBieLiteUkHelper,Xbim.Ifc4.Interfaces.IIfcTypeObject,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="helper"></param>
+            <param name="typeObject"></param>
+            <param name="typeName"></param>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.ExternalEntity">
+            <summary>
+            Returns the external name of the IfcTypeObject, if this is a generated type returns IfcTypeObject
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.ExternalId">
+            <summary>
+            returns the external id of the type or null if this is generated
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.ExternalSystemName">
+            <summary>
+            Returns the external name of the IfcTypeObject, if this is a generated type returns xBIM
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.Name">
+            <summary>
+            returns the name of the type or the generated name if this is a generated type
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.Categories">
+            <summary>
+            Returns the categories for the type null if no Ifc Type exists
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.AccountingCategory">
+            <summary>
+            Returns the Accounting category, undefined if no type exists
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.GetObjPropByAssoc(System.String,Xbim.Ifc4.Interfaces.IIfcTypeObject)">
+            <summary>
+            Check all ifcElements associated with the pass ifcTypeObject for the passed property map key. 
+            If all found elements of the property are the same then we assume that the property applies to the type as well as all the elements 
+            </summary>
+            <param name="valueName">property map key</param>
+            <param name="ifcTypeObject">ifcTypeObject</param>
+            <returns>property value</returns>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.Description">
+            <summary>
+            Returns the description of the type, null if no type exists
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.IfcTypeObject">
+            <summary>
+            returns the type object null if this is a generated type
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.EntityLabel">
+            <summary>
+            Returns the entity label , -1 if this is a generated type </summary>
+        </member>
+        <member name="P:XbimExchanger.IfcToCOBieLiteUK.XbimIfcProxyTypeObject.TypeName">
+            <summary>
+            Returns the type name of the object, null if this is a generated type
+            </summary>
+        </member>
+        <member name="T:XbimExchanger.XbimMappings`5">
+            <summary>
+            Abstract class for mapping between different object models and schemas
+            </summary>
+            <typeparam name="TSourceKey">Type of the key in the From object to link mappings</typeparam>
+            <typeparam name="TSourceObject">Type of the object to map from</typeparam>
+            <typeparam name="TTargetObject">Type of the object to map to</typeparam>
+            <typeparam name="TSourceRepository"></typeparam>
+            <typeparam name="TTargetRepository"></typeparam>
+        </member>
+        <member name="P:XbimExchanger.XbimMappings`5.Mappings">
+            <summary>
+            Returns the IDictionary of all objects that have been mapped in this mapping class
+            </summary>
+        </member>
+        <member name="M:XbimExchanger.XbimMappings`5.CreateTargetObject">
+            <summary>
+            Creates an instance of toObject, override for special creation situations
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.XbimMappings`5.GetTargetObject(`2,`4@)">
+            <summary>
+            Gets the ToObject with the specified key
+            </summary>
+            <param name="key">The key to look the object up with</param>
+            <param name="to">the object which is mapped to this key</param>
+            <returns>false if no object has been added to this mapping</returns>
+        </member>
+        <member name="M:XbimExchanger.XbimMappings`5.GetOrCreateTargetObject(`2)">
+            <summary>
+            Gets the object with the specified key or creates one if it does not exist 
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:XbimExchanger.XbimMappings`5.GetOrCreateTargetObject(`2,`4@)">
+            <summary>
+            Gets the object with the specified key or creates one if it does not exist 
+            </summary>
+            <param name="key">Key to be used to search for exsting object</param>
+            <param name="result">Existing or created object</param>
+            <returns>True if new object is created, False if existing object is returned as a result</returns>
+        </member>
+        <member name="M:XbimExchanger.XbimMappings`5.AddMapping(`3,`4)">
+            <summary>
+            Adds a mapping between the two object all mapped properties are mapped over by the Mapping function
+            </summary>
+            <param name="source">The object to map data from</param>
+            <param name="target">The object to map data to</param>
+            <returns>Returns the object which has been added to the mapping</returns>
+        </member>
+        <member name="M:XbimExchanger.XbimMappings`5.Mapping(`3,`4)">
+            <summary>
+            Overrident in the concrete class to perform the actual mapping
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <returns>the mapped object</returns>
+        </member>
+        <member name="P:XbimExchanger.XbimExchanger`2.Context">
+            <summary>
+            This property can be used by Exchanger to set up a context for all mappings (like a specific stage of project for example).
+            </summary>
+        </member>
+        <member name="P:XbimExchanger.XbimExchanger`2.ReportProgress">
+            <summary>
+            Object to use to report progress on Exchangers
+            </summary>
+        </member>
+    </members>
+</doc>

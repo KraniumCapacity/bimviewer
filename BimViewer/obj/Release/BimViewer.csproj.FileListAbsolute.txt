@@ -92,3 +92,10 @@ C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.Tessell
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.csprojResolveAssemblyReference.cache
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.dll
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.pdb
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.dll
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.SqlServer.dll
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.xml
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.SqlServer.xml
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.Migrations.Initial.resources
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.Migrations._1.resources
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.csproj.GenerateResource.Cache

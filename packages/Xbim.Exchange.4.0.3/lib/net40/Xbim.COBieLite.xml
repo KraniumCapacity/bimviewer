@@ -1,0 +1,1387 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.COBieLite</name>
+    </assembly>
+    <members>
+        <member name="F:Xbim.COBieLite.CurrencyUnitSimpleType.BritishPounds">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.CurrencyUnitSimpleType.Dollars">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.CurrencyUnitSimpleType.Euros">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.CurrencyUnitSimpleType.Item">
+            <remarks/>
+        </member>
+        <member name="M:Xbim.COBieLite.ContactType.#ctor(Xbim.Ifc4.Interfaces.IIfcActorSelect,Xbim.COBieLite.CoBieLiteHelper)">
+            <summary>
+            Writes out a contact, 
+            </summary>
+            <param name="actor"></param>
+            <param name="helper"></param>
+        </member>
+        <member name="F:Xbim.COBieLite.AssetPortabilitySimpleType.Fixed">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AssetPortabilitySimpleType.Moveable">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AssetPortabilitySimpleType.Item">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeBooleanValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeDateTimeValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeDateValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeDecimalValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeIntegerValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeMonetaryValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeStringValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.ItemChoiceType.AttributeTimeValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.centimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.feet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.inches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.kilometers">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.meters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.miles">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.millimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.LinearUnitSimpleType.yards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squarecentimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squarefeet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squareinches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squarekilometers">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squaremeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squaremiles">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squaremillimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.squareyards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.AreaUnitSimpleType.Item">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.VolumeUnitSimpleType.cubiccentimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.VolumeUnitSimpleType.cubicfeet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.VolumeUnitSimpleType.cubicinches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.VolumeUnitSimpleType.cubicmeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.VolumeUnitSimpleType.cubicmillimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.VolumeUnitSimpleType.cubicyards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.EntityIdentifierMode.IIfcEntityLabels">
+            <summary>
+            Use the Entity Label in the IIfc file (e.g. #23)
+            </summary>
+        </member>
+        <member name="F:Xbim.COBieLite.EntityIdentifierMode.GloballyUniqueIds">
+            <summary>
+            Use the GlobalId of the Entity (e.g. "10mjSDZJj9gPS2PrQaxa3z")
+            </summary>
+        </member>
+        <member name="F:Xbim.COBieLite.EntityIdentifierMode.None">
+            <summary>
+            Does not write any External Identifier for Entities
+            </summary>
+        </member>
+        <member name="F:Xbim.COBieLite.ExternalReferenceMode.IgnoreSystemAndEntityName">
+            <summary>
+            Does not write out the External Entity Type Name or the External System Name
+            </summary>
+        </member>
+        <member name="F:Xbim.COBieLite.ExternalReferenceMode.IgnoreSystem">
+            <summary>
+            Does not write out the External System Name but does write out the External Entity Type Name
+            </summary>
+        </member>
+        <member name="F:Xbim.COBieLite.ExternalReferenceMode.IgnoreEntityName">
+            <summary>
+            Does not write out the External Entity Type Name but does write the External System Name
+            </summary>
+        </member>
+        <member name="M:Xbim.COBieLite.CoBieLiteHelper.AdjustUnitName(System.String)">
+            <summary>
+            Xbim uses the ifc schema names for units, but these are british english, this corrects to international english and removes unwanted separators
+            </summary>
+            <param name="unitName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssemblyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyType.AssemblyCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyType.AssemblyDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyType.AssemblyAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyType.AssemblyDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyType.AssemblyIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeCollectionType.Attribute">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeTypeBase.AttributeName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeTypeBase.AttributeCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeTypeBase.propertySetName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeTypeBase.propertySetExternalIdentifier">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CobieRowType">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CobieBaseType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.CobieBaseType.externalEntityName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.CobieBaseType.externalID">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.CobieBaseType.externalSystemName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CobieComplexObjectType">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeMonetaryValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeMonetaryValueType.MonetaryValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeMonetaryValueType.MonetaryUnit">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CurrencyUnitSimpleType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.CurrencyUnitSimpleType.GBP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.CurrencyUnitSimpleType.USD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.CurrencyUnitSimpleType.EUR">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.WarrantyCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyCollectionType.Warranty">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.WarrantyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyDuration">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyGaurantorContactAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyType.WarrantyIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.IntegerValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IntegerValueType.IntegerValue">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ValueBaseType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ValueBaseType.UnitName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.StringValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.StringValueType.StringValue">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeStringValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeStringValueType.AllowedValues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AllowedValueCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AllowedValueCollectionType.AttributeAllowedValue">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.DecimalValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DecimalValueType.DecimalValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DecimalValueType.DecimalValueSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeDecimalValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeDecimalValueType.MinValueDecimal">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeDecimalValueType.MinValueDecimalSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeDecimalValueType.MaxValueDecimal">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeDecimalValueType.MaxValueDecimalSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.BooleanValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.BooleanValueType.BooleanValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.BooleanValueType.BooleanValueSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeIntegerValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeIntegerValueType.MinValueInteger">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeIntegerValueType.MaxValueInteger">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ContactAssignmentCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactAssignmentCollectionType.ContactAssignment">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ContactKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactKeyType.ContactEmailReference">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CobieKeyType">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ZoneKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneKeyType.ZoneName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneKeyType.ZoneCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneKeyType.externalIDReference">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SystemKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemKeyType.SystemName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemKeyType.SystemCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemKeyType.externalIDReference">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.IssueKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueKeyType.IssueName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueKeyType.IssueCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FacilityKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityKeyType.FacilityName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FloorKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorKeyType.FloorName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpaceKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceKeyType.SpaceName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.DocumentKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentKeyType.DocumentName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeKeyType.AttributeName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeKeyType.AttributeCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetTypeKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeKeyType.AssetTypeName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.WarrantyKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyKeyType.WarrantyName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.WarrantyKeyType.WarrantyCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpareKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareKeyType.SpareName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.JobKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobKeyType.JobName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobKeyType.JobTaskID">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ResourceKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceKeyType.ResourceName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetKeyType.AssetName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetKeyType.AssetTypeAssignment">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetKeyType.AssetSpaceAssignments">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpaceAssignmentCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceAssignmentCollectionType.SpaceAssignment">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssemblyKeyType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyKeyType.AssemblyName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyKeyType.AssemblyCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CobieRowAssignmentsType">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ZoneAssignmentCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneAssignmentCollectionType.ZoneAssignment">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SystemAssignmentCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemAssignmentCollectionType.SystemAssignment">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssemblyAssignmentCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyAssignmentCollectionType.AssemblyAssignment">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssemblyTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyTypeBase.AssemblyName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssemblyTypeBase.AssemblyParentName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.DocumentCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentCollectionType.Document">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.DocumentTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentTypeBase.DocumentName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.CobieWorksheetType">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ZoneCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneCollectionType.Zone">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ZoneTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneTypeBase.ZoneName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneTypeBase.ZoneCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SystemCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemCollectionType.System">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SystemTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemTypeBase.SystemName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemTypeBase.SystemCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpaceCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceCollectionType.Space">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpaceTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceTypeBase.SpaceName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FloorCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorCollectionType.Floor">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FloorTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorTypeBase.FloorName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ContactCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactCollectionType.Contact">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ContactTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactTypeBase.ContactEmail">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ConnectionCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionCollectionType.Connection">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ConnectionTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionTypeBase.ConnectionName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionTypeBase.ConnectionCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ResourceCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceCollectionType.Resource">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ResourceTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceTypeBase.ResourceName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.JobCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobCollectionType.Job">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.JobTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobTypeBase.JobName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobTypeBase.JobTaskID">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpareCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareCollectionType.Spare">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpareTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareTypeBase.SpareName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareTypeBase.SpareCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetTypeCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeCollectionType.AssetType">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetTypeInfoTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoTypeBase.AssetTypeName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.IssueCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueCollectionType.Issue">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.IssueTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueTypeBase.IssueName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueTypeBase.IssueCategory">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetCollectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetCollectionType.Asset">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetInfoTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoTypeBase.AssetName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoTypeBase.AssetSpaceAssignments">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeValueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeValueType.Item">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeValueType.ItemElementName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ItemChoiceType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeBooleanValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeDateTimeValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeDateValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeDecimalValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeIntegerValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeMonetaryValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeStringValue">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.ItemChoiceType.AttributeTimeValue">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SiteType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SiteType.SiteName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SiteType.SiteDescription">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ProjectType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ProjectType.ProjectName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ProjectType.ProjectDescription">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FacilityTypeBase">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityTypeBase.FacilityName">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetInfoType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetSerialNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetInstallationDate">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetInstallationDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetInstalledModelNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetWarrantyStartDate">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetWarrantyStartDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetStartDate">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetTagNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetBarCode">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetIdentifier">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetLocationDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetSystemAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssemblyAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetInfoType.AssetIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetTypeInfoType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeAccountingCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeAccountingCategorySpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeModelNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeReplacementCostValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeExpectedLifeValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeNominalLength">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeNominalWidth">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeNominalHeight">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeAccessibilityText">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeCodePerformance">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeColorCode">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeConstituentsDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeFeaturesDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeFinishDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeGradeDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeMaterialDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeShapeDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeSizeDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeSustainabilityPerformanceDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.Assets">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeManufacturerContactAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.Warranties">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.Spares">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.Jobs">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssemblyAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AssetTypeInfoType.AssetTypeIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AssetPortabilitySimpleType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AssetPortabilitySimpleType.Fixed">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AssetPortabilitySimpleType.Moveable">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AssetPortabilitySimpleType.Item">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AttributeType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeType.AttributeDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeType.AttributeValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.AttributeType.AttributeIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ConnectionType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionAsset1Name">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionAsset1PortName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionAsset2Name">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionAsset2PortName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ConnectionType.ConnectionIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ContactType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactCompanyName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactPhoneNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactDepartmentName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactGivenName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactFamilyName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactStreet">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactPostalBoxNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactTownName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactRegionCode">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactCountryName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactPostalCode">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactURL">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ContactType.ContactIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.DocumentType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentType.DocumentCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentType.DocumentDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentType.DocumentURI">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentType.DocumentReferenceURI">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentType.DocumentAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.DocumentType.DocumentIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FacilityType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.ProjectAssignment">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.SiteAssignment">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultLinearUnit">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultLinearUnitSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultAreaUnit">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultAreaUnitSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultVolumeUnit">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultVolumeUnitSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultCurrencyUnit">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultCurrencyUnitSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDefaultMeasurementStandard">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDeliverablePhaseName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.Floors">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.Zones">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.AssetTypes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.Systems">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.Connections">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.Contacts">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FacilityType.FacilityIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.LinearUnitSimpleType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.centimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.feet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.inches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.kilometers">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.meters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.miles">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.millimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.LinearUnitSimpleType.yards">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.AreaUnitSimpleType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squarecentimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squarefeet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squareinches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squarekilometers">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squaremeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squaremiles">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squaremillimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.squareyards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.AreaUnitSimpleType.Item">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.VolumeUnitSimpleType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.VolumeUnitSimpleType.cubiccentimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.VolumeUnitSimpleType.cubicfeet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.VolumeUnitSimpleType.cubicinches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.VolumeUnitSimpleType.cubicmeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.VolumeUnitSimpleType.cubicmillimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.COBieLite.old.VolumeUnitSimpleType.cubicyards">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.FloorType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorElevationValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorHeightValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.Spaces">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.FloorType.FloorIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.IssueType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueType.IssueRiskText">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueType.IssueSeverityText">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueType.IssueImpactText">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueType.IssueDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueType.ContactAssignment">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.IssueType.IssueMitigationDescription">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.JobType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobStatus">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobDuration">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobStartDate">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobStartDateSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobStartConditionDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobFrequencyValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobPriorTaskID">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.Resources">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.JobType.JobIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ResourceType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceType.ResourceCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceType.ResourceDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceType.ResourceAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceType.ResourceDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ResourceType.ResourceIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpaceType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceCategory">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceSignageName">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceUsableHeightValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceGrossAreaValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceNetAreaValue">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceZoneAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpaceType.SpaceIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SpareType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SpareDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SpareSetNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SparePartNumber">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SpareSupplierContactAssignments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SpareAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SpareDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SpareType.SpareIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.SystemType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemType.SystemDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemType.SystemAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemType.SystemDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.SystemType.SystemIssues">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.COBieLite.old.ZoneType">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneType.ZoneDescription">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneType.ZoneAttributes">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneType.ZoneDocuments">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.COBieLite.old.ZoneType.ZoneIssues">
+            <remarks/>
+        </member>
+        <member name="M:Xbim.COBieLite.XbimAttributedObject.ConvertToSimpleType``1(Xbim.Ifc4.Interfaces.IIfcProperty)">
+            <summary>
+            Converts the property to a simple type, date, string
+            </summary>
+            <param name="ifcProperty"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBieLite.XbimCoBieLiteXmlWriter">
+            <summary>
+            Specialised Xml writer that writes out COBieLite Xml to comply with Nibs standards
+            </summary>
+        </member>
+    </members>
+</doc>

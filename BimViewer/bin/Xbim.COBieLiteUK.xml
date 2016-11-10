@@ -1,0 +1,2425 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.COBieLiteUK</name>
+    </assembly>
+    <members>
+        <member name="T:Xbim.CobieLiteUk.Assembly">
+            
+                   Assembly is a named physical aggregation of a Type or Component into another Type or
+                   Component where both the overall (owning) assembly part and the constituent
+                   (owned) part has significance for their operation and use.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Asset">
+            
+                   Named and individually scheduled physical items and features that might require
+                   management, such as inspection, maintenance, servicing or replacement, during
+                   the in-use phase.
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Asset.ShouldSerializeInstallationDate">
+            <summary>
+            Test whether InstallationDate should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Asset.ShouldSerializeWarrantyStartDate">
+            <summary>
+            Test whether WarrantyStartDate should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.AssetType">
+            
+                   Asset type is a named specification for Components including equipment, products and materials.
+                   A minimum of one COBie.Type record is required for all COBie deliverables related to equipment Type information.
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.AssetType.ShouldSerializeReplacementCost">
+            <summary>
+            Test whether ReplacementCost should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.AssetType.ShouldSerializeExpectedLife">
+            <summary>
+            Test whether ExpectedLife should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.AssetType.ShouldSerializeDurationUnit">
+            <summary>
+            Test whether DurationUnit should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.AssetType.ShouldSerializeNominalLength">
+            <summary>
+            Test whether NominalLength should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.AssetType.ShouldSerializeNominalWidth">
+            <summary>
+            Test whether NominalWidth should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.AssetType.ShouldSerializeNominalHeight">
+            <summary>
+            Test whether NominalHeight should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Attribute">
+            
+                   Attribute is a named specific characteristic associated to an asset or other information objects.
+                 
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Attribute.PropertySetName">
+            <summary>
+            PropertySetName is a proxy property for ExternalEntity. It is not a part of the schema but it is part of the API to make sure the
+            data schema is used in an uniform way.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.AttributeValue.AllowedValuesString">
+            <summary>
+            This is an infrastructure property used for COBie serialization/deserialization. Use Minimal, Maximal, Allowed values to set up the constrains
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.BooleanAttributeValue.AllowedValuesString">
+            <summary>
+            This is an infrastructure property used for COBie serialization/deserialization. Use Minimal, Maximal, Allowed values to set up the constrains
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.BooleanAttributeValue.ShouldSerializeValue">
+            <summary>
+            Test whether Value should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.BooleanAttributeValue.ShouldSerializeAllowedValue">
+            <summary>
+            Test whether AllowedValue should be serialized
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.CobieObject.ReportProgress">
+            <summary>
+            Object to use to report progress on WriteToCobie
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.CobieObject.Filter(Xbim.CobieLiteUk.FilterHelper.OutPutFilters,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Filter Attribute objects based on PropertySet Name, and Property Values
+            Filter objects based on type
+            </summary>
+            <param name="assetfilters">FiltersHelper, filters for names and objects </param>
+            <param name="parent">COBieLite object</param>
+            <returns>bool true = exclude</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.CobieObject.ShouldSerializeCreatedOn">
+            <summary>
+            Test whether CreatedOn should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Connection">
+            
+                   Connection is a named logical relationship between two Components.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Contact">
+            
+                   Contact is a named person and/or organization involved in the Facility lifecycle.
+                 
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Contact.Description">
+            <summary>
+            Description is invalid for Contact object
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.DateTimeAttributeValue.AllowedValuesString">
+            <summary>
+            This is an infrastructure property used for COBie serialization/deserialization. Use Minimal, Maximal, Allowed values to set up the constrains
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.DateTimeAttributeValue.ShouldSerializeValue">
+            <summary>
+            Test whether Value should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.DateTimeAttributeValue.ShouldSerializeMinimalValue">
+            <summary>
+            Test whether MinimalValue should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.DateTimeAttributeValue.ShouldSerializeMaximalValue">
+            <summary>
+            Test whether MaximalValue should be serialized
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.DecimalAttributeValue.AllowedValuesString">
+            <summary>
+            This is an infrastructure property used for COBie serialization/deserialization. Use Minimal, Maximal, Allowed values to set up the constrains
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.DecimalAttributeValue.ShouldSerializeValue">
+            <summary>
+            Test whether Value should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.DecimalAttributeValue.ShouldSerializeMinimalValue">
+            <summary>
+            Test whether MinimalValue should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.DecimalAttributeValue.ShouldSerializeMaximalValue">
+            <summary>
+            Test whether MaximalValue should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Document">
+            
+                   Document is a named external document associated to an asset or other information object.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.AssetKeyCompare">
+            <summary>
+            Compare Equality for linq statments using Distinct
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping._sectionKeys">
+            <summary>
+            current section names in config file
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.CommonPaths">
+            <summary>
+            Common List of attribute paths
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.SpacePaths">
+            <summary>
+            Space List of attribute paths
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.FloorPaths">
+            <summary>
+            Floor List of attribute paths
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.AssetPaths">
+            <summary>
+            Asset/Component List of attribute paths
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.AssetTypePaths">
+            <summary>
+            Asset Types List of attribute paths
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.PSetsAsSystem">
+            <summary>
+            Property Set mappings to be considered as systems,
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.ConfigFile">
+            <summary>
+            File info for config file
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.#ctor">
+            <summary>
+            Constructor to initialise objects
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.SectionKeys">
+            <summary>
+            get the current hard coded section keys
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.#ctor(System.IO.FileInfo)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configFileName">FileInfo, config file</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.Save">
+            <summary>
+            Save values back to config file
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.GetStorageList(System.String)">
+            <summary>
+            get the current list in loop
+            </summary>
+            <param name="sectionKey">string, Section Key</param>
+            <returns>List of AttributePaths</returns>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.CobiePropertyMapping.DictOfProperties">
+            <summary>
+            Get the Property mapping for all sections
+            </summary>
+            <returns>Dictionary </returns>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.FilterHelper.AttributePaths">
+            <summary>
+            Class to hole the attribute map for the field key
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.AttributePaths.Key">
+            <summary>
+            Field key
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.AttributePaths.PSetPaths">
+            <summary>
+            List of Pset.Name mapps
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.AttributePaths.Value">
+            <summary>
+            convert back to ; delimited string
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.AttributePaths.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="key">Field key</param>
+            <param name="attPaths">; delimited sting of pset.name paths</param>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.FilterHelper.ImportSet">
+            <summary>
+            used to control import
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.FilterHelper.ObjectFilter">
+            <summary>
+            Filter on object type names, used to filter Type and Component COBie Sheets
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.Items">
+            <summary>
+            Keyed list with true or false values, true to include. false to exclude
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.PreDefinedType">
+            <summary>
+            keyed by IfcElement to element property PredefinedType to include list
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.FilterHelper.ObjectFilter._itemsToExclude">
+            <summary>
+            Items to filter out
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.#ctor(System.Configuration.ConfigurationSection)">
+            <summary>
+            Set Property Filters constructor via ConfigurationSection from configuration file
+            </summary>
+            <param name="section">ConfigurationSection from configuration file</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.IsEmpty">
+            <summary>
+            see if object is empty of any values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.SetPreDefinedType(System.String,System.String[])">
+            <summary>
+            add PreDefined types associated with ifcElements
+            </summary>
+            <param name="ifcElement">string name of ifcElement</param>
+            <param name="definedTypes">array of strings for the ifcElement predefinedtype enum property </param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.FillPreDefinedTypes(System.Configuration.ConfigurationSection)">
+            <summary>
+            fill pre defined types
+            </summary>
+            <param name="section"></param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.ItemsFilter(System.String,System.String)">
+            <summary>
+            Test for string exists in ItemsToExclude string lists
+            </summary>
+            <param name="testStr">String to test</param>
+            <param name="preDefinedType">strings for the ifcTypeObject predefinedtype enum property</param>
+            <returns>bool, true = exclude</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.ItemsFilter(Xbim.Ifc4.Interfaces.IIfcObjectDefinition)">
+            <summary>
+            Test for IfcObjectDefinition exists in IfcToExclude type lists
+            </summary>
+            <param name="obj">IfcObjectDefinition object</param>
+            <returns>bool, true = exclude</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.MergeInc(Xbim.CobieLiteUk.FilterHelper.ObjectFilter)">
+            <summary>
+            Merge together ObjectFilter
+            </summary>
+            <param name="mergeFilter">ObjectFilter to merge</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.Copy(Xbim.CobieLiteUk.FilterHelper.ObjectFilter)">
+            <summary>
+            Copy values from passed ObjectFilter
+            </summary>
+            <param name="copyFilter">ObjectFilter to copy</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.ObjectFilter.Clear">
+            <summary>
+            Clear ObjectFilter
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.FilterHelper.PropertyFilter">
+            <summary>
+            Filter on property set names, and properties names held within the set, used to extract attribute sheets
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.EqualTo">
+            <summary>
+            Property Name exclude filter strings where name equal one of the strings
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.StartWith">
+            <summary>
+            Property Name exclude filter strings where name starts with one of the strings
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.Contain">
+            <summary>
+            Property Name exclude filter strings where name contains with one of the strings
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.PropertySetsEqualTo">
+            <summary>
+            Property Set Name exclude filter strings where name equals with one of the strings
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Set Property Filters constructor
+            </summary>
+            <param name="equalTo">';' delimited string for property names to equal</param>
+            <param name="startWith">';' delimited string for property names to start with</param>
+            <param name="contain">';' delimited string for property names containing</param>
+            <param name="pSetEqualTo">';' delimited string for Property Set names to equal</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.#ctor(System.Configuration.ConfigurationSection)">
+            <summary>
+            Set Property Filters constructor via ConfigurationSection from configuration file
+            </summary>
+            <param name="section">ConfigurationSection from configuration file</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.IsEmpty">
+            <summary>
+            see if object is empty of any values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.NameFilter(System.String)">
+            <summary>
+            Test for string exists in EqTo, Contains, or StartWith string lists
+            </summary>
+            <param name="testStr">String to test</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.PSetNameFilter(System.String)">
+            <summary>
+            Test for string exists in PropertySetsEqualTo string lists
+            </summary>
+            <param name="testStr">String to test</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.Merge(Xbim.CobieLiteUk.FilterHelper.PropertyFilter)">
+            <summary>
+            Merge PropertyFilter
+            </summary>
+            <param name="mergeFilter">PropertyFilter to merge</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.Copy(Xbim.CobieLiteUk.FilterHelper.PropertyFilter)">
+            <summary>
+            Copy values from passed PropertyFilter
+            </summary>
+            <param name="copyFilter">PropertyFilter to copy</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.PropertyFilter.Clear">
+            <summary>
+            Clear PropertyFilter
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.FlipResult">
+            <summary>
+            Flip results of true/false 
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.AppliedRoles">
+            <summary>
+            Roles set on this filter
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.IfcProductFilter">
+            <summary>
+            IfcProduct Exclude filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.IfcTypeObjectFilter">
+            <summary>
+            IfcTypeObject Exclude filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.IfcAssemblyFilter">
+            <summary>
+            IfcAssembly Exclude filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.ZoneFilter">
+            <summary>
+            Zone attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.TypeFilter">
+            <summary>
+            Type attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.SpaceFilter">
+            <summary>
+            Space attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.FloorFilter">
+            <summary>
+            Floor attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.FacilityFilter">
+            <summary>
+            Facility attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.SpareFilter">
+            <summary>
+            Spare attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.ComponentFilter">
+            <summary>
+            Component attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.CommonFilter">
+            <summary>
+            Common attribute filters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.RolesFilterHolder">
+            <summary>
+            Temp storage for role OutPutFilters
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.DefaultsNotSet">
+            <summary>
+            Nothing set in RolesFilterHolder
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.#ctor">
+            <summary>
+            Empty constructor for Serialize
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.#ctor(System.String,Xbim.CobieLiteUk.FilterHelper.RoleFilter,Xbim.CobieLiteUk.FilterHelper.ImportSet)">
+            <summary>
+            Constructor for default set configFileName = null, or passed in configuration file path
+            </summary>
+            <param name="configFileName"></param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.#ctor(Xbim.CobieLiteUk.FilterHelper.RoleFilter,System.Collections.Generic.Dictionary{Xbim.CobieLiteUk.FilterHelper.RoleFilter,Xbim.CobieLiteUk.FilterHelper.OutPutFilters})">
+            <summary>
+            Constructor to apply roles, and pass custom role OutPutFilters
+            </summary>
+            <param name="roles">RoleFilter flags on roles to filter on</param>
+            <param name="rolesFilter">Dictionary of role to OutPutFilters</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.IsEmpty">
+            <summary>
+            Test for empty object
+            </summary>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.FiltersHelperInit(System.String,Xbim.CobieLiteUk.FilterHelper.ImportSet)">
+            <summary>
+            Will read Configuration file if passed, or default COBieAttributesFilters.config
+            </summary>
+            <param name="configFileName">Full path/name for config file</param>
+            <param name="import"></param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.GetConfig(System.String)">
+            <summary>
+            Get Configuration object from the passed file path or embedded resource file
+            </summary>
+            <param name="fileOrResourceName">file path or resource name; an existing file gets the priortiy over an omonymous resource name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.Copy(Xbim.CobieLiteUk.FilterHelper.OutPutFilters)">
+            <summary>
+            Copy the OutPutFilters
+            </summary>
+            <param name="copyFilter">OutPutFilters to copy </param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.Clear">
+            <summary>
+            Clear OutPutFilters
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.NameFilterOnParent(System.String,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Test property Names against sheets
+            </summary>
+            <param name="testStr">Name string to test</param>
+            <param name="parent">Parent object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.PSetNameFilterOnSheetName(System.String,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Test Property Set Names against sheets
+            </summary>
+            <param name="testStr">Name string to test</param>
+            <param name="parent">Parent object</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.ObjFilter(Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject,System.String)">
+            <summary>
+            Filter IfcProduct and IfcTypeObject types
+            </summary>
+            <param name="obj">CobieObject</param>
+            <param name="parent">Parent object</param>
+            <param name="preDefinedType">strings for the ifcTypeObject predefinedtype enum property</param>
+            <returns>bool, true = exclude</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.ObjFilter(Xbim.Ifc4.Interfaces.IIfcObjectDefinition,System.Boolean)">
+            <summary>
+            filter on IfcObjectDefinition objects
+            </summary>
+            <param name="obj"></param>
+            <returns>bool true = exclude</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.Merge(Xbim.CobieLiteUk.FilterHelper.OutPutFilters)">
+            <summary>
+            Merge OutPutFilters
+            </summary>
+            <param name="mergeFilter">OutPutFilters</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.ApplyRoleFilters(Xbim.CobieLiteUk.FilterHelper.RoleFilter,System.Boolean,System.Collections.Generic.Dictionary{Xbim.CobieLiteUk.FilterHelper.RoleFilter,Xbim.CobieLiteUk.FilterHelper.OutPutFilters})">
+            <summary>
+            Extension method to use default role configuration resource files
+            </summary>
+            <param name="roles">MergeRoles, Flag enum with one or more roles</param>
+            <param name="append">true = add, false = overwrite existing </param>
+            <param name="rolesFilter">Dictionary of roles to OutPutFilters to use for merge, overwrites current assigned dictionary</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.SetFedModelFilter``1(System.Collections.Generic.Dictionary{``0,Xbim.CobieLiteUk.FilterHelper.RoleFilter})">
+            <summary>
+            Set filters for Federated Model, referenced models
+            </summary>
+            <param name="modelRoleMap"></param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.FillDefaultRolesFilterHolder">
+            <summary>
+            Fill RolesFilterHolder with default values
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.FillRolesFilterHolderFromDir(System.IO.DirectoryInfo)">
+            <summary>
+            Fill FilterHolder From Directory, if no file use defaults config files in assembly
+            </summary>
+            <param name="dir">DirectoryInfo</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.WriteXmlRolesFilterHolderToDir(System.IO.DirectoryInfo)">
+            <summary>
+            Write to xml roleFilter files on passed directory
+            </summary>
+            <param name="dir">DirectoryInfo</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.GetRoleFilter(Xbim.CobieLiteUk.FilterHelper.RoleFilter)">
+            <summary>
+            Get stored role filter
+            </summary>
+            <param name="role">RoleFilter with single flag(role) set</param>
+            <returns>OutPutFilters</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.GetDefaults(Xbim.CobieLiteUk.FilterHelper.RoleFilter)">
+            <summary>
+            Get the default filters for a single role
+            </summary>
+            <param name="role">RoleFilter with single flag(role) set</param>
+            <returns>OutPutFilters</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.AddRoleFilterHolderItem(Xbim.CobieLiteUk.FilterHelper.RoleFilter,Xbim.CobieLiteUk.FilterHelper.OutPutFilters)">
+            <summary>
+            Add filter for a role, used by ApplyRoleFilters for none default filters
+            </summary>
+            <param name="role">RoleFilter, single flag RoleFilter</param>
+            <param name="filter">OutPutFilters to assign to role</param>
+            <remarks>Does not apply filter to this object, used ApplyRoleFilters after setting the RolesFilterHolder items </remarks>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.SerializeXml(System.IO.FileInfo)">
+            <summary>
+            Save object as xml file
+            </summary>
+            <param name="filename">FileInfo</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.DeserializeXml(System.IO.FileInfo)">
+            <summary>
+            Create a OutPutFilters object from a XML file
+            </summary>
+            <param name="filename">FileInfo</param>
+            <returns>OutPutFilters</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.SerializeJson(System.IO.FileInfo)">
+            <summary>
+            Save object as JSON 
+            </summary>
+            <param name="filename">FileInfo</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.FilterHelper.OutPutFilters.DeserializeJson(System.IO.FileInfo)">
+            <summary>
+            Create a OutPutFilters object from a JSON file
+            </summary>
+            <param name="filename">FileInfo</param>
+            <returns>OutPutFilters</returns>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.FilterHelper.RoleFilter">
+            <summary>
+            Merge Flags for roles in deciding if an object is allowed or discarded depending on the role of the model
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Floor">
+            
+                   Floor is a named intermediate spatial subdivision, including distinct vertical levels and
+                   horizontal areas and sections with Spaces allocated.
+                   A minimum of one in COBie. Floor record is required for all COBie deliverables containing spatial information.
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Floor.ShouldSerializeElevation">
+            <summary>
+            Test whether Elevation should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Floor.ShouldSerializeHeight">
+            <summary>
+            Test whether Height should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Impact">
+            
+                   Impact is a named economic and environmental measure.
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Impact.ShouldSerializeLeadInTime">
+            <summary>
+            Test whether LeadInTime should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Impact.ShouldSerializeDuration">
+            <summary>
+            Test whether Duration should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Impact.ShouldSerializeLeadOutTime">
+            <summary>
+            Test whether LeadOutTime should be serialized
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.IntegerAttributeValue.AllowedValuesString">
+            <summary>
+            This is an infrastructure property used for COBie serialization/deserialization. Use Minimal, Maximal, Allowed values to set up the constrains
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.IntegerAttributeValue.ShouldSerializeValue">
+            <summary>
+            Test whether Value should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.IntegerAttributeValue.ShouldSerializeMinimalValue">
+            <summary>
+            Test whether MinimalValue should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.IntegerAttributeValue.ShouldSerializeMaximalValue">
+            <summary>
+            Test whether MaximalValue should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Issue">
+            
+                   Issue is a named deficiency in the information or risk associated to the assets or other information objects.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Job">
+            
+                   Job is a named task or activity during the in-use phase associated to Types.
+                   A minimum of one COBie.Job record is required for all relevant COBie.Type objects submitted at the benefical occupancy or
+                   facility handover stage.
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Job.ShouldSerializeDuration">
+            <summary>
+            Test whether Duration should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Job.ShouldSerializeDurationUnit">
+            <summary>
+            Test whether DurationUnit should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Job.ShouldSerializeStart">
+            <summary>
+            Test whether Start should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Job.ShouldSerializeTaskStartUnit">
+            <summary>
+            Test whether TaskStartUnit should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Job.ShouldSerializeFrequency">
+            <summary>
+            Test whether Frequency should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Job.ShouldSerializeFrequencyUnit">
+            <summary>
+            Test whether FrequencyUnit should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Metadata">
+            
+                   This object contains metadata about the COBie like its version, target region or status of the data.
+                 
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.LastUpdate">
+            <summary>
+            Elapsed time in Milliseconds since last update to progress
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.UpdateInterval">
+            <summary>
+            Elapsed time in Milliseconds before another update to progress is allowed
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.TimeMonitor">
+            <summary>
+            Timer
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.CurrentRecord">
+            <summary>
+            Current number of records 
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.TotalRecords">
+            <summary>
+            Total number of records
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.ProgressBarValue">
+            <summary>
+            Current % value for progress
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.ProgressBarBaseValue">
+            <summary>
+            Base value for the current stage
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.PercentageOfBar">
+            <summary>
+            % of bar the current stage is set to fill
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.Message">
+            <summary>
+            Message to display
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.ProgressReporter.Progress">
+            <summary>
+            Progress report delegate, function to call
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.#ctor">
+            <summary>
+            default constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.#ctor(Xbim.Common.ReportProgressDelegate)">
+            <summary>
+            Set delegate constructor
+            </summary>
+            <param name="progressFun">Function to pass to delegate</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.Reset(System.Int32,System.Double,System.String)">
+            <summary>
+            Start the progress from zero
+            </summary>
+            <param name="totalRecords">Number of records we are going to progress through</param>
+            <param name="percentageOfBar">% of progress we are to fill on first stage</param>
+            <param name="message">Message to display</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.NextStage(System.Int32,System.Double,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="totalRecords">Number of records we are going to progress through</param>
+            <param name="percentageOfBar">% of progress we are to fill on this stage</param>
+            <param name="message">Message to display</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.Finalise(System.Int32)">
+            <summary>
+            We are finished with progress
+            </summary>
+            <param name="delay">Delay time in Milli Seconds</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.IncrementAndUpdate">
+            <summary>
+            We are counting or progress
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.ReportMessage(System.String)">
+            <summary>
+            Report just a message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.UpdateStatus(System.Boolean)">
+            <summary>
+            Updates the context with the latest status
+            </summary>
+            <remarks>Only updates every few hundred milliseconds unless the Update is forced.</remarks>
+            <param name="forceUpdate">do not check update time to update</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.UpdateIntervalPassed">
+            <summary>
+            Check we  how long since last update
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProgressReporter.UpdateProgress(System.Boolean)">
+            <summary>
+            update progress
+            </summary>
+            <param name="msgOnly">if true only update message, but will set progress to 0</param>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Resource">
+            
+                   Resource is a named material or skill required to execute Jobs.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Facility">
+            
+                   A type for the Facility element that is the root of a COBie document.
+                   Facility contains information about the facility being exchanged during a given COBie deliverable.
+                   Since COBie deliverables may be exchanged during planning, design, construction, handover, or operation
+                   phases there may be differences in facility designations.
+                   COBie files will typically contain a single facility.
+                   Facility is a named distinct operational built or geographic asset, typically a building or section
+                   of infrastructure along with details and extent of the geographic site and of the
+                   temporal project
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.Create``1">
+            <summary>
+            Creates a new class inheriting from CobieObject and sets it to belong to the facility.
+            </summary>
+            <typeparam name="TNewCobieObject">The CobieObject type to create</typeparam>
+            <returns>the created object, which will have to be added to a collection as appropriate to be in the facility tree</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.Get``1(System.Func{``0,System.Boolean})">
+            <summary>
+            This function is used to search for any object in the model which is a CobieObject. 
+            You can optionally pass a condition to select specific elements. Search is optimized 
+            for specific types so it is advisable to specify the type as specific as possible.
+            </summary>
+            <typeparam name="T">Type os the object to search for</typeparam>
+            <param name="condition">Optional search condition</param>
+            <returns>Collection of cobie objects of specified type</returns>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.AreaUnits">
+            <summary>
+            Enumeration of area units. If custom area units are from this enumeration it will
+            be returned also here. Values from this enumeration are set into that respective field.
+            If you set this property to 'None' custom field will be set to Null. If you set custom field
+            to a value which doesn't exist in this enumeration, 'Custom' value will be returned as a value
+            of this property.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.LinearUnits">
+            <summary>
+            Enumeration of linear units. If custom linear units are from this enumeration it will
+            be returned also here. Values from this enumeration are set into that respective field.
+            If you set this property to 'None' custom field will be set to Null. If you set custom field
+            to a value which doesn't exist in this enumeration, 'Custom' value will be returned as a value
+            of this property.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.VolumeUnits">
+            <summary>
+            Enumeration of volume units. If custom volume units are from this enumeration it will
+            be returned also here. Values from this enumeration are set into that respective field.
+            If you set this property to 'None' custom field will be set to Null. If you set custom field
+            to a value which doesn't exist in this enumeration, 'Custom' value will be returned as a value
+            of this property.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.CurrencyUnit">
+            <summary>
+            Enumeration of currency units. If custom currency units are from this enumeration it will
+            be returned also here. Values from this enumeration are set into that respective field.
+            If you set this property to 'None' custom field will be set to Null. If you set custom field
+            to a value which doesn't exist in this enumeration, 'Custom' value will be returned as a value
+            of this property.
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.WriteXml(System.String,System.Boolean)">
+            <summary>
+            This function will serialize the model as an XML
+            </summary>
+            <param name="path">Path where this model should be serialized</param>
+            <param name="indented">Optional flag. XML will be indented if this is true. This will increase the size of the file.</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.WriteXml(System.IO.Stream,System.Boolean)">
+            <summary>
+            This function will serialize the model as an XML. Stream will be closed at the end
+            </summary>
+            <param name="stream">Target stream</param>
+            <param name="indented">Optional flag. XML will be indented if this is true. This will increase the size of the file.</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.ReadZip(System.String)">
+            <summary>
+            Attempts to find an XML file in a compressed archive.
+            This function has been implemented to simplify the management of NBS Bim Toolkit exported projects
+            </summary>
+            <param name="path">A string poiting to the archive file name.</param>
+            <returns>A valid facility or null if no suitable file has been found</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.Clone``1(``0)">
+            <summary>
+            Clones a provided cobieobject via JsonSeriliser and then sets the result to belong to the cloning facility.
+            </summary>
+            <typeparam name="TNewCobieObject">The type of the object to clone.</typeparam>
+            <param name="originalCobieObject">The CobieObject to be cloned via Json in memory.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.WriteCobie(System.IO.Stream,Xbim.CobieLiteUk.ExcelTypeEnum,System.String@,Xbim.CobieLiteUk.FilterHelper.OutPutFilters,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="stream"></param>
+            <param name="type"></param>
+            <param name="message"></param>
+            <param name="assetfilters"></param>
+            <param name="templateVersion">Use a template selected amongst the admissible values returned from the Templates.GetAvalilableTemplateTypes() function</param>
+            <param name="useTemplate"></param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.Refresh">
+            <summary>
+            <p>
+            This function sets facility object to all CobieObjects in the model
+            so you can access referenced objects from keys as an enumerations.
+            If you create new objects in the model you should always call this 
+            method before you use any such enumerations. 
+            </p>
+            <p>
+            You don't have to call it after you read the model from JSON, COBie XLS or XML
+            as it is called automatically.
+            </p>
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.TypeCompare">
+            <summary>
+            Mapping of type to EqualCompare Objects
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.ChainMapInst">
+            <summary>
+            Mapping of COBieType to mapping of Root object to drilled down objects tree, so we do not call an object twice (try end stop ininite loops!!, say not be a problem so controled by CheckInstance)
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.CheckInstance">
+            <summary>
+            Controls if the ChainMapInst is used above
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.Logger">
+            <summary>
+            Logger for messages, file or output windows
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.EqRule">
+            <summary>
+            String Comparison rule to use in EqualCompare Objects
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Facility.CompareTypeRule">
+            <summary>
+            Compare on Name, Key, Full
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.Merge(Xbim.CobieLiteUk.Facility,System.IO.TextWriter)">
+            <summary>
+            Merge a Facility to this Facility
+            </summary>
+            <param name="mFacility">Facility to merge</param>
+            <param name="checkInstanc">Controls if the ChainMapInst is used</param>
+            <param name="logIt">Logger</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.GetCompare``2">
+            <summary>
+            Map COBie types to the compare object of type CompareEqRule, IEqualityComparer
+            </summary>
+            <typeparam name="T1">is CompareEqRule</typeparam>
+            <typeparam name="T2"> Type we are testing</typeparam>
+            <param name="type">Mapped Type</param>
+            <param name="advancedCompare">if true extend equal test to other properties in equalcompare if supported</param>
+            <returns>T</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeCOBieObject``1(``0,``0,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge COBie Objects
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="to">Merge To</param>
+            <param name="from">Merge from</param>
+            <param name="rootObj">Starting onject of the merge</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeFloor(Xbim.CobieLiteUk.Floor,Xbim.CobieLiteUk.Floor,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Floor to a Floor
+            </summary>
+            <param name="to">Floor</param>
+            <param name="from">Floor</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeSpace(Xbim.CobieLiteUk.Space,Xbim.CobieLiteUk.Space,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Space To Space
+            </summary>
+            <param name="to">Space</param>
+            <param name="from">Space</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeAssetType(Xbim.CobieLiteUk.AssetType,Xbim.CobieLiteUk.AssetType,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge AssetType to AssetType
+            </summary>
+            <param name="to">AssetType</param>
+            <param name="from">AssetType</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeJob(Xbim.CobieLiteUk.Job,Xbim.CobieLiteUk.Job,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Job to Job
+            </summary>
+            <param name="to">Job</param>
+            <param name="from">Job</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeSpare(Xbim.CobieLiteUk.Spare,Xbim.CobieLiteUk.Spare,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Spare to Spare
+            </summary>
+            <param name="to">Spare</param>
+            <param name="from">Spare</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeAsset(Xbim.CobieLiteUk.Asset,Xbim.CobieLiteUk.Asset,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Asset to Asset
+            </summary>
+            <param name="to">Asset</param>
+            <param name="from">Asset</param>
+            <param name="rootObj">Root Object (started merge path)</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeSystem(Xbim.CobieLiteUk.System,Xbim.CobieLiteUk.System,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge System to System
+            </summary>
+            <param name="to">System</param>
+            <param name="from">System</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeZone(Xbim.CobieLiteUk.Zone,Xbim.CobieLiteUk.Zone,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Zone to Zone
+            </summary>
+            <param name="to">Zone</param>
+            <param name="from">Zone</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeProjectStage(Xbim.CobieLiteUk.ProjectStage,Xbim.CobieLiteUk.ProjectStage,System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge ProjectStage to ProjectStage
+            </summary>
+            <param name="to">ProjectStage</param>
+            <param name="from">ProjectStage</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeLists``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0},System.Collections.Generic.IEqualityComparer{``0},System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge two CobieObject Lists together
+            </summary>
+            <typeparam name="T">CobieObject</typeparam>
+            <param name="to">List to merge to</param>
+            <param name="from">List to merge from</param>
+            <param name="compareKey">IEqualityComparer</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Facility.MergeSimpleLists``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0},System.Collections.Generic.IEqualityComparer{``0},System.Int32,Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject)">
+            <summary>
+            Merge Lists with no drill down (do not inherit from CobieObject)
+            </summary>
+            <param name="to">List to merge to</param>
+            <param name="from">List to merge from</param>
+            <param name="compareKey">IEqualityComparer</param>
+            <param name="rootObj">Starting object of the merge</param>
+            <param name="parentObj">Object which caused thei mrthod to be called</param>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Warranty">
+            
+                   This holds group of warranty related properties to make data model more granular
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Warranty.ShouldSerializeDurationParts">
+            <summary>
+            Test whether DurationParts should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Warranty.ShouldSerializeDurationLabor">
+            <summary>
+            Test whether DurationLabor should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Warranty.ShouldSerializeDurationUnit">
+            <summary>
+            Test whether DurationUnit should be serialized
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.milisecond">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.second">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.minute">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.hour">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.day">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.week">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.month">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.quarter">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.year">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.DurationUnit.asrequired">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Contact">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Facility">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Floor">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Space">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Zone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.AssetType">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Asset">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.System">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Spare">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Resource">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.ProjectStage">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.EntityType.Notdefined">
+            <remarks/>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.StringAttributeValue.AllowedValuesString">
+            <summary>
+            This is an infrastructure property used for COBie serialization/deserialization. Use Minimal, Maximal, Allowed values to set up the constrains
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Representation">
+            
+                   Representation (Coordinate) is a named position associated to Facility, Floor (region), Space (location), Component
+                   or Assembly.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Zone">
+            
+                   Zone is a named set of Spaces (locations) sharing a specific Attribute, such as activity, access,
+                   management or conditioning.
+                 
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.CirculationZone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.LightingZone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.FireAlarmZone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.HistoricalPreservationZone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.OccupancyZone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.VentilationZone">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.notdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.ZoneType.userdefined">
+            <remarks/>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.System">
+            
+                   System is a named set of manageable Components providing a common function.
+                 
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Space">
+            
+                   Space is a named location for activities such as use, inspection or maintenance, including
+                   un‑occupied or un‑inhabitable Spaces, but not necessarily inaccessible voids.
+                   A minimum of one COBie.Space record is required for all COBie deliverables related to Space information.
+                 
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Space.ShouldSerializeUsableHeight">
+            <summary>
+            Test whether UsableHeight should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Space.ShouldSerializeGrossArea">
+            <summary>
+            Test whether GrossArea should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Space.ShouldSerializeNetArea">
+            <summary>
+            Test whether NetArea should be serialized
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Spare">
+            
+                   Spare is a named replaceable part associated to Types.
+                 
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AssetPortability.Fixed">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AssetPortability.Moveable">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AssetPortability.notdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AssetPortability.userdefined">
+            <remarks/>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProjectStage.ShouldSerializeStart">
+            <summary>
+            Test whether Start should be serialized
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.ProjectStage.ShouldSerializeEnd">
+            <summary>
+            Test whether End should be serialized
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.centimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.feet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.inches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.kilometers">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.meters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.miles">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.millimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.yards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.notdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.LinearUnit.userdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squarecentimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squarefeet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squareinches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squarekilometers">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squaremeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squaremiles">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squaremillimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.squareyards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.notdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.AreaUnit.userdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.cubiccentimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.cubicfeet">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.cubicinches">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.cubicmeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.cubicmillimeters">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.cubicyards">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.notdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.VolumeUnit.userdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.AED">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.AES">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.ATS">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.AUD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BBD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BEG">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BGL">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BHD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BMD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BND">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BRL">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BSD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BWP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.BZD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CAD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CBD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CHF">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CLP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CNY">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CYS">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.CZK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.DDP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.DEM">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.DKK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.EGL">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.EST">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.EUR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.FAK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.FIM">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.FJD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.FKP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.FRF">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.GBP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.GIP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.GMD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.GRX">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.HKD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.HUF">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.ICK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.IDR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.ILS">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.INR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.IRP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.ITL">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.JMD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.JOD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.JPY">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.KES">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.KRW">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.KWD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.KYD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.LKR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.LUF">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.MTL">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.MUR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.MXN">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.MYR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.NLG">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.NZD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.OMR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.PGK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.PHP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.PKR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.PLN">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.PTN">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.QAR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.RUR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.SAR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.SCR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.SEK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.SGD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.SKP">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.THB">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.TRL">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.TTD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.TWD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.USD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.VEB">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.VND">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.XEU">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.ZAR">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.ZWD">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.NOK">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.notdefined">
+            <remarks/>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.CurrencyUnit.userdefined">
+            <remarks/>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetCompareKey.BuildName(Xbim.CobieLiteUk.Asset)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetCompareKey.BuildKey(Xbim.CobieLiteUk.Asset)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetCompareKey.BuildFull(Xbim.CobieLiteUk.Asset)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetTypeCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetTypeCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetTypeCompareKey.BuildName(Xbim.CobieLiteUk.AssetType)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetTypeCompareKey.BuildKey(Xbim.CobieLiteUk.AssetType)">
+            <summary>
+            Get Best Fields to ID object
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AssetTypeCompareKey.BuildFull(Xbim.CobieLiteUk.AssetType)">
+            <summary>
+            All fileds but ignoring any list types as they are merged
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AttributeCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AttributeCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AttributeCompareKey.BuildName(Xbim.CobieLiteUk.Attribute)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AttributeCompareKey.BuildKey(Xbim.CobieLiteUk.Attribute)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.AttributeCompareKey.BuildFull(Xbim.CobieLiteUk.Attribute)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CategoryCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CategoryCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CategoryCompareKey.BuildName(Xbim.CobieLiteUk.Category)">
+            <summary>
+            No name field on Category
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CategoryCompareKey.BuildKey(Xbim.CobieLiteUk.Category)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CategoryCompareKey.BuildFull(Xbim.CobieLiteUk.Category)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="T:Xbim.COBie.EqCompare.CompareEqRule`1">
+            <summary>
+            Control case sensertive on strings compares
+            </summary>
+        </member>
+        <member name="F:Xbim.COBie.EqCompare.CompareEqRule`1.HashMap">
+            <summary>
+            Save hash values for reuse
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.EqCompare.CompareEqRule`1.sb">
+            <summary>
+            String Builder
+            </summary>
+        </member>
+        <member name="F:Xbim.COBie.EqCompare.CompareEqRule`1.eqRule">
+            <summary>
+            String compare rule
+            </summary>
+        </member>
+        <member name="F:Xbim.COBie.EqCompare.CompareEqRule`1.compareMethod">
+            <summary>
+            Set What to compare, Neam, Key or Full
+            </summary>
+        </member>
+        <member name="F:Xbim.COBie.EqCompare.CompareEqRule`1.ignoreCase">
+            <summary>
+            Ignore Case on string compares
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareEqRule`1.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareEqRule`1.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="eqRule">StringComparison</param>
+            <param name="compareMethod">CompareType</param>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareEqRule`1.Equals(`0,`0)">
+            <summary>
+            Equals method
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareEqRule`1.GetHashCode(`0)">
+            <summary>
+            Get Hash Code method
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareEqRule`1.BuildName(`0)">
+            <summary>
+            Abstract methods used in Equals and GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBie.EqCompare.CompareType">
+            <summary>
+            Compare Methods Enum
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.EqCompare.CompareLogger.logger">
+            <summary>
+            Hold the TextWriter to log too
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.EqCompare.CompareLogger.IsLogging">
+            <summary>
+            Did we log anything
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareLogger.#ctor(System.IO.TextWriter)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="tw"></param>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareLogger.WriteLine(System.String)">
+            <summary>
+            Write the text to the TextWriter
+            </summary>
+            <param name="logMe">string to write</param>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.CompareLogger.WriteLine(Xbim.CobieLiteUk.CobieObject,Xbim.CobieLiteUk.CobieObject,System.Type,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Write the text to the TextWriter
+            </summary>
+            <param name="logMe">string to write</param>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ConnectionCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ConnectionCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            all constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ConnectionCompareKey.BuildName(Xbim.CobieLiteUk.Connection)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ConnectionCompareKey.BuildKey(Xbim.CobieLiteUk.Connection)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ConnectionCompareKey.BuildFull(Xbim.CobieLiteUk.Connection)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ContactCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ContactCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ContactCompareKey.BuildName(Xbim.CobieLiteUk.Contact)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ContactCompareKey.BuildKey(Xbim.CobieLiteUk.Contact)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ContactCompareKey.BuildFull(Xbim.CobieLiteUk.Contact)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.FloorCompareKey.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.FloorCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.FloorCompareKey.BuildName(Xbim.CobieLiteUk.Floor)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.FloorCompareKey.BuildKey(Xbim.CobieLiteUk.Floor)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.FloorCompareKey.BuildFull(Xbim.CobieLiteUk.Floor)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.EntityKeyCompareKey.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.EntityKeyCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.EntityKeyCompareKey.BuildName(Xbim.CobieLiteUk.IEntityKey)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.EntityKeyCompareKey.BuildKey(Xbim.CobieLiteUk.IEntityKey)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.EntityKeyCompareKey.BuildFull(Xbim.CobieLiteUk.IEntityKey)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ImpactCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ImpactCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ImpactCompareKey.BuildName(Xbim.CobieLiteUk.Impact)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ImpactCompareKey.BuildKey(Xbim.CobieLiteUk.Impact)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ImpactCompareKey.BuildFull(Xbim.CobieLiteUk.Impact)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.IssueCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.IssueCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.IssueCompareKey.BuildName(Xbim.CobieLiteUk.Issue)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.IssueCompareKey.BuildKey(Xbim.CobieLiteUk.Issue)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.IssueCompareKey.BuildFull(Xbim.CobieLiteUk.Issue)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.JobCompareKey.BuildName(Xbim.CobieLiteUk.Job)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.JobCompareKey.BuildKey(Xbim.CobieLiteUk.Job)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.JobCompareKey.BuildFull(Xbim.CobieLiteUk.Job)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.JobKeyCompareKey.BuildName(Xbim.CobieLiteUk.JobKey)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.JobKeyCompareKey.BuildKey(Xbim.CobieLiteUk.JobKey)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.JobKeyCompareKey.BuildFull(Xbim.CobieLiteUk.JobKey)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.NameCompareKey`1.#ctor">
+            <summary>
+            Constuctor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.NameCompareKey`1.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.NameCompareKey`1.BuildName(`0)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.NameCompareKey`1.BuildKey(`0)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.NameCompareKey`1.BuildFull(`0)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.DocumentCompareKey.#ctor">
+            <summary>
+            Constuctor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.DocumentCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.DocumentCompareKey.BuildName(Xbim.CobieLiteUk.Document)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.DocumentCompareKey.BuildKey(Xbim.CobieLiteUk.Document)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.DocumentCompareKey.BuildFull(Xbim.CobieLiteUk.Document)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="T:Xbim.COBie.EqCompare.MetadataCompareKey">
+            <summary>
+            Primery Key Comparer for COBie Classes
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.MetadataCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.MetadataCompareKey.BuildName(Xbim.CobieLiteUk.Metadata)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.MetadataCompareKey.BuildKey(Xbim.CobieLiteUk.Metadata)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.MetadataCompareKey.BuildFull(Xbim.CobieLiteUk.Metadata)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ProjectCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ProjectCompareKey.BuildName(Xbim.CobieLiteUk.Project)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ProjectCompareKey.BuildKey(Xbim.CobieLiteUk.Project)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.ProjectCompareKey.BuildFull(Xbim.CobieLiteUk.Project)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.RepresentationCompareKey.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.RepresentationCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.RepresentationCompareKey.BuildName(Xbim.CobieLiteUk.Representation)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.RepresentationCompareKey.BuildKey(Xbim.CobieLiteUk.Representation)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.RepresentationCompareKey.BuildFull(Xbim.CobieLiteUk.Representation)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SiteCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SiteCompareKey.BuildName(Xbim.CobieLiteUk.Site)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SiteCompareKey.BuildKey(Xbim.CobieLiteUk.Site)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SiteCompareKey.BuildFull(Xbim.CobieLiteUk.Site)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpaceCompareKey.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpaceCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpaceCompareKey.BuildName(Xbim.CobieLiteUk.Space)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpaceCompareKey.BuildKey(Xbim.CobieLiteUk.Space)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpaceCompareKey.BuildFull(Xbim.CobieLiteUk.Space)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpareCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpareCompareKey.BuildName(Xbim.CobieLiteUk.Spare)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpareCompareKey.BuildKey(Xbim.CobieLiteUk.Spare)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.SpareCompareKey.BuildFull(Xbim.CobieLiteUk.Spare)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.StringCompareKey.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.StringCompareKey.#ctor(System.StringComparison,Xbim.COBie.EqCompare.CompareType)">
+            <summary>
+            call constructo base to set IgnoreCase flag and CompareType
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.StringCompareKey.BuildName(System.String)">
+            <summary>
+            Return Name filed
+            </summary>
+            <param name="obj"></param>
+            <returns>Name string</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.StringCompareKey.BuildKey(System.String)">
+            <summary>
+            Get Best Fields to ID object, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of key fields concat together</returns>
+        </member>
+        <member name="M:Xbim.COBie.EqCompare.StringCompareKey.BuildFull(System.String)">
+            <summary>
+            All fileds but ignoring any list types as they are merged, called by CompareEqRule.Equals and CompareEqRule.GetHashCode
+            </summary>
+            <param name="obj"></param>
+            <returns>string of all fields concat together</returns>
+        </member>
+    </members>
+</doc>

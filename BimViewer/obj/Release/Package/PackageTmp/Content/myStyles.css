@@ -1,0 +1,15 @@
+﻿.FileList {
+    margin-top: 20px!important;
+}
+
+.LinkNoDecor {
+    text-decoration:none!important;
+    color:black;
+}
+
+a.LinkNoDecor:hover {
+
+    text-decoration:none!important;
+    color:red;
+}
+

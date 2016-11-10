@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.CobieLiteUK.Validation</name>
+    </assembly>
+    <members>
+        <member name="M:Xbim.CobieLiteUk.Validation.CobieObjectValidator`2.Validate(`0,Xbim.CobieLiteUk.Facility)">
+            <param name="candidateParent">If null provides a missing match report</param>
+            <param name="targetFacility">The target facility is required to ensure that the facility tree is properly referenced</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.CobieObjectValidator`2.GetCandidates``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Identifies the subset of submitted items that match requirement classifications
+            </summary>
+            <param name="submitted"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Extensions.CobieObjectExtensions">
+            <summary>
+            Provides extension methods to simplify the execution of validation algorithms on CobieLiteUK AssetTypes.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Extensions.CategoryExtensions">
+            <summary>
+            Provides extension methods to simplify the execution of validation algorithms on CobieLiteUK categories.
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Extensions.CategoryExtensions.GetClassificationMatches``1(Xbim.CobieLiteUk.Category,System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>
+            Filters a provided enumerable of AssetTypes matching a specified category
+            </summary>
+            <param name="types">The initial enumerable</param>
+            <param name="requiredCategory">Classification and Codes of the provided categories will be tested for matches</param>
+            <param name="includeCategoryChildren">if true extends the matching rule to include all categories starting with the required code</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Extensions.FacilityExtensions">
+            <summary>
+            development support class
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Extensions.FacilityExtensions.GetClassifications(Xbim.CobieLiteUk.Facility)">
+            <summary>
+            development support class; used to debug data provided.
+            Not optimised; do not use for production purposes.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.TerminationMode">
+            <summary>
+            Options that determine the interruption behaviour for operations.
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.TerminationMode.ExecuteCompletely">
+            <summary>
+            Performs a full validation of the DPoW.
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.TerminationMode.StopOnFirstFail">
+            <summary>
+            Stops as soon as the first fail is encountered.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.IValidator.TerminationMode">
+            <summary>
+            Determines behaviour that regulate the conclusion of the validation process.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.IValidator.HasFailures">
+            <summary>
+            true if the validator has encountered failures in the data.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.FacilityValidator">
+            <summary>
+            Used to produce a COBieLiteUK Facility with validation information of a submitted facility against a requirement facility. 
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.FacilityValidator.#ctor">
+            <summary>
+            Empty default constructor.
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.FacilityValidator.Validate(Xbim.CobieLiteUk.Facility,Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Performs the validation
+            </summary>
+            <param name="requirement">a requirement facility</param>
+            <param name="submitted">the submission model to be validated</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.FacilityValidator.ValidateAssetTypes(Xbim.CobieLiteUk.Facility,Xbim.CobieLiteUk.Facility,Xbim.CobieLiteUk.Facility)">
+            <returns>true if it has failures</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.FacilityValidator.ValidateZones(Xbim.CobieLiteUk.Facility,Xbim.CobieLiteUk.Facility,Xbim.CobieLiteUk.Facility)">
+            <returns>true if it has failures</returns>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.FacilityValidator.TerminationMode">
+            <summary>
+            Determines behaviour that regulate the conclusion of the validation process.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.FacilityValidator.HasFailures">
+            <summary>
+            true if the validator has encountered failures in the data.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Reporting.TwoLevelDetailedGridReport`2">
+            <summary>
+            Data preparation layer for the production or reports that group all AssetTypes/Assets associated with an assetType requirement
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Reporting.TwoLevelDetailedGridReport`2.#ctor(Xbim.CobieLiteUk.Validation.Reporting.TwoLevelRequirementPointer{`0,`1})">
+            <summary>
+            Initialise the reporting class with an AssetTypeRequirementPointer
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.Reporting.TwoLevelDetailedGridReport`2.RequirementCategories">
+            <summary>
+            Lists all categories that are verified for compliance with the requirement
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.Reporting.TwoLevelDetailedGridReport`2.AttributesGrid">
+            <summary>
+            Datatable that contains all submitted assets with all available and missing properties
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Reporting.FacilityReport">
+            <summary>
+            Used to produce facility reports in formats other than the standards provided.
+            See ExcelValidationReport for the excel format.
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.FacilityReport.PreferredClassification">
+            <summary>
+            The specified classification takes precedence over others for reporting purposes, when appropriate.
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Reporting.FacilityReport.#ctor(Xbim.CobieLiteUk.Facility)">
+            <summary>
+            Default constructor.
+            </summary>
+            <param name="validationResultFacility">The result of a validation process to report over.</param>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Reporting.VisualAttentionStyle">
+            <summary>
+            determines the appearence of information when attention needs to be drawn.
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.VisualAttentionStyle.None">
+            <summary>
+            Undetermined or does not apply
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.VisualAttentionStyle.Green">
+            <summary>
+            Information is not of concern
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.VisualAttentionStyle.Amber">
+            <summary>
+            Information can be problematic, awareness needed.
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.VisualAttentionStyle.Red">
+            <summary>
+            Information has problems.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport">
+            <summary>
+            Can create an Excel report containing summary and detailed reports on provided and missing information.
+            Use the Create function to produce the report.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.SpreadSheetFormat">
+            <summary>
+            Determines the format to be saved.
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.SpreadSheetFormat.Xls">
+            <summary>
+            Excel Binary File Format
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.SpreadSheetFormat.Xlsx">
+            <summary>
+            Excel xml File Format
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.Create(Xbim.CobieLiteUk.Facility,System.String,Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.SpreadSheetFormat)">
+            <summary>
+            Creates the report in file format
+            </summary>
+            <param name="facility">the result of a DPoW validation to be transformed into report form.</param>
+            <param name="suggestedFilename">target file for the spreadsheet (warning, the extension is automatically determined depending on the format)</param>
+            <param name="format">determines the excel format to use</param>
+            <returns>true if successful, errors are cought and passed to Logger</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.Create(Xbim.CobieLiteUk.Facility,System.String)">
+            <summary>
+            Creates the report.
+            </summary>
+            <param name="facility">the result of a DPoW validation to be transformed into report form.</param>
+            <param name="filename">target file for the spreadsheet</param>
+            <returns>true if successful, errors are cought and passed to Logger</returns>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.Create(Xbim.CobieLiteUk.Facility,System.IO.Stream,Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.SpreadSheetFormat)">
+            <summary>
+            Creates the report.
+            </summary>
+            <param name="reportFacility">the result of a DPoW validation to be transformed into report form.</param>
+            <param name="destinationStream">target stream for the spreadsheet</param>
+            <param name="format">determines the excel format to use</param>
+            <returns>true if successful, errors are cought and passed to Logger</returns>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.Reporting.ExcelValidationReport.PreferredClassification">
+            <summary>
+            sets the Classification preferred for priority purposes.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail">
+            <summary>
+            Contains an evaluation criterion to apply.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.EvaluationCriterion">
+            <summary>
+            Determines the behaviour of the evaluation mechanism for the requirement
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.EvaluationCriterion.IgnoreValue">
+            <summary>
+            Any vaue other than null is accepted; not implemented
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.EvaluationCriterion.ValueIsMeaningful">
+            <summary>
+            the default for DPoW, accepts any value other than null, "n/a" and "user to populate"
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.EvaluationCriterion.ExactMatch">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.EvaluationCriterion.MinumumValue">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.EvaluationCriterion.MaximumValue">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="F:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.Criterion">
+            <summary>
+            Determines the behaviour of the evaluation mechanism for the requirement
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.#ctor(Xbim.CobieLiteUk.Attribute)">
+            <summary>
+            Constructor that completes initialisation from a DPoW attribute.
+            </summary>
+            <param name="attrib"></param>
+        </member>
+        <member name="P:Xbim.CobieLiteUk.Validation.RequirementDetails.RequirementDetail.Attribute">
+            <summary>
+            The underlying DPoW Attribute used on initialisation.
+            </summary>
+        </member>
+        <member name="T:Xbim.CobieLiteUk.Validation.ValidationException">
+            <summary>
+            An error occurred inside the Validation engine.
+            </summary>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.ValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialiser from other exception.
+            </summary>
+            <param name="message">A custom validation message</param>
+            <param name="exception">The underlying interpreted exception</param>
+        </member>
+        <member name="M:Xbim.CobieLiteUk.Validation.ValidationException.#ctor(System.String)">
+            <summary>
+            A validation native exception.
+            </summary>
+            <param name="message">Custom error message</param>
+        </member>
+    </members>
+</doc>

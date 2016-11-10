@@ -1,0 +1,3192 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.COBie</name>
+    </assembly>
+    <members>
+        <member name="T:Xbim.COBie.COBieContext">
+            <summary>
+            Context for generating COBie data from one or more IFC models
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieContext.MapMergeRoles">
+            <summary>
+            Map models to roles for federated models
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieContext.WorkBookUnits">
+            <summary>
+            Global Units for the workbook
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieContext.DepartmentsUsedAsZones">
+            <summary>
+            if set to true and no IfcZones or no IfcSpace property names of "ZoneName", we will list 
+            any IfcSpace property names "Department" in the Zone sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieContext.Exclude">
+            <summary>
+            filter values for attribute extraction in sheets
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieContext.ErrorRowStartIndex">
+            <summary>
+            set the error reporting to be either one (first row is labelled one) or 
+            two based (first row is labelled two) on the rows of the tables/excel sheet
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieContext.LinkRoleToModel">
+            <summary>
+            Get merge roles for federated models, used to work out Model Merge Precedence Rules
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieContext.MapRolesForMerge">
+            <summary>
+            Map ifcRols to the MergeRole for COBie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Xbim.COBie.COBieContext._model">
+            /// <summary>
+            Gets the model defined in this context to generate COBie data from
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieContext.IsFederation">
+            <summary>
+            Model is federated true/false
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieContext.UpdateStatus(System.String,System.Int32,System.Int32)">
+            <summary>
+            Updates the delegates with the current percentage complete
+            </summary>
+            <param name="message"></param>
+            <param name="total"></param>
+            <param name="current"></param>
+        </member>
+        <member name="T:Xbim.COBie.ErrorRowIndexBase">
+            <summary>
+            Index for the rows the errors are reported on, either one based (first row is labelled one) (Data Table etc...) 
+            or two based (first row is labelled two) (Excel sheets)
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.GlobalUnits">
+            <summary>
+            Global units
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.COBieColumnRelationship">
+            <summary>
+            Class representing relationship between COBie columns in a workbook
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieColumnRelationship.#ctor(Xbim.COBie.COBieWorkbook,Xbim.COBie.COBieColumn)">
+            <summary>
+            Constructs a class representing the relationships between a Foreign Key column and its Primary key column elsewhere in the 
+            workbook
+            </summary>
+            <param name="workbook">The COBie Workbook holding all the sheets</param>
+            <param name="column">The foreign key column</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieWorkbook.Validate(Xbim.COBie.ErrorRowIndexBase,Xbim.COBie.Contracts.ICOBieValidationTemplate,System.Action{System.Int32})">
+             <summary>
+             Runs validation rules on each sheet and updates the Errors collection
+             on each sheet.
+             </summary>
+            <param name="errorRowIdx">excel sheet = ErrorRowIndexBase.RowTwo, datasets = ErrorRowIndexBase.RowOne </param>
+        </member>
+        <member name="M:Xbim.COBie.COBieWorkbook.ValidateRoles(Xbim.Ifc.IfcStore,Xbim.COBie.COBieMergeRoles)">
+            <summary>
+            Role Merge
+            </summary>
+            <param name="model"></param>
+            <param name="fileRoles">bit fields enumeration to hold all the roles in one place using bitwise AND, OR, EXCLUSIVE OR</param>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieData`1">
+            <summary>
+            Base class for the input of data into the Excel worksheets
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetCreatedOnDateAsFmtString(Xbim.Ifc4.Interfaces.IIfcOwnerHistory,System.Boolean)">
+            <summary>
+            Extract the Created On date from the passed entity
+            </summary>
+            <param name="rootEntity">Entity to extract the Create On date</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetExternalSystem(Xbim.Ifc4.Interfaces.IIfcOwnerHistory)">
+            <summary>
+            Gets the name of the application that is linked with the supplied item
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetExternalSystem(Xbim.Ifc2x3.Kernel.IfcRoot)">
+            <summary>
+            Gets the name of the application that is linked with the supplied item
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetMaterialOwnerHistory(Xbim.Ifc2x3.MaterialResource.IfcMaterialLayerSet)">
+            <summary>
+            Get the IfcRelAssociatesMaterial object from the passed IfcMaterialLayerSet 
+            </summary>
+            <param name="ifcMaterialLayerSet">IfcMaterialLayerSet object</param>
+            <returns>IfcOwnerHistory object or null if none found</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetTelecomTelephoneNumber(Xbim.Ifc2x3.ActorResource.IfcPersonAndOrganization)">
+            <summary>
+            Extract the email address lists for the owner of the IfcOwnerHistory passed
+            </summary>
+            <param name="ifcOwnerHistory">Entity to extract the email addresses for</param>
+            <returns>string of comma delimited addresses</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.ClearEMails">
+            <summary>
+            Clear the email dictionary for next file
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetTelecomEmailAddress(Xbim.Ifc4.Interfaces.IIfcOwnerHistory)">
+            <summary>
+            Extract the email address lists for the owner of the IfcOwnerHistory passed
+            </summary>
+            <param name="ifcOwnerHistory">Entity to extract the email addresses for</param>
+            <returns>string of comma delimited addresses</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetTelecomEmailAddress(Xbim.Ifc2x3.ActorResource.IfcPersonAndOrganization)">
+            <summary>
+            Extract the email address lists for the owner of the IfcOwnerHistory passed
+            </summary>
+            <param name="ifcOwnerHistory">Entity to extract the email addresses for</param>
+            <returns>string of comma delimited addresses</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetEmail(Xbim.Ifc4.Interfaces.IIfcOrganization,Xbim.Ifc4.Interfaces.IIfcPerson)">
+            <summary>
+            Get email address from IfcPerson 
+            </summary>
+            <param name="ifcOrganization"></param>
+            <param name="ifcPerson"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.ConvertNumberOrDefault(System.String)">
+            <summary>
+            Converts string to formatted string and if it fails then passes 0 back, mainly to check that we always have a number returned
+            </summary>
+            <param name="num">string to convert</param>
+            <returns>string converted to a formatted string using "F2" as formatter</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetCategoryClassification(Xbim.Ifc2x3.Kernel.IfcObjectDefinition)">
+            <summary>
+            Get the category from the IfcRelAssociatesClassification / IfcClassificationReference objects
+            </summary>
+            <param name="obj">IfcObjectDefinition object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetCategory(Xbim.Ifc2x3.Kernel.IfcObject)">
+            <summary>
+            Get Category method
+            </summary>
+            <param name="obj">Object to try and extract method from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetUnitName(Xbim.Ifc2x3.MeasureResource.IfcUnit)">
+            <summary>
+            Extract the unit name
+            </summary>
+            <param name="ifcUnit">ifcUnit object to get unit name from</param>
+            <returns>string holding unit name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetMonetaryUnitName(Xbim.Ifc2x3.MeasureResource.IfcMonetaryUnit)">
+            <summary>
+            Get Monetary Unit
+            </summary>
+            <param name="ifcMonetaryUnit">IfcMonetaryUnit object</param>
+            <returns>string holding the Monetary Unit</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetSheetByObjectType(System.Type)">
+            <summary>
+            Determined the sheet the IfcRoot will have come from using the object type
+            </summary>
+            <param name="ifcItem">object which inherits from IfcRoot </param>
+            <returns>string holding sheet name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetTypeName(Xbim.Ifc2x3.Kernel.IfcObject)">
+            <summary>
+            Get the associated Type for a IfcObject, so a Door can be of type "Door Type A"
+            </summary>
+            <param name="obj">IfcObject to get associated type information from</param>
+            <returns>string holding the type information</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.IsDate(System.String)">
+            <summary>
+            Check if a string represents a date time
+            </summary>
+            <param name="date">string holding date</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.IsEmailAddress(System.String)">
+            <summary>
+            Test string for email address format
+            </summary>
+            <param name="email">string holding email address</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetGlobalUnits(Xbim.Common.IModel,Xbim.COBie.GlobalUnits)">
+            <summary>
+            Get the global units used for this building
+            </summary>
+            <param name="model">model object</param>
+            <param name="wBookUnits">GlobalUnits to place units into</param>
+            <returns>return passed wBookUnits(GlobalUnits) with units added</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetEnumerationValues(System.Collections.Generic.IEnumerable{Xbim.Ifc2x3.MeasureResource.IfcValue})">
+            <summary>
+            Get the EnumerationValues from a IfcPropertyEnumeratedValue property
+            </summary>
+            <param name="ifcValues">IEnumerable of IfcValue</param>
+            <returns>delimited string of values</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetPropertyValue(System.Collections.Generic.List{Xbim.Ifc2x3.PropertyResource.IfcSimpleProperty},System.String)">
+            <summary>
+            Get the IfcPropertySingleValue value and unit associated with the value
+            </summary>
+            <param name="propertyList">List of IfcSimpleProperty</param>
+            <param name="name">property name we want to extract</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.GetPropertyEnumValue(System.Collections.Generic.List{Xbim.Ifc2x3.PropertyResource.IfcSimpleProperty},System.String)">
+            <summary>
+            Get the IfcPropertyEnumeratedValue value and unit associated with the value
+            </summary>
+            <param name="propertyList">List of IfcSimpleProperty</param>
+            <param name="name">property name we want to extract</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieData`1.ValidateString(System.String)">
+            <summary>
+            Check for empty, null of DEFAULT_STRING
+            </summary>
+            <param name="value">string to validate</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.CompareIfcLabel">
+            <summary>
+            ICompare class for IfcLabels, used to order by 
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.Data.CompareString">
+            <summary>
+            ICompare class for String, used to order by 
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataAssembly">
+            <summary>
+            Class to input data into excel worksheets for the the Assembly tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Assembly constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.Fill">
+            <summary>
+            Fill sheet rows for Assembly sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.AddChildRows(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieAssemblyRow},Xbim.COBie.Rows.COBieAssemblyRow,Xbim.COBie.Data.ChildNamesList)">
+            <summary>
+            Add the child row and overflow rows
+            </summary>
+            <param name="assemblies">COBieSheet to add rows too</param>
+            <param name="assembly">COBieAssemblyRow object to copy data from</param>
+            <param name="childNames">ChildNamesList object holing the names to add to the rows</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.GetAssemblyDescription(Xbim.Ifc2x3.Kernel.IfcRelDecomposes)">
+            <summary>
+            Get Description 
+            </summary>
+            <param name="ra">IfcRelDecomposes object</param>
+            <returns>string holding description if found</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.GetMaterialSetDescription(System.Collections.Generic.List{Xbim.Ifc2x3.MaterialResource.IfcMaterialLayer})">
+            <summary>
+            Build Material Layer Set description form the materials and thickness
+            </summary>
+            <param name="ifcMaterialLayers">List of IfcMaterialLayer</param>
+            <returns>string holding description if found</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.ExtractChildNames(System.Collections.Generic.List{Xbim.Ifc2x3.MaterialResource.IfcMaterialLayer})">
+            <summary>
+            get all names from the IfcRelDecomposes RelatedObjects
+            </summary>
+            <param name="ifcMaterialLayers">IfcRelDecomposes Object</param>
+            <returns>list of strings as ChildNamesList class</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.ExtractChildNames(Xbim.Ifc2x3.Kernel.IfcRelDecomposes)">
+            <summary>
+            get all names from the IfcRelDecomposes RelatedObjects
+            </summary>
+            <param name="ra">IfcRelDecomposes Object</param>
+            <returns>list of strings as ChildNamesList class</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAssembly.ConCatChildNamesList(Xbim.COBie.Data.ChildNamesList,System.Int32)">
+            <summary>
+            Get list of child object names from relatedObjects property of a ifcProduct asset and join with a " : " delimiter
+            </summary>
+            <param name="ra">IfcRelDecomposes relationship object</param>
+            <returns>List of strings fixed to a string limit per string entry</returns>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataAttributeBuilder.PropertSetValues">
+            <summary>
+            The property sets to use to create the attributes from
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataAttributeBuilder.ExcludeAttributePropertyNames">
+            <summary>
+            Exclude property single value names from selection in SetAttributes functions where the Name property equals an item in this list
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataAttributeBuilder.ExcludeAttributePropertyNamesWildcard">
+            <summary>
+            Exclude property single value names from selection in SetAttributes functions which contain the strings held in this list
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataAttributeBuilder.ExcludeAttributePropertyNamesStartingWith">
+            <summary>
+            Exclude property single value names from selection in SetAttributes functions which contain the strings held in this list
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataAttributeBuilder.ExcludeAttributePropertySetNames">
+            <summary>
+            Exclude property set names from selection in SetAttributes functions
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataAttributeBuilder.RowParameters">
+            <summary>
+            Value passed from sheet to attribute sheet
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAttributeBuilder.SetListsUp">
+            <summary>
+            Set the property lists up 
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAttributeBuilder.PopulateAttributesRows(Xbim.Ifc2x3.Kernel.IfcObject)">
+            <summary>
+            Set values for attribute sheet
+            </summary>
+            <param name="ifcObject">ifcObject to extract properties from</param>
+            <param name="_attributes">The attribute Sheet to add the properties to its rows</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAttributeBuilder.PopulateAttributesRows(Xbim.Ifc2x3.Kernel.IfcTypeObject)">
+            <summary>
+            Set values for attribute sheet
+            </summary>
+            <param name="ifcTypeObject">ifcObject to extract properties from</param>
+            <param name="_attributes">The attribute Sheet to add the properties to its rows</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAttributeBuilder.FilterRows(System.Collections.Generic.IEnumerable{Xbim.Ifc2x3.PropertyResource.IfcSimpleProperty})">
+            <summary>
+            Apply filter lists to propertySingleValue selection
+            </summary>
+            <param name="pSVs">IEnumerable of IfcPropertySingleValue</param>
+            <returns>IEnumerable of IfcPropertySingleValue</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAttributeBuilder.ProcessAttributeRow(Xbim.Ifc2x3.Kernel.IfcPropertySet,System.Collections.Generic.IEnumerable{Xbim.Ifc2x3.PropertyResource.IfcSimpleProperty})">
+            <summary>
+            Add Rows to the attribute sheet
+            </summary>
+            <param name="_attributes">The attribute Sheet to add the properties to its rows</param>
+            <param name="propertySet">IfcPropertySet which is holding the IfcPropertySingleValue</param>
+            <param name="propertySetValues">IEnumerable list of IfcPropertySingleValue to extract to the attribute sheet</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataAttributeBuilder.GetCategory(Xbim.Ifc2x3.Kernel.IfcPropertySet)">
+            <summary>
+            Get Category method for property sets
+            </summary>
+            <param name="propSet">IfcPropertySet</param>
+            <returns>Category as string </returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.SpaceInfo">
+            <summary>
+            Holds Geometry information for the space objects
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataComponent">
+            <summary>
+            Class to input data into excel worksheets for the the Component tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Component constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.Fill">
+            <summary>
+            Fill sheet rows for Component sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.GetDateFromProperty(Xbim.COBie.Data.COBieDataPropertySetValues,System.String)">
+            <summary>
+            Get Formatted Start Date
+            </summary>
+            <param name="allPropertyValues"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.GetComponentRelatedSpace(Xbim.Ifc2x3.ProductExtension.IfcElement)">
+            <summary>
+            Get Space name which holds the passed in IfcElement
+            </summary>
+            <param name="el">Element to extract space name from</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.GetSpaceHoldingElement(Xbim.Ifc2x3.ProductExtension.IfcElement)">
+            <summary>
+            Get the space name holding the element
+            </summary>
+            <param name="el">IfcElement to get containing space for</param>
+            <returns>Space name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.GetSpaceFromPoints(System.Collections.Generic.IEnumerable{Xbim.Common.Geometry.XbimPoint3D})">
+            <summary>
+            Get the space name if any of the points are within the space
+            </summary>
+            <param name="PtsWCS">list of points</param>
+            <returns>Space name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.GetSpaceFromClosestPoints(System.Collections.Generic.IEnumerable{Xbim.Common.Geometry.XbimPoint3D},System.Double)">
+            <summary>
+            Get the space name if any of the points are within the space
+            </summary>
+            <param name="PtsWCS">list of points</param>
+            <param name="hitTotarance">Distance the point is outside the space but considered still usable to reference the space</param>
+            <returns>Space name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.ClosetPointOnBoundingBox(Xbim.Common.Geometry.XbimPoint3D,Xbim.Common.Geometry.XbimRect3D)">
+            <summary>
+            Closet point on a axially aligned bounding boxes (usually in object space)
+            REF: 3D Math Primer for Graphics and Game Development. page 720.
+            </summary>
+            <param name="pt">Point to get closet point on bounding box from</param>
+            <param name="boundBox">Bounding Box as Rect3D</param>
+            <returns>Point3D (note: if return point == pt point then point inside box</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.DistanceFromSpace(Xbim.Common.Geometry.XbimPoint3D,Xbim.Common.Geometry.XbimRect3D)">
+            <summary>
+            distance point is from the axially aligned bounding boxes (usually in object space)
+            </summary>
+            <param name="pt">Point to get closet point on bounding box from</param>
+            <param name="boundBox">Bounding Box as Rect3D</param>
+            <returns>Distance from the box edge</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataComponent.GetComponentDescription(Xbim.Ifc2x3.ProductExtension.IfcElement)">
+            <summary>
+            Get Description for passed in IfcElement
+            </summary>
+            <param name="el">Element holding description</param>
+            <returns>string</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataConnection">
+            <summary>
+            Class to input data into excel worksheets for the the Connection tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataConnection.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Connection constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataConnection.Fill">
+            <summary>
+            Fill sheet rows for Connection sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataConnection.GetComponentDescription(Xbim.Ifc2x3.ProductExtension.IfcRelConnectsElements)">
+            <summary>
+            Get Description for passed in IfcElement
+            </summary>
+            <param name="ifcRelConnectsElement">Element holding description</param>
+            <returns>string</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataContact">
+            <summary>
+            Class to input data into excel worksheets for the the Contact tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataContact.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Contact constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataContact.Fill">
+            <summary>
+            Fill sheet rows for Contact sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataCoordinate">
+            <summary>
+            Class to input data into excel worksheets for the the Coordinate tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataCoordinate.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Coordinate constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataCoordinate.Fill">
+            <summary>
+            Fill sheet rows for Coordinate sheet
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.Data.TransformedBoundingBox">
+            <summary>
+            Structure to transform a bounding box values to world space
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.TransformedBoundingBox.GetMatrixRotations(Xbim.Common.Geometry.XbimMatrix3D,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Get Euler angles from matrix
+            derived for here i think!! http://khayyam.kaplinski.com/2011_06_01_archive.html
+            </summary>
+            <param name="m">XbimMatrix3D Matrix</param>
+            <param name="rotationX">out parameter - X rotation in radians</param>
+            <param name="rotationY">out parameter - Y rotation in radians</param>
+            <param name="rotationZ">out parameter - Z rotation in radians</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.TransformedBoundingBox.RadiansToDegrees(System.Double)">
+            <summary>
+            Radians to Degrees
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.TransformedBoundingBox.DegreesToRadians(System.Double)">
+            <summary>
+            Degrees to Radians
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xbim.COBie.Data.TransformedBoundingBox.MinPt">
+            <summary>
+            Minimum point, classed as origin point
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.TransformedBoundingBox.MaxPt">
+            <summary>
+            Maximum point of the rectangle
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.TransformedBoundingBox.ClockwiseRotation">
+            <summary>
+            Clockwise rotation of the IfcProduct
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.TransformedBoundingBox.ElevationalRotation">
+            <summary>
+            Elevation rotation of the IfcProduct
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.TransformedBoundingBox.YawRotation">
+            <summary>
+            Yaw rotation of the IfcProduct
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataDocument">
+            <summary>
+            Class to input data into excel worksheets for the the Document tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataDocument.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Document constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataDocument.Fill">
+            <summary>
+            Fill sheet rows for Document sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataDocument.GetFileInformation(Xbim.Ifc2x3.Kernel.IfcRelAssociatesDocument)">
+            <summary>
+            Get the file information for the document attached to the ifcRelAssociatesDocument
+            </summary>
+            <param name="ifcRelAssociatesDocument">IfcRelAssociatesDocument object</param>
+            <returns>FileInformation structure </returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataDocument.GetRelatedObjectInformation(Xbim.Ifc2x3.Kernel.IfcRelAssociatesDocument)">
+            <summary>
+            Get the related object information for the document
+            </summary>
+            <param name="ifcRelAssociatesDocument">IfcRelAssociatesDocument object</param>
+            <returns>RelatedObjectInformation structure</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataDocument.DocumentInformationForObjects(Xbim.Ifc2x3.ExternalReferenceResource.IfcDocumentInformation)">
+            <summary>
+            Missing Inverse method on  IfcDocumentInformation, need to be implemented on IfcDocumentInformation class
+            </summary>
+            <param name="ifcDocumentInformation">IfcDocumentInformation object</param>
+            <returns>IEnumerable of IfcRelAssociatesDocument objects</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataFacility">
+            <summary>
+            Class to input data into excel worksheets for the the Facility tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataFacility.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Facility constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataFacility.Fill">
+            <summary>
+            Fill sheet rows for Facility sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataFloor">
+            <summary>
+            Class to input data into excel worksheets for the the Floor tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataFloor.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Floor constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataFloor.Fill">
+            <summary>
+            Fill sheet rows for Floor sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataFloor.GetFloorHeight(Xbim.Ifc2x3.ProductExtension.IfcBuildingStorey,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the floor height
+            </summary>
+            <param name="ifcBuildingStorey">IfcBuildingStory object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcBuildingStory </param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataImpact">
+            <summary>
+            Class to input data into excel worksheets for the the Impact tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataImpact.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Impact constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataImpact.Fill">
+            <summary>
+            Fill sheet rows for Impact sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataImpact.GetAssociatedObject(Xbim.Ifc2x3.Kernel.IfcPropertySet)">
+            <summary>
+            Get IfcPropertySet first associated object
+            </summary>
+            <param name="ps"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataIssue">
+            <summary>
+            Class to input data into excel worksheets for the the Issue tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataIssue.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Issue constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataIssue.Fill">
+            <summary>
+            Fill sheet rows for Issue sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataIssue.GetIfcObjects(Xbim.Ifc2x3.ApprovalResource.IfcApproval)">
+            <summary>
+            get all the IfcRoot objects attached to the ifcApproval
+            </summary>
+            <param name="ifcApproval">IfcApproval Object</param>
+            <returns>List of IfcRoot Objects</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataJob">
+            <summary>
+            Class to input data into excel worksheets for the the Job tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataJob.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Job constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataJob.Fill">
+            <summary>
+            Fill sheet rows for Job sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataJob.GetStartTime(Xbim.Ifc2x3.PropertyResource.IfcPropertySingleValue)">
+            <summary>
+            Get Formatted Start Date
+            </summary>
+            <param name="allPropertyValues"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataJob.GetPriors(Xbim.Ifc2x3.ProcessExtension.IfcTask)">
+            <summary>
+            Get the number of tasks before this task
+            </summary>
+            <param name="ifcTask">IfcTask object</param>
+            <returns>string holding predecessor name of last task(s)</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataJob.GetResources(Xbim.Ifc2x3.ProcessExtension.IfcTask)">
+            <summary>
+            Get required resources for the task
+            </summary>
+            <param name="ifcTask">IfcTask object to get resources for</param>
+            <returns>delimited string of the resources</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataJob.GetObjectType(Xbim.Ifc2x3.ProcessExtension.IfcTask)">
+            <summary>
+            Get the object IfcTypeObject name from the IfcTask object
+            </summary>
+            <param name="ifcTask">IfcTask object</param>
+            <returns>string holding IfcTypeObject name</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataPropertySetValues">
+            <summary>
+            Class to extract all the property sets and there associated properties for a list of either IfcObjects or IfcTypeObjects
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataPropertySetValues.PSetFilterOn">
+            <summary>
+            True if a Property Set name filter is set
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataPropertySetValues.ObjProperties">
+            <summary>
+            IfcSimpleProperty value list of all properties associated to a IfcObject or IfcTypeObject currently set
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataPropertySetValues.CurrentObject">
+            <summary>
+            Current object which set the properties
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Data.COBieDataPropertySetValues.MapPsetToProps">
+            <summary>
+            Property sets mapped to a list of properties for the current set object
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.GetRelatedProperties(Xbim.Ifc2x3.Kernel.IfcTypeObject)">
+            <summary>
+            Get the related entity properties for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject"> IfcTypeObject </param>
+            <returns>Dictionary of IfcPropertySet keyed to List of IfcPropertySingleValue</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.SetAllPropertyValues(Xbim.Ifc2x3.Kernel.IfcObject)">
+            <summary>
+            Set the property sets mapped to list of simple property values held for the IfcObject
+            </summary>
+            <param name="ifcObject">IfcObject holding the property values</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.SetAllPropertyValues(Xbim.Ifc2x3.Kernel.IfcTypeObject)">
+            <summary>
+            Set the property sets mapped to list of simple property values held for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">ifcTypeObject holding the property values</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.SetAllPropertyValues(Xbim.Ifc2x3.Kernel.IfcTypeObject,System.String)">
+            <summary>
+            Set the property sets mapped to list of simple property values held for the IfcTypeObject
+            filtered by a IfcPropertySet name
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject holding the property values</param>
+            <param name="propertySetName">IfcPropertySetName</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.SetAllPropertyValues(Xbim.Ifc2x3.Kernel.IfcTypeObject,System.Collections.Generic.List{System.String})">
+            <summary>
+            Set the property sets mapped to list of simple property values held for the IfcTypeObject
+            filtered by a IfcPropertySet name
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject holding the property values</param>
+            <param name="propertySetNames">List of IfcPropertySetName</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.GetPropertySingleValueValue(System.String,System.Boolean)">
+            <summary>
+            Get the property value where the property name equals the passed in value. 
+            Always use  SetAllPropertySingleValues before calling this method
+            </summary>
+            <param name="PropertyValueName">IfcPropertySingleValue name</param>
+            <param name="containsString">Do Contains text match on PropertyValueName if true, exact match if false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataPropertySetValues.GetPropertySingleValue(System.String)">
+            <summary>
+            Get the property value where the property name equals the passed in value 
+            Always use  SetAllPropertySingleValues before calling this method
+            </summary>
+            <param name="PropertyValueName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataResource">
+            <summary>
+            Class to input data into excel worksheets for the the Resource tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataResource.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Resource constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataResource.Fill">
+            <summary>
+            Fill sheet rows for Resource sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataSpace">
+            <summary>
+            Class to input data into excel worksheets for the the Space tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Space constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.Fill">
+            <summary>
+            Fill sheet rows for Space sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.GetNetArea(Xbim.Ifc2x3.ProductExtension.IfcSpace,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get Net Area value
+            </summary>
+            <param name="ifcSpace">IfcSpace object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.GetGrossFloorArea(Xbim.Ifc2x3.ProductExtension.IfcSpace,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get space gross floor area
+            </summary>
+            <param name="ifcSpace">IfcSpace object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.GetUsableHeight(Xbim.Ifc2x3.ProductExtension.IfcSpace,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get space usable height
+            </summary>
+            <param name="ifcSpace">IfcSpace object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.GetSpaceDescription(Xbim.Ifc2x3.ProductExtension.IfcSpace)">
+            <summary>
+            Get space description 
+            </summary>
+            <param name="ifcSpace">IfcSpace object</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpace.GetRoomTag(Xbim.Ifc2x3.ProductExtension.IfcSpace,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get space room tag 
+            </summary>
+            <param name="ifcSpace">IfcSpace object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataSpare">
+            <summary>
+            Class to input data into excel worksheets for the the Spare tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpare.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Spare constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpare.Fill">
+            <summary>
+            Fill sheet rows for Spare sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSpare.GetObjectType(Xbim.Ifc2x3.ConstructionMgmtDomain.IfcConstructionProductResource)">
+            <summary>
+            Get the object IfcTypeObject name from the IfcConstructionProductResource object
+            </summary>
+            <param name="ifcConstructionProductResource">IfcConstructionProductResource object</param>
+            <returns>string holding IfcTypeObject name</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataSystem">
+            <summary>
+            Class to input data into excel worksheets for the the System tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSystem.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data System constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataSystem.Fill(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}})">
+            <summary>
+            Fill sheet rows for System sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataType">
+            <summary>
+            Class to input data into excel worksheets for the the Type tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Type constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.Fill">
+            <summary>
+            Fill sheet rows for Type sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetAssetType(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Asset Type from the property set property if nothing found then default to Moveable/Fixed decided on object type
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject Object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holding the property sets</param>
+            <returns>String holding Asset Type</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetSustainabilityPerformance(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Sustainability Performance for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetCodePerformance(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Code Performance for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetAccessibilityPerformance(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Accessibility Performance for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetConstituents(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Constituents for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetColour(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Colour for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetModelReference(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Model Reference for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetNominalHeight(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Nominal Height for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetNominalWidth(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Nominal Width for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetNominalLength(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Nominal Length for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetExpectedLife(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.Interval,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Expected Life for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetReplacementCost(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Replacement Cost for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetWarrantyDescription(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Warranty Description for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetWarrantyGuarantorLabor(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Warranty Guarantor Labour for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetWarrantyGuarantorParts(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Warranty Guarantor Parts for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetModelNumber(Xbim.Ifc2x3.Kernel.IfcTypeObject,Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Model Number for the IfcTypeObject
+            </summary>
+            <param name="ifcTypeObject">IfcTypeObject object</param>
+            <param name="allPropertyValues">COBieDataPropertySetValues object holds all the properties for all the IfcSpace</param>
+            <returns>property value as string or default value</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetTypeObjDescription(Xbim.Ifc2x3.Kernel.IfcTypeObject)">
+            <summary>
+            Return the Description for the passed IfcTypeObject object
+            </summary>
+            <param name="type">IfcTypeObject</param>
+            <returns>Description for Type Object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetTypeObjRelAttributes(Xbim.Ifc2x3.Kernel.IfcTypeObject,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get the list or properties matching the passed in list of attribute names 
+            </summary>
+            <param name="typeObj">IfcTypeObject </param>
+            <param name="attNames">list of attribute names</param>
+            <returns>List of IfcPropertySingleValue which are contained in AttNames</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetDurationUnitAndValue(Xbim.Ifc2x3.PropertyResource.IfcPropertySingleValue)">
+            <summary>
+            Get the Time unit and value for the passed in property
+            </summary>
+            <param name="typeObject">IfcTypeObject </param>
+            <param name="psetName">Property Set Name to retrieve IfcPropertySet Object</param>
+            <param name="propertyName">Property Name held in IfcPropertySingleValue object</param>
+            <param name="psetValues">List of IfcPropertySingleValue filtered to attribute names we require</param>
+            <returns>Dictionary holding unit and value e.g. Year, 2.0</returns>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataType.GetCategory(Xbim.COBie.Data.COBieDataPropertySetValues)">
+            <summary>
+            Get the Category for the IfcTypeObject
+            </summary>
+            <param name="type">IfcTypeObject</param>
+            <returns>string of the category</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.COBieDataZone">
+            <summary>
+            Class to input data into excel worksheets for the the Zone tab.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataZone.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Data Zone constructor
+            </summary>
+            <param name="model">The context of the model being generated</param>
+        </member>
+        <member name="M:Xbim.COBie.Data.COBieDataZone.Fill">
+            <summary>
+            Fill sheet rows for Zone sheet
+            </summary>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="T:Xbim.COBie.Data.IAttributeProvider">
+            <summary>
+            Defines an interface used by COBieData classes, in order to allow population of the Attributes tab
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.COBieProgress">
+            <summary>
+            A class to help send progress updates back to the calling context
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieProgress.UpdateStatus(System.Boolean)">
+            <summary>
+            Updates the context with the latest status
+            </summary>
+            <remarks>Only updates every few hundred milli-seconds unless the Update is forced.</remarks>
+            <param name="forceUpdate"></param>
+        </member>
+        <member name="F:Xbim.COBie.COBieCardinality.OneToMany">
+            <summary>
+            A relationship that is 1:N 
+            </summary>
+            <remarks>e.g. Components can have only one single Type</remarks>
+        </member>
+        <member name="F:Xbim.COBie.COBieCardinality.ManyToMany">
+            <summary>
+            A relationship that is N:M
+            </summary>
+            <remarks>e.g. a Component can be assigned to one or more Spaces</remarks>
+        </member>
+        <member name="T:Xbim.COBie.COBieMergeRoles">
+            <summary>
+            Merge Flags for roles in deciding if an object is allowed or discarded depending on the role of the model
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Federate.FederateCOBie.cOBieProgress">
+            <summary>
+            COBieProgress
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Federate.FederateCOBie.ErrorRowStartIndex">
+            <summary>
+            set the error reporting to be either one (first row is labeled one) or 
+            two based (first row is labeled two) on the rows of the tables/excel sheet
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Federate.FederateCOBie.#ctor(Xbim.Common.ReportProgressDelegate)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="progressHandler">Report Delegate</param>
+        </member>
+        <member name="M:Xbim.COBie.Federate.FederateCOBie.UpdateStatus(System.String,System.Int32,System.Int32)">
+            <summary>
+            Updates the delegates with the current percentage complete
+            </summary>
+            <param name="message"></param>
+            <param name="total"></param>
+            <param name="current"></param>
+        </member>
+        <member name="M:Xbim.COBie.Federate.FederateCOBie.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Federate.FederateCOBie.Merge(System.Collections.Generic.List{Xbim.COBie.COBieWorkbook})">
+            <summary>
+            Merge the workbooks together into a single federated workbook
+            </summary>
+            <param name="workbooks">List of Workbooks</param>
+            <returns>Federated COBie Workbook</returns>
+        </member>
+        <member name="M:Xbim.COBie.Federate.FederateCOBie.PopulateErrors(Xbim.COBie.COBieWorkbook)">
+            <summary>
+            Build Error lists on workbook
+            </summary>
+            <param name="fedWorkBook"></param>
+        </member>
+        <member name="P:Xbim.COBie.ObjectTypeValues.Component">
+            <summary>
+            List of component class types to exclude from selection
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.ObjectTypeValues.Types">
+            <summary>
+            List of type object class types to exclude from selection
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.ObjectTypeValues.Assembly">
+            <summary>
+            List of type object class types to exclude from selection
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.ZoneValues">
+            <summary>
+            Attribute exclude strings class, for Zone sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.ZoneValues.AttributesContain">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Zone sheet with contains compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.TypeValues">
+            <summary>
+            Attribute exclude strings class, for Type sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.TypeValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Type sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.TypeValues.AttributesContain">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Type sheet with contains compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.TypeValues.PropertySetsEqualTo">
+            <summary>
+            List of property set names that are to be excluded from the Attributes generated from the Type sheet with equal compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.SpaceValues">
+            <summary>
+            Attribute exclude strings class, for Space sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.SpaceValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Space sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.SpaceValues.AttributesContain">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Space sheet with contains compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.SpaceValues.PropertySetsEqualTo">
+            <summary>
+            List of property set names that are to be excluded from the Attributes generated from the Space sheet with equal compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.FloorValues">
+            <summary>
+            Attribute exclude strings class, for Floor sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.FloorValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Floor sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.FloorValues.AttributesContain">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Floor sheet with contains compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.FacilityValues">
+            <summary>
+            Attribute exclude strings class, for Facility sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.FacilityValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Facility sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.FacilityValues.AttributesContain">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Facility sheet with contains compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.SpareValues">
+            <summary>
+            Attribute exclude strings class, for Spare sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.SpareValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Spare sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.SpareValues.AttributesContain">
+            <summary>
+            List of property names that are to be excluded from the Attributes generated from the Spare sheet with contains compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.ComponentValues">
+            <summary>
+            Attribute exclude strings class, for component sheet
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.ComponentValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from Attributes generated from the Component sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.ComponentValues.AttributesContain">
+            <summary>
+             List of property names that are to be excluded from the Attributes generated from the Component sheet with contains compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.CommonValues">
+            <summary>
+            Attribute exclude strings class, common to all sheets
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.CommonValues.AttributesEqualTo">
+            <summary>
+            List of property names that are to be excluded from Attributes sheet with equal compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.CommonValues.AttributesStartWith">
+            <summary>
+            List of property names that are to be excluded from Attributes sheet with start with compare
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.CommonValues.AttributesContain">
+            <summary>
+             List of property names that are to be excluded from Attributes sheet with contains with compare
+            </summary>
+        </member>
+        <member name="T:Xbim.COBie.FilterValuesOnMerge">
+            <summary>
+            Class to work out the Precedence Rules on merging models
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.FilterValuesOnMerge.FilterTypes">
+            <summary>
+            List of Ifc objects we need to test for Merge Precedence Rules
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.FilterValuesOnMerge.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.FilterValuesOnMerge.Merge(System.String)">
+            <summary>
+            Test on workbook field holding type name
+            </summary>
+            <param name="typeName"></param>
+            <returns>bool </returns>
+        </member>
+        <member name="M:Xbim.COBie.FilterValuesOnMerge.MatchRoles(Xbim.COBie.COBieMergeRoles,Xbim.COBie.COBieMergeRoles)">
+            <summary>
+            See if we need to merge comparing the file roles to the merge ifcType roles
+            </summary>
+            <param name="fileRoles">Roles associated with the file, COBieMergeRoles</param>
+            <param name="mergeRoles">Roles associated with the ifcType, COBieMergeRoles</param>
+            <returns></returns>
+        </member>
+        <member name="F:Xbim.COBie.IFCGuid.base64Chars">
+            <summary>
+            The replacement table
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.IFCGuid.cv_to_64(System.UInt32,System.Char[]@,System.Int32,System.Int32)">
+            <summary>
+            Conversion of an integer into characters 
+            with base 64 using the table base64Chars
+            </summary>
+            <param name="number">The number to convert</param>
+            <param name="result">The result char array to write to</param>
+            <param name="start">The position in the char array to start writing</param>
+            <param name="len">The length to write</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.IFCGuid.cv_from_64(System.Char[],System.Int32,System.Int32)">
+            <summary>
+            The reverse function to calculate 
+            the number from the characters
+            </summary>
+            <param name="str">The char array to convert from</param>
+            <param name="start">Position in array to start read</param>
+            <param name="len">The length to read</param>
+            <returns>The calculated nuber</returns>
+        </member>
+        <member name="M:Xbim.COBie.IFCGuid.FromIfcGUID(System.String)">
+            <summary>
+            Reconstruction of the GUID 
+            from an IFC GUID string (base64)
+            </summary>
+            <param name="guid">The GUID string to convert. Must be 22 characters long</param>
+            <returns>GUID correspondig to the string</returns>
+        </member>
+        <member name="M:Xbim.COBie.IFCGuid.ToIfcGuid(System.Guid)">
+            <summary>
+            Conversion of a GUID to a string 
+            representing the GUID 
+            </summary>
+            <param name="guid">The GUID to convert</param>
+            <returns>IFC (base64) encoded GUID string</returns>
+        </member>
+        <member name="T:Xbim.COBie.Resources.ErrorDescription">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.AlphaNumeric_Value_Expected">
+            <summary>
+              Looks up a localized string similar to Value must be alpha-numeric.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.Email_Value_Expected">
+            <summary>
+              Looks up a localized string similar to Value must be a valid email address.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.ForeignKey_Violation">
+            <summary>
+              Looks up a localized string similar to Value must exist in column {1} of the {0} sheet.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.ISODate_Value_Expected">
+            <summary>
+              Looks up a localized string similar to Value must be a valid date.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.meter">
+            <summary>
+              Looks up a localized string similar to meter.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.Null_ForeignKey_Value">
+            <summary>
+              Looks up a localized string similar to Invalid value.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.Numeric_Value_Expected">
+            <summary>
+              Looks up a localized string similar to Value must be a valid number.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.PickList_Violation">
+            <summary>
+              Looks up a localized string similar to Value must exist in column {1} of the {0} sheet.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.PrimaryKey_Violation">
+            <summary>
+              Looks up a localized string similar to Value must be unique in column(s) {0} in rows {1} .
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.Text_Value_Expected">
+            <summary>
+              Looks up a localized string similar to Required value is empty.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Resources.ErrorDescription.Value_Out_of_Bounds">
+            <summary>
+              Looks up a localized string similar to Value must be under {0} characters.
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieColumn.#ctor(System.Reflection.PropertyInfo,Xbim.COBie.COBieAttributes,System.Collections.Generic.List{System.String})">
+            <summary>
+            Constructor for COBieColumn
+            </summary>
+            <param name="propInfo">PropertyInfo</param>
+            <param name="attr">COBieAttributes</param>
+            <param name="aliases">List of strings</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieColumn.IsMatch(System.String)">
+            <summary>
+            Determines if this COBieColumn is a match for the supplied column name, using a basic heuristic match
+            </summary>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieColumn.StripPunctuation(System.String)">
+            <summary>
+            Removes all punctuation and white space
+            </summary>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.COBie.COBieError.ErrorLevels">
+            <summary>
+            Level of error
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="model">IModel to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieContactSheet">
+            <summary>
+            Creates Contact COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieDocumentSheet">
+            <summary>
+            Creates Document COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieImpactSheet">
+            <summary>
+            Creates Impact COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieIssueSheet">
+            <summary>
+            Creates Issue COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieJobSheet">
+            <summary>
+            Creates Job COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieResourceSheet">
+            <summary>
+            Creates Resource COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieFloorSheet">
+            <summary>
+            Creates Floor COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieSpaceSheet">
+            <summary>
+            Creates Space COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieFacilitySheet">
+            <summary>
+            Creates Facility COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieSpareSheet">
+            <summary>
+            Creates Spare COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieZoneSheet">
+            <summary>
+            Creates Zone COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieTypeSheet">
+            <summary>
+            Creates Type COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieComponentSheet">
+            <summary>
+            Creates Component COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieSystemSheet(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.HashSet{System.String}})">
+            <summary>
+            Creates System COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieAssemblySheet">
+            <summary>
+            Creates Assembly COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieConnectionSheet">
+            <summary>
+            Creates Connection COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieCoordinateSheet">
+            <summary>
+            Creates Coordinate COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieQueries.GetCOBieAttributeSheet">
+            <summary>
+            Creates Attribute COBieSheet Data
+            </summary>
+            <param name="model">IModel to read data from</param>
+            <returns>COBieSheet</returns>
+        </member>
+        <member name="T:Xbim.COBie.COBieBuilder">
+            <summary>
+            Interrogates IFC models and builds COBie-format objects from the models
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieBuilder.#ctor(Xbim.COBie.COBieContext)">
+            <summary>
+            Constructor which also sets the Context
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="P:Xbim.COBie.COBieBuilder.Context">
+            <summary>
+            The context in which this COBie data is being built
+            </summary>
+            <remarks>Contains the source models, templates, environmental data and other parameters</remarks>
+        </member>
+        <member name="P:Xbim.COBie.COBieBuilder.Workbook">
+            <summary>
+            The set of COBie worksheets
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieBuilder.SetExcludeObjTypeTypes(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBiePickListsRow})">
+            <summary>
+            Set the exclude list using the pick list sheet as the source of allowed Object Types
+            </summary>
+            <param name="CobiePickLists">COBieSheet of COBiePickListsRow</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieBuilder.SetExcludeComponentTypes(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBiePickListsRow})">
+            <summary>
+            Set the exclude list using the pick list sheet as the source of allowed Element types
+            </summary>
+            <param name="CobiePickLists">COBieSheet of COBiePickListsRow</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieBuilder.GetExcludedTypes(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBiePickListsRow},System.Type,System.Int32)">
+            <summary>
+            Returns a list of class types to use as exclusions
+            </summary>
+            <param name="CobiePickLists">COBieSheet of COBiePickListsRow</param>
+            <param name="reqType">Type object to filter selection on</param>
+            <param name="colIndex">column index to get required classes from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieBuilder.Export(Xbim.COBie.Contracts.ICOBieSerialiser,Xbim.COBie.Contracts.ICOBieValidationTemplate)">
+            <summary>
+            Passes this instance of the COBieReader into the provided ICOBieSerialiser
+            </summary>
+            <param name="serialiser">The object implementing the ICOBieSerialiser interface.</param>
+        </member>
+        <member name="T:Xbim.COBie.COBieRow">
+            <summary>
+            Abstract base class for Rows
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieRow.RowMetaData">
+            <summary>
+            Object to hold any arbitrary data we might want to associate with the row.
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieRow.RowHashValue">
+            <summary>
+            Row hash value
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieRow.RowHashValueV2">
+            <summary>
+            Row hash value without tolower-ing the Ext*Indentifier fields
+            (ExtIdentifiers are case sensitive)
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieRow.RowMergeHashValue">
+            <summary>
+            Row hash value
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.COBieRow.InitialRowHashValue">
+            <summary>
+            Hash value of the row in BuildIndices on sheet validation
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.SetInitialRowHash">
+            <summary>
+            Hash value set for the row in BuildIndices on sheet validation
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.SetInitialRowHash(System.String)">
+            <summary>
+            Provide your own hash implementation for initial row
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.ConcatRowValues(System.Boolean)">
+            <summary>
+            Return the concatenation of the row values
+            </summary>
+            <returns>string value of all rows added together</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.GenerateRowHash(System.Boolean)">
+            <summary>
+            Generate the Hash code for the row values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.ConcatMergeRowValues">
+            <summary>
+            Return the concatenation of the row values
+            </summary>
+            <returns>string value of all rows added together</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.GetCategoryCode(System.String)">
+            <summary>
+            Get the Uniclass Code from the category name
+            </summary>
+            <param name="category">String holding category</param>
+            <returns>Front end of category code</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.GenerateMergeKeyHash">
+            <summary>
+            Generate the Hash code for the row values used in a merge
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieRow.GetRowHash(System.Security.Cryptography.MD5,System.String)">
+            <summary>
+            Get the MD5 Hash value
+            </summary>
+            <param name="md5"></param>
+            <param name="rowValue">string to hash</param>
+            <returns> hexadecimal string</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="sheetName">Sheet name for this sheet object</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.AddNewRow">
+            <summary>
+            Create a COBieRow of the correct type for this sheet, not it is not added to the Rows list
+            </summary>
+            <returns>Correct COBieRow type for this COBieSheet</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.AddRemovedRow(`0)">
+            <summary>
+            Add COBieRow to the the Removed Rows list
+            </summary>
+            <param name="cOBieRow"></param>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.GetAliases(System.Reflection.PropertyInfo)">
+            <summary>
+            Get the alias attribute name values and add to a list of strings
+            </summary>
+            <param name="propInfo">PropertyInfo for the column field</param>
+            <returns>List of strings</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.SetRowsHashCode">
+            <summary>
+            Set the initial hash code for each row in the sheet, i.e when the workbook is created
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.HasMergeHashCode(System.String,System.Boolean)">
+            <summary>
+            See if passed in hash code exists in the sheet
+            </summary>
+            <param name="hash">string, hash code to test</param>
+            <param name="addHash">add passed in hash to RowHash, i.e if you are going to add th row to the sheet if result of function is false</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.BuildIndices">
+            <summary>
+            Build Indexed dictionaries of values in each Keyed Columns.
+            </summary>
+            <remarks>Permits optimised validation</remarks>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.Validate(Xbim.COBie.COBieWorkbook,Xbim.COBie.ErrorRowIndexBase,Xbim.COBie.Contracts.ICOBieSheetValidationTemplate)">
+            <summary>
+            Validate the sheet
+            </summary>
+            <param name="workbook"></param>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidateComponentMerge(Xbim.Ifc.IfcStore,Xbim.COBie.COBieMergeRoles)">
+            <summary>
+            Validate component sheet for merge types depending on the role of the model this worksheet was built from
+            </summary>
+            <param name="model">model the cobie file was generated from</param>
+            <param name="fileRoles">the file roles</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidateTypeMerge(System.Collections.Generic.List{System.String})">
+             <summary>
+             Validate type sheet for merge types depending on the role of the model this worksheet was built from
+             </summary>
+            <param name="GlobalIds">List of GlobalId's</param>
+            <returns>Number of rows removed</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidateAttributeMerge(System.Collections.Generic.List{System.String})">
+            <summary>
+             Validate attribute sheet for merge types depending on the role of the model this worksheet was built from
+            </summary>
+            <param name="keys">string list holding the sheetname and name property concatenated together</param>
+            <returns>Number removed</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidateSystemMerge(System.Collections.Generic.List{System.String})">
+            <summary>
+             Validate system sheet for merge types in ComponentName, depending on the role of the model this worksheet was built from
+            </summary>
+            <param name="names">string list holding the name properties removed from the component sheet</param>
+            <returns>Number removed</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidateForeignKeys(Xbim.COBie.COBieWorkbook,Xbim.COBie.Contracts.ICOBieSheetValidationTemplate)">
+            <summary>
+            Validate the existence of the Foreign Key value on the referencing sheet, if not add error
+            </summary>
+            <param name="context">COBieContext object holding global values for this model</param>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ForeignKeyMatch(Xbim.COBie.COBieColumnRelationship,Xbim.COBie.COBieCell)">
+            <summary>
+            Match the Foreign Key with the primary key field
+            </summary>
+            <param name="reference">The COBie Index to cross reference</param>
+            <param name="cell">The COBie Cell to validate</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.PickListMatch(Xbim.COBie.COBieColumnRelationship,Xbim.COBie.COBieCell)">
+            <summary>
+            Match either side of a : delimited string or all of the string including the delimiter
+            </summary>
+            <param name="hashSet">List of strings</param>
+            <param name="foreignKeyValue">string to match</param>
+            <returns>true if a match, false if none</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidateFields(Xbim.COBie.Contracts.ICOBieSheetValidationTemplate)">
+            <summary>
+            Validate the row columns against the attributes set for each column 
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.ValidatePrimaryKeysUnique(Xbim.COBie.Contracts.ICOBieSheetValidationTemplate)">
+            <summary>
+            Validate the Primary Keys only exist once in the sheet 
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.GetCobieFieldNullError(Xbim.COBie.COBieCell,Xbim.COBie.COBieAttributeState,Xbim.COBie.COBieError.ErrorLevels,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Validating of the column COBieAttributeState attributes for null or n/a values
+            </summary>
+            <param name="cell">COBieCell</param>
+            <param name="sheetName">Sheet name</param>
+            <param name="row">Row index</param>
+            <param name="col">Column index</param>
+            <param name="initialRowHash">Initial row hash value</param>
+            <returns>COBieError or null</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.GetCOBieFieldFormatError(Xbim.COBie.COBieCell,Xbim.COBie.COBieAttributeState,Xbim.COBie.COBieError.ErrorLevels,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            check for Field format Error in passed cell
+            </summary>
+            <param name="cell">COBieCell</param>
+            <param name="sheetName">Sheet name</param>
+            <param name="row">Row index</param>
+            <param name="col">Column index</param>
+            <param name="initialRowHash">Initial row hash value</param>
+            <returns>COBieError or null</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.GetCOBieFieldOutOfBoundsError(Xbim.COBie.COBieCell,Xbim.COBie.COBieAttributeState,Xbim.COBie.COBieError.ErrorLevels,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Check for Field format length
+            </summary>
+            <param name="cell">COBieCell</param>
+            <param name="sheetName">Sheet name</param>
+            <param name="row">Row index</param>
+            <param name="col">Column index</param>
+            <param name="initialRowHash">Initial row hash value</param>
+            <returns>COBieError or null</returns>
+        </member>
+        <member name="M:Xbim.COBie.COBieSheet`1.GetErrorLevel(Xbim.COBie.COBieAttributeState)">
+            <summary>
+            Get ErrorLevel base on the COBieAttributeState Attribute
+            </summary>
+            <param name="state">COBieAttributeState</param>
+            <returns>COBieError.ErrorLevels enumeration</returns>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXBimSerialiser.XBimContext">
+            <summary>
+            Context holder
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXBimSerialiser.MergeGeometryOnly">
+            <summary>
+            If set to true will only merge the sheets required for Geometry
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXBimSerialiser.WorkBook">
+            <summary>
+            COBieWorkbook to convert to XBim Model Object
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXBimSerialiser.Model">
+            <summary>
+            XBim Model Object
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXBimSerialiser.FileName">
+            <summary>
+            File to write too
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="fileName">.xBIM file name and path</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.#ctor(System.String,Xbim.Common.ReportProgressDelegate)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.Serialise(Xbim.COBie.COBieWorkbook,Xbim.COBie.Contracts.ICOBieValidationTemplate)">
+            <summary>
+            XBim Serialise
+            </summary>
+            <param name="workbook">COBieWorkbook to Serialise</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.Create(Xbim.COBie.COBieWorkbook)">
+            <summary>
+            XBim Serialise
+            </summary>
+            <param name="workbook">COBieWorkbook to Serialise</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.Merge(Xbim.COBie.COBieWorkbook)">
+            <summary>
+            XBim Merge
+            </summary>
+            <param name="workbook">COBieWorkbook to Serialise</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.ModelSetUp">
+            <summary>
+            Set up the Model Object
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.System#IDisposable#Dispose">
+            <summary>
+            Dispose of the Model Object and close transaction
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.Validate(Xbim.IO.Esent.XbimReadWriteTransaction)">
+            <summary>
+            Validate Model Object Foe Errors
+            </summary>
+            <param name="trans"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXBimSerialiser.Save">
+            <summary>
+            Save Model Object To A File
+            </summary>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSDeserialiser.#ctor(System.String)">
+            <summary>
+            Constructor to do all sheets
+            </summary>
+            <param name="file"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSDeserialiser.#ctor(System.String,System.String)">
+            <summary>
+            Constructor to do a single sheet
+            </summary>
+            <param name="file"></param>
+            <param name="sheetname"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSDeserialiser.GetSheetNames">
+            <summary>
+            Uses reflection to extract the WORKSHEET_name from the Constants class
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSDeserialiser.GetSheetType(System.String)">
+            <summary>
+            Create the empty COBieSheet to the correct type decided by sheet name
+            </summary>
+            <param name="sheetname">Sheet name we want to create</param>
+            <returns>ICOBieSheet of COBieRow to the correct row type to match the sheet name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSDeserialiser.GetXLSFileData">
+            <summary>
+            Read XLS file into the HSSFWorkbook object
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSDeserialiser.Deserialise">
+            <summary>
+            DeSerialise the date held in the sheet into a COBieWorkbook
+            </summary>
+            <returns>COBieWorkbook with date imported from XLS file</returns>
+        </member>
+        <member name="T:Xbim.COBie.Serialisers.COBieXLSSerialiser">
+            <summary>
+            Formats COBie data into an Excel XLS 
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXLSSerialiser.HasErrorLevel">
+            <summary>
+            COBeError has the ErrorLevel property
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXLSSerialiser.Excludes">
+            <summary>
+            Class holds exclude rules, now required as a tab to excel workbook
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSSerialiser.Serialise(Xbim.COBie.COBieWorkbook,Xbim.COBie.Contracts.ICOBieValidationTemplate)">
+            <summary>
+            Formats the COBie data into an Excel XLS file
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSSerialiser.WriteSheet(Xbim.COBie.ICOBieSheet{Xbim.COBie.COBieRow})">
+            <summary>
+            Writes the Excel worksheet for this COBie sheet
+            </summary>
+            <param name="sheet"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSSerialiser.HighlightErrors(NPOI.SS.UserModel.ISheet,Xbim.COBie.ICOBieSheet{Xbim.COBie.COBieRow})">
+            <summary>
+            Creates an excel comment in each cell with an associated error
+            </summary>
+            <param name="excelSheet"></param>
+            <param name="sheet"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSSerialiser.ReportRules">
+            <summary>
+            Create a rules sheet
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSSerialiser.WriteExcludesObjects(System.Int32,NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.Type})">
+            <summary>
+            Write object types to the excel cells
+            </summary>
+            <param name="col">column index</param>
+            <param name="rulesSheet">Sheet</param>
+            <param name="excludeObjects">List of types</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSSerialiser.WriteExcludesStrings(System.Int32,NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.String})">
+            <summary>
+            Write strings to excel cells
+            </summary>
+            <param name="col">column index</param>
+            <param name="rulesSheet">Sheet</param>
+            <param name="excludeStrings">List of strings</param>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXLSXSerialiser.IsXlsx">
+            <summary>
+            False gives excel xls, true excel xlsx 
+            </summary>
+        </member>
+        <member name="F:Xbim.COBie.Serialisers.COBieXLSXSerialiser._fileName">
+            <summary>
+            Filename to write workbook to
+            </summary>
+        </member>
+        <member name="F:Xbim.COBie.Serialisers.COBieXLSXSerialiser._templateFileName">
+            <summary>
+            Path and name of template file to use
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXLSXSerialiser.ExcelWorkbook">
+            <summary>
+            NPOI Workbook object
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXLSXSerialiser.hasErrorLevel">
+            <summary>
+            COBeError has the ErrorLevel property
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.COBieXLSXSerialiser.Excludes">
+            <summary>
+            Class holds exclude rules, now required as a tab to excel workbook
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.Serialise(Xbim.COBie.COBieWorkbook,Xbim.COBie.Contracts.ICOBieValidationTemplate)">
+            <summary>
+            Formats the COBie data into an Excel XLS file
+            </summary>
+            <param name="cobie"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.WriteSheet(Xbim.COBie.ICOBieSheet{Xbim.COBie.COBieRow})">
+            <summary>
+            Writes the Excel worksheet for this COBie sheet
+            </summary>
+            <param name="sheet"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.HighlightErrors(NPOI.SS.UserModel.ISheet,Xbim.COBie.ICOBieSheet{Xbim.COBie.COBieRow})">
+            <summary>
+            Creates an excel comment in each cell with an associated error
+            </summary>
+            <param name="excelSheet"></param>
+            <param name="sheet"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.CreateCellStyles">
+            <summary>
+            Create Styles associated by colour and COBieAllowedType as keys in Dictionary
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.CreateColours">
+            <summary>
+            Set required colours for COBie Sheet
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.CreateColours(System.String,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            create the colours for the COBie sheet
+            </summary>
+            <param name="colourName"></param>
+            <param name="red"></param>
+            <param name="green"></param>
+            <param name="blue"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.AppendFormat(Xbim.COBie.COBieAllowedType,NPOI.SS.UserModel.ICellStyle)">
+            <summary>
+            Append the required format depending on the COBieAllowedType
+            </summary>
+            <param name="type">COBieAllowedType</param>
+            <param name="cellStyle">ICellStyle, style to ally formate to</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.GetCellColour(Xbim.COBie.COBieAttributeState)">
+            <summary>
+            Get required colour for the cell
+            </summary>
+            <param name="state">COBieAttributeState</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.CreateStyle(System.String,Xbim.COBie.COBieAllowedType)">
+            <summary>
+            Create the cell style
+            </summary>
+            <param name="colourName">string</param>
+            <param name="type">COBieAllowedType</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.FormatCell(NPOI.SS.UserModel.ICell,Xbim.COBie.COBieCell)">
+            <summary>
+            Set the cell to the correct colour and formate(as required)
+            </summary>
+            <param name="excelCell"></param>
+            <param name="cell"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.ReportRules">
+            <summary>
+            Create a rules sheet
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.WriteExcludesObjects(System.Int32,NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.Type})">
+            <summary>
+            Write object types to the excel cells
+            </summary>
+            <param name="col">column index</param>
+            <param name="rulesSheet">Sheet</param>
+            <param name="excludeObjects">List of types</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.COBieXLSXSerialiser.WriteExcludesStrings(System.Int32,NPOI.SS.UserModel.ISheet,System.Collections.Generic.List{System.String})">
+            <summary>
+            Write strings to excel cells
+            </summary>
+            <param name="col">column index</param>
+            <param name="rulesSheet">Sheet</param>
+            <param name="excludeStrings">List of strings</param>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.XBimContext">
+            <summary>
+            Context object holding Model, WorkBook etc...
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.Model">
+            <summary>
+            Model from COBieXBimContext object
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.WCS">
+            <summary>
+            World coordinate system from COBieXBimContext object
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.WorkBook">
+            <summary>
+            WorkBook from COBieXBimContext object
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.Contacts">
+            <summary>
+            Contacts from COBieXBimContext object
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.BumpTransaction(Xbim.IO.Esent.XbimReadWriteTransaction,System.Int64)">
+            <summary>
+            Commit and restart the passed transaction
+            </summary>
+            <param name="trans">transaction to commit and restart start</param>
+            <param name="number">number of instances in Model at start of transaction</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetNewOwnerHistory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String,Xbim.Ifc2x3.ActorResource.IfcPersonAndOrganization,System.String)">
+            <summary>
+            Set a new owner history to the 
+            </summary>
+            <param name="ifcRoot">Object to add the owner history</param>
+            <param name="externalSystem">Application used to modify/create</param>
+            <param name="createdBy">IfcPersonAndOrganization object</param>
+            <param name="createdOn">Date the object was created on</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetOwnerHistory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String,Xbim.Ifc2x3.ActorResource.IfcPersonAndOrganization,System.String)">
+            <summary>
+            Set an existing or create a new owner history if no match is found
+            </summary>
+            <param name="ifcRoot">Object to add the owner history</param>
+            <param name="externalSystem">Application used to modify/create</param>
+            <param name="createdBy">IfcPersonAndOrganization object</param>
+            <param name="createdOn">Date the object was created on</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.CreateOwnerHistory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String,Xbim.Ifc2x3.ActorResource.IfcPersonAndOrganization,System.String)">
+            <summary>
+            Create the owner history
+            </summary>
+            <param name="ifcRoot">Object to add the owner history</param>
+            <param name="externalSystem">Application used to modify/create</param>
+            <param name="createdBy">IfcPersonAndOrganization object</param>
+            <param name="createdOn">Date the object was created on</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetUserHistory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String,System.String,System.String)">
+            <summary>
+            Set the user history to a IfcRoot object
+            </summary>
+            <param name="ifcRoot">Object to set owner history</param>
+            <param name="extSystem">External system string</param>
+            <param name="createdBy">Email address of creator</param>
+            <param name="createdOn">Created on date as string</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetEmailUser(System.String)">
+            <summary>
+            Set the IfcPersonAndOrganization from using email only
+            </summary>
+            <param name="email">email</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.ValidateString(System.String)">
+            <summary>
+            Check for empty, null of DEFAULT_STRING
+            </summary>
+            <param name="value">string to validate</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetBuilding">
+            <summary>
+            Get the IfcBuilding Object
+            </summary>
+            <returns>IfcBuilding Object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetSite">
+            <summary>
+            Get the IfcSite Object
+            </summary>
+            <returns>IfcSite Object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetDoubleFromString(System.String)">
+            <summary>
+            Convert a String to a Double
+            </summary>
+            <param name="num">string to convert</param>
+            <returns>double or null</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddCategory(System.String,Xbim.Ifc2x3.Kernel.IfcRoot)">
+            <summary>
+            Add Category via the IfcRelAssociatesClassification object
+            </summary>
+            <param name="category">Category for this IfcRoot Object</param>
+            <param name="ifcRoot">IfcRoot derived object to all category to</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddGlobalId(System.String,Xbim.Ifc2x3.Kernel.IfcRoot)">
+            <summary>
+            Add GlobalId to the IfcRoot Object
+            </summary>
+            <param name="extId">string representing the global Id</param>
+            <param name="ifcRoot">IfcRoot derived object to add GlobalId too</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.ValidGlobalId(System.String)">
+            <summary>
+            Validate the string as a GlobalId
+            </summary>
+            <param name="extId">string representation of the GlobalId</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetPropertySetDescription(Xbim.Ifc2x3.Kernel.IfcObject,System.String,System.String)">
+            <summary>
+            Set or change a Property Set description value
+            </summary>
+            <param name="obj">Object holding the property</param>
+            <param name="pSetName">Property set name</param>
+            <param name="pSetDescription">Property set description</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertySingleValue(Xbim.Ifc2x3.Kernel.IfcObject,System.String,System.String,System.String,System.String,Xbim.Ifc2x3.MeasureResource.IfcValue)">
+            <summary>
+            Add a property single value
+            </summary>
+            <param name="ifcObject">Object to add property too</param>
+            <param name="pSetName">Property set name to add property single value too</param>
+            <param name="pSetDescription">Property set description or null to leave unaltered</param>
+            <param name="propertyName">Property single value name</param>
+            <param name="propertyDescription">Property single value description or null to not set</param>
+            <param name="value">IfcValue select type to set on property single value</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertySet(Xbim.Ifc2x3.Kernel.IfcObject,System.String,System.String)">
+            <summary>
+            Add a property set or use existing if it exists
+            </summary>
+            <param name="ifcObject">IfcObject to add property set too</param>
+            <param name="pSetName">name of the property set</param>
+            <param name="pSetDescription"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertySet(Xbim.Ifc2x3.Kernel.IfcTypeObject,System.String,System.String)">
+            <summary>
+            Add a property set or use existing if it exists
+            </summary>
+            <param name="ifcObject">IfcObject to add property set too</param>
+            <param name="pSetName">name of the property set</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertySingleValue(Xbim.Ifc2x3.Kernel.IfcPropertySet,System.String,System.String,Xbim.Ifc2x3.MeasureResource.IfcValue,Xbim.Ifc2x3.MeasureResource.IfcUnit)">
+            <summary>
+            Add a property single value or use existing if it exists
+            </summary>
+            <param name="ifcPropertySet">IfcPropertySet object</param>
+            <param name="propertyName">Single Value Property Name</param>
+            <param name="propertyDescription">Single Value Property Description</param>
+            <param name="value">IfcValue object</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertyEnumeratedValue(Xbim.Ifc2x3.Kernel.IfcPropertySet,System.String,System.String,Xbim.Ifc2x3.MeasureResource.IfcValue[],Xbim.Ifc2x3.MeasureResource.IfcValue[],Xbim.Ifc2x3.MeasureResource.IfcUnit)">
+            <summary>
+            Add a new Property Enumerated Value or use existing
+            </summary>
+            <param name="ifcPropertySet">IfcPropertySet object</param>
+            <param name="propertyName">Property Enumerated Value Name</param>
+            <param name="propertyDescription">Property Enumerated Value Description</param>
+            <param name="values">Property Enumerated Value list of values</param>
+            <param name="enumValues">Property Enumerated Value possible enumeration values</param>
+            <param name="unit">Unit for the enumValues values</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertyTableValue(Xbim.Ifc2x3.Kernel.IfcPropertySet,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Add a new Property Table Value or use existing
+            </summary>
+            <param name="ifcPropertySet"></param>
+            <param name="propertyName"></param>
+            <param name="propertyDescription"></param>
+            <param name="values">delimited string of paired values(xxx:xxx)(xxx:xxx)....(xxx:xxx)</param>
+            <param name="expression">string</param>
+            <param name="unit">delimited string of paired unit values xxx:xxx</param>
+            <returns>IfcPropertyTableValue</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetValueArray(System.String)">
+            <summary>
+            create a IfcValue array from a delimited string, either "," or ":" delimited
+            </summary>
+            <param name="value">string</param>
+            <returns>IfcValue[]</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetIfcUnit(System.String)">
+            <summary>
+            Convert a string into an IfcUnit
+            </summary>
+            <param name="unit">unit</param>
+            <returns>IfcUnit or null on fail</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetSplitChar(System.String)">
+            <summary>
+            Get the most likely character which splits the line
+            </summary>
+            <param name="value">delimited string</param>
+            <returns>split character</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SplitTheString(System.String)">
+            <summary>
+            Split the string 
+            </summary>
+            <param name="str">string to split via a ":" or ","</param>
+            <returns>string array</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetPropertySetDescription(Xbim.Ifc2x3.Kernel.IfcTypeObject,System.String,System.String)">
+            <summary>
+            Set or change a Property Set description value
+            </summary>
+            <param name="obj">IfcTypeObject holding the property</param>
+            <param name="pSetName">Property set name</param>
+            <param name="pSetDescription">Property set description</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.AddPropertySingleValue(Xbim.Ifc2x3.Kernel.IfcTypeObject,System.String,System.String,System.String,System.String,Xbim.Ifc2x3.MeasureResource.IfcValue)">
+            <summary>
+            Add a property single value
+            </summary>
+            <param name="IfcTypeObject">Object to add property too</param>
+            <param name="pSetName">Property set name to add property single value too</param>
+            <param name="pSetDescription">Property set description or null to leave unaltered</param>
+            <param name="propertyName">Property single value name</param>
+            <param name="propertyDescription">Property single value description or null to not set</param>
+            <param name="value">IfcValue select type to set on property single value</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetDurationUnit(System.String)">
+            <summary>
+            Get the Duration unit, default year on no match
+            </summary>
+            <param name="requiredUnit">string of year, month or week</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SetContextDependentUnit(System.String)">
+            <summary>
+            Create a user defined unit via IfcContextDependentUnit
+            </summary>
+            <param name="unitName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetUnitEnumerations(System.String,System.Nullable{Xbim.Ifc2x3.MeasureResource.IfcSIUnitName}@,System.Nullable{Xbim.Ifc2x3.MeasureResource.IfcSIPrefix}@)">
+            <summary>
+            See if a string can be converted to the IfcSIUnitName / IfcSIPrefix combination
+            </summary>
+            <param name="value">string to evaluate</param>
+            <param name="returnUnit">IfcSIUnitName? object to pass found value out</param>
+            <param name="returnPrefix">IfcSIPrefix? object to pass found value out</param>
+            <returns>bool, success or failed</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetRootObject(System.String,System.String)">
+            <summary>
+            Determined the sheet the IfcRoot will have come from using the object type
+            </summary>
+            <param name="ifcItem">object which inherits from IfcRoot </param>
+            <returns>string holding sheet name</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetActorSelect(System.String)">
+            <summary>
+            Get the ActorSelect fro the given email
+            </summary>
+            <param name="email">string</param>
+            <returns>IfcActorSelect object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.JoinStrings(System.Char,System.Collections.Generic.List{System.String})">
+            <summary>
+            Join string list into a delimited string, but escape any character that is within an added string which is also the delimited character
+            </summary>
+            <param name="strings">list of strings</param>
+            <param name="splitChar">delimited character</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.SplitString(System.String,System.Char)">
+            <summary>
+            Split a string but also remove any escape characters used to preserve the delimited character within a string
+            </summary>
+            <param name="str">string to split</param>
+            <param name="splitChar">Delimited character to use</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetMaterialName(System.String)">
+            <summary>
+            get name without the thickness value
+            </summary>
+            <param name="str">string</param>
+            <returns>string with (???) removed</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetLayerThickness(System.String)">
+            <summary>
+            Get any value held in ()
+            </summary>
+            <param name="str">string</param>
+            <returns>double value or null</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.GetLastMatchChar(System.String,System.Char)">
+            <summary>
+            find the string matching from the back of the string
+            </summary>
+            <param name="str"></param>
+            <param name="match"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.CheckIfExistOnMerge``1(System.String)">
+            <summary>
+            Check that a IfcRoot object name exists in the model on a merge
+            </summary>
+            <typeparam name="T">object derived from IfcRoot </typeparam>
+            <param name="name">string name to compare with name property of objects in model</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBim.CheckIfObjExistOnMerge``1(System.String)">
+            <summary>
+            Check that a IfcRoot object name exists in the model on a merge
+            </summary>
+            <typeparam name="T">object derived from IfcRoot </typeparam>
+            <param name="name">string name to compare with name property of objects in model</param>
+            <returns>the object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.SerialiseAssembly(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieAssemblyRow})">
+            <summary>
+            Add the IfcPersonAndOrganizations to the Model object
+            </summary>
+            <param name="cOBieSheet"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.AddMaterial(Xbim.COBie.Rows.COBieAssemblyRow)">
+            <summary>
+            Add the data to the IfcMaterialLayerSet object
+            </summary>
+            <param name="row">COBieAssemblyRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.AddAssembly(Xbim.COBie.Rows.COBieAssemblyRow)">
+            <summary>
+            Add the data to the IfcRelDecomposes object
+            </summary>
+            <param name="row">COBieAssemblyRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.RemPostFixNumber(System.String)">
+            <summary>
+            Remove the post fix numbers on a string
+            </summary>
+            <param name="str">string to process</param>
+            <returns>String with post fix numbers removed</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.AddParentObject(Xbim.Ifc2x3.Kernel.IfcRelDecomposes,System.String)">
+            <summary>
+            Add the parent objects to the IfcRelDecomposes
+            </summary>
+            <param name="ifcRelDecomposes">Either a IfcRelAggregates or IfcRelNests object</param>
+            <param name="parentName">IfcObjectDefinition.Name value to search for, NOT case sensitive</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.GetParentObject(System.String)">
+            <summary>
+            Get the parent object for the ifcRelDecomposes object
+            </summary>
+            <param name="parentName">Math the Name property with this string</param>
+            <returns>IfcObjectDefinition </returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.AddChildObjects(Xbim.Ifc2x3.Kernel.IfcRelDecomposes,System.String,System.String)">
+            <summary>
+            Add the child objects to the IfcRelDecomposes
+            </summary>
+            <param name="ifcRelDecomposes">Either a IfcRelAggregates or IfcRelNests object</param>
+            <param name="sheetName">SheetName the children come from</param>
+            <param name="childNames">list of child object names separated by " : ", NOT case sensitive</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.GetSheetObjectList(System.String)">
+            <summary>
+            Get the ObjectDefinitions related to the sheet
+            </summary>
+            <param name="sheetName">Sheet name we are wanting the objects for</param>
+            <returns>IEnumerable of IfcObjectDefinition</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAssembly.AddChildObjects(Xbim.Ifc2x3.MaterialResource.IfcMaterialLayerSet,System.String)">
+            <summary>
+            Add the child objects to the IfcMaterialLayerSet
+            </summary>
+            <param name="ifcMaterialLayerSet">IfcMaterialLayerSet object</param>
+            <param name="childNames">list of child object names separated by " : ", NOT case sensitive</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAttribute.SerialiseAttribute(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieAttributeRow})">
+            <summary>
+            Add Properties back to component and type objects
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieAttributeRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAttribute.AddAttribute(Xbim.COBie.Rows.COBieAttributeRow)">
+            <summary>
+            Add the properties to the row object
+            </summary>
+            <param name="row">COBieAttributeRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAttribute.CheckIfExistOnMerge(System.String,System.String)">
+            <summary>
+            Check if property set exists on object when in merge, if not merge just create property set
+            </summary>
+            <param name="pSetName">Property set name</param>
+            <returns>IfcPropertySet</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimAttribute.SetCategory(Xbim.Ifc2x3.Kernel.IfcRoot,System.String)">
+            <summary>
+            Set Category to the property set
+            </summary>
+            <param name="ifcRoot">IfcRoot Object (IfcPropertySet)</param>
+            <param name="category">string, category Name</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimComponent.SerialiseComponent(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieComponentRow})">
+            <summary>
+            Create and setup objects held in the Component COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieComponentRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimComponent.AddComponent(Xbim.COBie.Rows.COBieComponentRow)">
+            <summary>
+            Add the components and fill with data from COBieComponentRow
+            </summary>
+            <param name="row">COBieComponentRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimComponent.AddElementRelationship(Xbim.Ifc2x3.ProductExtension.IfcElement,System.String)">
+            <summary>
+            Add element relationship to a parent object
+            </summary>
+            <param name="ifcElement">IfcElement object</param>
+            <param name="spaceNames">Name used as key to find parent object</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimComponent.GetElementInstance(System.String,Xbim.Common.IModel)">
+            <summary>
+            Create an instance of an object via a string name
+            </summary>
+            <param name="elementTypeName">String holding object type name we eant to create</param>
+            <param name="model">Model object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimConnection.SerialiseConnection(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieConnectionRow})">
+            <summary>
+            Create and setup objects held in the Connection COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieConnectionRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimConnection.AddConnection(Xbim.COBie.Rows.COBieConnectionRow)">
+            <summary>
+            Add the data to the IfcRelConnectsElements object
+            </summary>
+            <param name="row">COBieConnectionRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimConnection.AddRelConnectsPorts(System.String,System.String,System.String,Xbim.Ifc2x3.ProductExtension.IfcElement,Xbim.Ifc2x3.ProductExtension.IfcElement)">
+            <summary>
+            Add the IfcRelConnectsPorts to the model
+            </summary>
+            <param name="realizingElement">List of IfcElement names</param>
+            <param name="relatingPort">List of IfcPort Names</param>
+            <param name="relatedPort">List of IfcPort Names</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimConnection.GetElement(System.String)">
+            <summary>
+            Get the IfcElement Object given the name
+            </summary>
+            <param name="name">Name of the IfcElement to extract</param>
+            <returns>IfcElement object which has the passed name </returns>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.Model">
+            <summary>
+            Model to add COBie data too
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.IsMerge">
+            <summary>
+            Flag for merging
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.WorkBook">
+            <summary>
+            WorkBook holding the COBie data
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.Contacts">
+            <summary>
+            Contacts dictionary keyed on email address
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.IfcConversionBasedUnitYear">
+            <summary>
+            Year Unit
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.IfcConversionBasedUnitMonth">
+            <summary>
+            Month Unit
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.IfcConversionBasedUnitWeek">
+            <summary>
+            Month Unit
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.IfcConversionBasedUnitMinute">
+            <summary>
+            Month Unit
+            </summary>
+        </member>
+        <member name="P:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.WCS">
+            <summary>
+            World Coordinates System for the Model
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.#ctor(Xbim.Ifc2x3.IO.XbimModel)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="model">Model to add COBie data too</param>
+            <param name="workBook">Work Book With COBie data </param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.SetYearDurationUnit">
+            <summary>
+            Set the Year Duration Unit
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.SetMonthDurationUnit">
+            <summary>
+            Set the month duration unit
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.SetWeekDurationUnit">
+            <summary>
+            Set the week duration unit
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.SetMinuteDurationUnit">
+            <summary>
+            Set the week duration unit
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.SetSecondUnit">
+            <summary>
+            set the second unit, used for time duration units
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.UpdateStatus(System.String,System.Int32,System.Int32)">
+            <summary>
+            Updates the delegates with the current percentage complete
+            </summary>
+            <param name="message"></param>
+            <param name="total"></param>
+            <param name="current"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContext.Dispose">
+            <summary>
+            Dispose function
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContact.SerialiseContacts(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieContactRow})">
+            <summary>
+            Add the IfcPersonAndOrganizations to the Model object
+            </summary>
+            <param name="cOBieSheet"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimContact.SetDefaultUser">
+            <summary>
+            set the default IfcPersonAndOrganization in the Model
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimCoordinate.SerialiseCoordinate(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieCoordinateRow})">
+            <summary>
+            Create and setup Bounding Box's
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieCoordinateRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimCoordinate.AddFloorPlacement(Xbim.COBie.Rows.COBieCoordinateRow)">
+            <summary>
+            Add floor placement point
+            </summary>
+            <param name="row">COBieCoordinateRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimCoordinate.AddBoundingBoxAsExtrudedAreaSolid(Xbim.COBie.Rows.COBieCoordinateRow,Xbim.COBie.Rows.COBieCoordinateRow)">
+            <summary>
+            Add space placement
+            </summary>
+            <param name="row">COBieCoordinateRow holding the data for one corner</param>
+            <param name="rowNext">COBieCoordinateRow holding the data for the other corner</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimCoordinate.AddExtrudedRectangle(Xbim.COBie.Rows.COBieCoordinateRow,Xbim.COBie.Rows.COBieCoordinateRow,Xbim.Ifc2x3.Kernel.IfcProduct,Xbim.Ifc2x3.Kernel.IfcProduct)">
+            <summary>
+            Add a Bounding Box extrusion onto the ifcProduct
+            </summary>
+            <param name="row">COBieCoordinateRow holding the data for one corner</param>
+            <param name="rowNext">COBieCoordinateRow holding the data for the other corner</param>
+            <param name="placementRelToIfcProduct">Product which is parent of ifcProduct passed product to add extrusion onto</param>
+            <param name="ifcProduct">IfcProduct to add the extrusion onto</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimCoordinate.CalcObjectPlacement(Xbim.COBie.Rows.COBieCoordinateRow,Xbim.Ifc2x3.Kernel.IfcProduct)">
+            <summary>
+            Calculate the ObjectPlacment for an IfcProduct from row data and the parent object
+            </summary>
+            <param name="row">COBieCoordinateRow holding the data</param>
+            <param name="placementRelToIfcProduct">IfcProduct that the ObjectPlacment relates too, i.e. the parent of the ifcProduct ObjectPlacment we are calculating</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimCoordinate.ConvertMatrix3D(Xbim.Ifc2x3.GeometricConstraintResource.IfcObjectPlacement)">
+            <summary>
+            Builds a windows Matrix3D from an ObjectPlacement
+            Conversion fo c++ function CartesianTransform::ConvertMatrix3D from CartesianTransform.cpp
+            </summary>
+            <param name="objPlacement">IfcObjectPlacement object</param>
+            <returns>Matrix3D</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimDocument.SerialiseDocument(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieDocumentRow})">
+            <summary>
+            Add the IfcDocumentInformation to the Model object
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieDocumentRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimDocument.AddDocument(Xbim.COBie.Rows.COBieDocumentRow)">
+            <summary>
+            Add the data to the Document Information object
+            </summary>
+            <param name="row">COBieDocumentRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimDocument.CheckIfExistOnMerge(Xbim.COBie.Rows.COBieDocumentRow)">
+            <summary>
+            Check if the document information is already within the model
+            </summary>
+            <param name="row">COBieDocumentRow data</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimDocument.AddDocumentReference(Xbim.COBie.Rows.COBieDocumentRow,Xbim.Ifc2x3.ExternalReferenceResource.IfcDocumentInformation)">
+            <summary>
+            Add the document references to the IfcDocumentInformation object
+            </summary>
+            <param name="row">COBieDocumentRow holding row data</param>
+            <param name="ifcDocumentInformation">IfcDocumentInformation object to add references too</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimDocument.GetObjectRelationship(Xbim.COBie.Rows.COBieDocumentRow)">
+            <summary>
+            Add the object the document relates too
+            </summary>
+            <param name="row">COBieDocumentRow holding row data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.SerialiseFacility(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieFacilityRow})">
+            <summary>
+            Create and setup objects held in the Facility COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieFacilityRows to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.CreateSite(Xbim.COBie.Rows.COBieFacilityRow)">
+            <summary>
+            Create and setup IfcSite object
+            </summary>
+            <param name="row">COBieFacilityRow object to read data from</param>
+            <returns>IfcSite object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.CreateBuilding(Xbim.COBie.Rows.COBieFacilityRow)">
+            <summary>
+            Create and setup the IfcBuilding building object
+            </summary>
+            <param name="row">COBieFacilityRow object to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.SetAreaMeasure(Xbim.Ifc2x3.ProductExtension.IfcBuilding,Xbim.COBie.Rows.COBieFacilityRow)">
+            <summary>
+            Set the area measure to the building
+            </summary>
+            <param name="ifcBuilding">Building object</param>
+            <param name="row">COBieFacilityRow object holding data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.SetUpProject(Xbim.COBie.Rows.COBieFacilityRow)">
+            <summary>
+            SetUp the Model Project Object
+            </summary>
+            <param name="row">COBieFacilityRow object to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.SetUnitToProject(Xbim.Ifc2x3.MeasureResource.IfcUnitEnum,System.String)">
+            <summary>
+            Convert string back into IfcSIUnitName and IfcSIPrefix enumerations
+            </summary>
+            <param name="unitType">IfcUnitEnum unit type</param>
+            <param name="value">string representing the unit type</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.SetMonetaryUnit(System.String)">
+             <summary>
+             Get Monetary Unit
+             </summary>
+            <param name="value">string representing the currency type</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFacility.GetProjectUnitAssignment">
+            <summary>
+            Set the global units in the UnitsInContext property
+            </summary>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFloor.SerialiseFloor(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieFloorRow})">
+            <summary>
+            Create and setup objects held in the Floor COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieFloorRows to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFloor.AddBuildingStory(Xbim.COBie.Rows.COBieFloorRow)">
+            <summary>
+            Add the data to the BuildingStory object
+            </summary>
+            <param name="row">COBieFloorRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimFloor.AddFloorHeight(System.String,Xbim.Ifc2x3.ProductExtension.IfcBuildingStorey)">
+            <summary>
+            Add the Building Story (Floor) height
+            </summary>
+            <param name="floorHeight">the floor height</param>
+            <param name="ifcBuildingStorey">IfcBuildingStorey object to add height property too</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimImpact.SerialiseImpact(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieImpactRow})">
+            <summary>
+            Create and setup objects held in the Component COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieImpactRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimImpact.AddImpact(Xbim.COBie.Rows.COBieImpactRow)">
+            <summary>
+            Add the Impact and fill with data from COBieComponentRow
+            </summary>
+            <param name="row">COBieImpactRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimImpact.SetValue(System.String)">
+            <summary>
+            set IfcValue to IfcText or IfcReal
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimIssue.SerialiseIssue(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieIssueRow})">
+            <summary>
+            Create and setup objects held in the Issue COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieIssueRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimIssue.AddIssue(Xbim.COBie.Rows.COBieIssueRow)">
+            <summary>
+            Add an IfcApproval to the model based on COBieIssueRow data
+            </summary>
+            <param name="row">COBieIssueRow data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimIssue.CheckIfExistOnMerge(Xbim.COBie.Rows.COBieIssueRow)">
+            <summary>
+            Check to see if IfcApproval exists in model
+            </summary>
+            <param name="row">COBieIssueRow data</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimIssue.SetRelObjectToApproval(System.String,System.String,Xbim.Ifc2x3.ApprovalResource.IfcApproval,Xbim.Ifc2x3.ControlExtension.IfcRelAssociatesApproval)">
+            <summary>
+            Set the IfcRelAssociatesApproval object
+            </summary>
+            <param name="sheetName">Sheet name</param>
+            <param name="rowName">Row name</param>
+            <param name="ifcApproval">IfcApproval object</param>
+            <param name="ifcRelAssociatesApproval">IfcRelAssociatesApproval object</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimIssue.GetTask(System.String)">
+            <summary>
+            Get the IfcTask object for the passed name
+            </summary>
+            <param name="name">IfcTask name</param>
+            <returns>IfcTask Object</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimJob.SerialiseJob(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieJobRow})">
+            <summary>
+            Add the IfcTask to the Model object
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieResourceRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimJob.AddJob(Xbim.COBie.Rows.COBieJobRow)">
+            <summary>
+            Add the data to the IfcTask object
+            </summary>
+            <param name="row">COBieJobRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimJob.SetRelAssignsToProcess(Xbim.Ifc2x3.Kernel.IfcProcess,System.Collections.Generic.IEnumerable{Xbim.Ifc2x3.Kernel.IfcObjectDefinition})">
+            <summary>
+            Create the relationships between the Process and the types it relates too
+            </summary>
+            <param name="processObj">IfcProcess Object</param>
+            <param name="typeObjs">IEnumerable of IfcTypeObject, list of IfcTypeObjects </param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimJob.SetPriors(Xbim.COBie.Rows.COBieJobRow)">
+            <summary>
+            set up IfcRelSequence for the task
+            </summary>
+            <param name="row">COBieJobRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimResource.SerialiseResource(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieResourceRow})">
+            <summary>
+            Add the IfcConstructionEquipmentResource to the Model object
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieResourceRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimResource.AddResource(Xbim.COBie.Rows.COBieResourceRow)">
+            <summary>
+            Add the data to the IfcConstructionEquipmentResource object
+            </summary>
+            <param name="row">COBieResourceRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpace.SerialiseSpace(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieSpaceRow})">
+            <summary>
+            Create and setup objects held in the Space COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieSpaceRows to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpace.AddSpace(Xbim.COBie.Rows.COBieSpaceRow)">
+            <summary>
+            Add the data to the Space object
+            </summary>
+            <param name="row">COBieSpaceRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpace.AddNetArea(Xbim.Ifc2x3.ProductExtension.IfcSpace,System.String)">
+            <summary>
+            Add Net Floor Area
+            </summary>
+            <param name="ifcSpace">IfcSpace Object</param>
+            <param name="areaValue">Area value as string</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpace.AddGrossArea(Xbim.Ifc2x3.ProductExtension.IfcSpace,System.String)">
+            <summary>
+            Add Gross Floor Area
+            </summary>
+            <param name="ifcSpace">IfcSpace Object</param>
+            <param name="areaValue">Area value as string</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpace.AddUsableHeight(Xbim.Ifc2x3.ProductExtension.IfcSpace,System.String)">
+            <summary>
+            Add Usable Height to the IfcSpace
+            </summary>
+            <param name="ifcSpace">IfcSpace Object</param>
+            <param name="usableHeight">Height value as string</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpace.AddSpaceToBuildingStory(System.String,Xbim.Ifc2x3.ProductExtension.IfcSpace)">
+            <summary>
+            Add space to the building story(Floor)
+            </summary>
+            <param name="row"></param>
+            <param name="ifcSpace"></param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpare.SerialiseSpare(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieSpareRow})">
+            <summary>
+            Add the IfcConstructionProductResource to the Model object
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieSpareRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpare.AddSpare(Xbim.COBie.Rows.COBieSpareRow)">
+            <summary>
+            Add the data to the IfcConstructionProductResource object
+            </summary>
+            <param name="row">COBieSpareRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSpare.SetRelAssignsToResource(Xbim.Ifc2x3.Kernel.IfcResource,System.Collections.Generic.IEnumerable{Xbim.Ifc2x3.Kernel.IfcTypeObject})">
+            <summary>
+            Create the relationships between the Resource and the types it relates too
+            </summary>
+            <param name="processObj">IfcResource Object</param>
+            <param name="typeObjs">IEnumerable of IfcTypeObject, list of IfcTypeObjects </param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSystem.SerialiseSystem(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieSystemRow})">
+            <summary>
+            Create and setup objects held in the System COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieSystemRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSystem.AddSystem(Xbim.COBie.Rows.COBieSystemRow)">
+            <summary>
+            Add system group and fill with data from COBieSystemRow
+            </summary>
+            <param name="row">COBieSystemRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSystem.GetGroupInstance(System.String)">
+            <summary>
+            Create an instance of an group object via a string name
+            </summary>
+            <param name="groupTypeName">String holding object type name we want to create</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimSystem.AddProducts(Xbim.COBie.Rows.COBieSystemRow)">
+            <summary>
+            Add products to system group and fill with data from COBieSystemRow
+            </summary>
+            <param name="componentName">COBieSystemRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimType.SerialiseType(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieTypeRow})">
+            <summary>
+            Create and setup objects held in the Type COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieTypeRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimType.AddMaterial(Xbim.COBie.Rows.COBieTypeRow)">
+            <summary>
+            Add the data to the Material object
+            </summary>
+            <param name="row">COBieTypeRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimType.AddType(Xbim.COBie.Rows.COBieTypeRow)">
+            <summary>
+            Add the data to the Type object
+            </summary>
+            <param name="row">COBieTypeRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimType.GetTypeInstance(System.String,Xbim.Common.IModel)">
+            <summary>
+            Create an Instance of a Object Type
+            </summary>
+            <param name="typeName">string name to create instance of</param>
+            <param name="model">Model object</param>
+            <returns>IfcTypeObject object of the type passed in of IfcTypeObject if failed to create passed in type</returns>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimZone.SerialiseZone(Xbim.COBie.COBieSheet{Xbim.COBie.Rows.COBieZoneRow})">
+            <summary>
+            Create and setup objects held in the Zone COBieSheet
+            </summary>
+            <param name="cOBieSheet">COBieSheet of COBieZoneRow to read data from</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimZone.AddZone(Xbim.COBie.Rows.COBieZoneRow)">
+            <summary>
+            Add the data to the Zone object
+            </summary>
+            <param name="row">COBieZoneRow holding the data</param>
+        </member>
+        <member name="M:Xbim.COBie.Serialisers.XbimSerialiser.COBieXBimZone.AddSpaceToZone(System.String,Xbim.Ifc2x3.ProductExtension.IfcZone)">
+            <summary>
+            Add space to the building story(Floor)
+            </summary>
+            <param name="row"></param>
+            <param name="ifcSpace"></param>
+        </member>
+    </members>
+</doc>

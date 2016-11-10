@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xbim.CobieExpress.IO</name>
+    </assembly>
+    <members>
+        <member name="M:Xbim.CobieExpress.IO.CobieModel.OpenStep21(System.IO.Stream,System.Int64,System.Int32)">
+            <summary>
+            This constructor only opens an in memory model
+            </summary>
+            <param name="input"></param>
+            <param name="labelFrom"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xbim.CobieExpress.IO.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieExpress.IO.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieExpress.IO.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xbim.CobieExpress.IO.Properties.Resources.COBieUK2012">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+            &lt;ModelMapping xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://www.openbim.org/mapping/table/1.0&quot;
+                          Name=&quot;COBie2.4 UK2012&quot; 
+                          ListSeparator=&quot;,&quot; 
+                          PickTableName=&quot;PickLists&quot; 
+                          &gt;
+              &lt;StatusRepresentations&gt;
+                &lt;StatusRepresentation Colour=&quot;#CCC&quot; FontWeight=&quot;Bold&quot; Border=&quot;true&quot; Status=&quot;Header&quot; /&gt;
+                &lt;StatusRepresentation Colour=&quot;#FFFF99&quot; FontWeight=&quot;Normal&quot; Border=&quot;true [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+    </members>
+</doc>

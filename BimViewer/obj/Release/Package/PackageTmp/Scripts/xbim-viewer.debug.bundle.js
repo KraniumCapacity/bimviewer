@@ -1171,7 +1171,7 @@ function xViewer(canvas) {
     this.lightB = [0, -500000, 50000, 0.2];
 
     /**
-    * Switch between different navidation modes for left mouse button. Allowed values: <strong> 'pan', 'zoom', 'orbit' (or 'fixed-orbit') , 'free-orbit' and 'none'</strong>. Default value is <strong>'orbit'</strong>;
+    * Switch between different navidation modes for left mouse button. Allowed values: <strong> 'pan', 'zoom', 'orbit' (or 'fixed-orbit') , 'free-orbit', 'fly' and 'none'</strong>. Default value is <strong>'orbit'</strong>;
     * @member {String} xViewer#navigationMode
     */
     this.navigationMode = 'orbit';
@@ -1287,6 +1287,10 @@ function xViewer(canvas) {
     this._initAttributesAndUniforms();
     //init mouse events to capture user interaction
     this._initMouseEvents();
+
+    //init keyboard events to capture user interaction
+    this._initKeyboardEvents();
+
 };
 
 /**
@@ -1841,7 +1845,6 @@ xViewer.prototype._initMouseEvents = function () {
         lastMouseY = event.clientY;
         startX = event.clientX;
         startY = event.clientY;
-
         //get coordinates within canvas (with the right orientation)
         var r = viewer._canvas.getBoundingClientRect();
         var viewX = startX - r.left;
@@ -1916,12 +1919,20 @@ xViewer.prototype._initMouseEvents = function () {
     }
 
     function handleMouseMove(event) {
-        if (!mouseDown) {
+        if (viewer.navigationMode === 'none' || event.target !== viewer._canvas) {
             return;
         }
 
-        if (viewer.navigationMode == 'none') {
+        if (!mouseDown && viewer.navigationMode !== 'fly') {
             return;
+        }
+        else {
+            if (!mouseDown && document.activeElement === viewer._canvas && viewer.navigationMode === 'fly') {
+                button = 'none'
+            }
+            else if (!mouseDown) {
+                button = 'L';
+            }
         }
 
         var newX = event.clientX;
@@ -2074,6 +2085,196 @@ xViewer.prototype._initMouseEvents = function () {
     * @param {Number} id - product ID of the element or null if there wasn't any product under mouse
     */
     this._canvas.addEventListener('dblclick', function () { viewer._fire('dblclick', { id: id }); }, true);
+};
+
+
+
+/**
+*This method implements events for changing the camera when the arrows keys are pressed.
+*/
+xViewer.prototype._initKeyboardEvents = function () {
+    var viewer = this;
+
+    var interestingKeys = [87, 83, 65, 68, 81, 69, 82,67, 38, 40, 37, 39, 18, 32];
+    var keysDown = [];
+    var keysByCode = {
+        87: 'W',
+        83: 'S',
+        65: 'A',
+        68: 'D',
+
+        81: 'Q',
+        69: 'E',
+        82: 'R',
+        67: 'C',
+
+        33: 'PageUp',
+        34: 'PageDown',
+
+        38: 'Up',
+        40: 'Down',
+        37: 'Left',
+        39: 'Right',
+
+        18: 'Alt',
+        32: 'Space'
+    };
+    var watchedKeys = Object.keys(keysByCode);
+    var keysByText = {};
+    for (var i = 0, c = watchedKeys.length; i < c; i++) {
+        keysByText[keysByCode[watchedKeys[i]]] = watchedKeys[i];
+    }
+
+    function keyIsDown(key) {
+        var args = Array.prototype.slice.call(arguments);
+        for (var i = 0, c = args.length; i < c; i++) {
+            var key = args[i];
+            if (typeof key === "number" && keysDown.indexOf('' + key) > -1) return true;
+            else if (keysDown.indexOf('' + keysByText[key]) > -1) return true;
+        }
+        return false;
+    };
+
+    function processPressedKeys() {
+        if (keysDown.length > 0) {
+            var lookLeft = keyIsDown('Q');
+            var lookRight = keyIsDown('E');
+            var lookUp = keyIsDown('R', 'PageUp');
+            var lookDown = keyIsDown('C', 'PageDown');
+            var forward = keyIsDown('W', 'Up');
+            var left = keyIsDown('A', 'Left');
+            var right = keyIsDown('D', 'Right');
+            var back = keyIsDown('S', 'Down');
+            var up = keyIsDown('Space');
+            var down = keyIsDown('Alt');
+
+            if (forward) {
+                navigate('zoom', 0.4, 0.4);
+            }
+            else if (back) {
+                navigate('zoom', -0.4, -0.4);
+            }
+            if (left) {
+                navigate('pan', 2, 0);
+            }
+            else if (right) {
+                navigate('pan', -2, 0);
+            }
+            if (up) {
+                navigate('pan', 0, 2);
+            }
+            else if (down) {
+                navigate('pan', 0, -2);
+            }
+            if (lookLeft) {
+                navigate('orbit', -2, 0);
+            }
+            else if (lookRight) {
+                navigate('orbit', 2, 0);
+            }
+            if (lookUp) {
+                navigate('orbit', 0, -2);
+            }
+            else if (lookDown) {
+                navigate('orbit', 0, 2);
+            }
+        }
+        setTimeout(processPressedKeys, 20);
+    }
+
+    function handleKeyUp(event) {
+        if (viewer.navigationMode === 'fly' && watchedKeys.indexOf('' + event.keyCode) > -1) {
+            var key = '' + event.keyCode;
+            var keyDownLoc = keysDown.indexOf(key);
+            if (keyDownLoc > -1) keysDown.splice(keyDownLoc, 1);
+            event.preventDefault();
+            return false;
+        }
+    }
+
+    function handleKeyDown(event) {
+        if (viewer.navigationMode === 'fly' && watchedKeys.indexOf('' + event.keyCode) > -1) {
+            var key = '' + event.keyCode;
+            if (keysDown.indexOf(key) === -1) keysDown.push(key);
+            event.preventDefault();
+            return false;
+        }
+    }
+
+    function navigate(type, deltaX, deltaY) {
+        if (!viewer._handles || !viewer._handles[0]) return;
+        //translation in WCS is position from [0, 0, 0]
+        var origin = viewer._origin;
+        var camera = viewer.getCameraPosition();
+
+        //get origin coordinates in view space
+        var mvOrigin = vec3.transformMat4(vec3.create(), origin, viewer._mvMatrix)
+
+        if (viewer.navigationMode === 'fly') {
+            mvOrigin = vec3.transformMat4(vec3.create(), camera, viewer._mvMatrix)
+        }
+
+        //movement factor needs to be dependant on the distance but one meter is a minimum so that movement wouldn't stop when camera is in 0 distance from navigation origin
+        var distanceVec = vec3.subtract(vec3.create(), origin, camera);
+        var distance = Math.max(vec3.length(distanceVec), viewer._handles[0]._model.meter);
+
+        //move to the navigation origin in view space
+        var transform = mat4.translate(mat4.create(), mat4.create(), mvOrigin)
+
+        //function for conversion from degrees to radians
+        function degToRad(deg) {
+            return deg * Math.PI / 180.0;
+        }
+
+        switch (type) {
+            case 'free-orbit':
+                transform = mat4.rotate(mat4.create(), transform, degToRad(deltaY / 4), [1, 0, 0]);
+                transform = mat4.rotate(mat4.create(), transform, degToRad(deltaX / 4), [0, 1, 0]);
+                break;
+
+            case 'spin':
+                return navigate('orbit', deltaX * -1.2, deltaY * -1.2);
+                break;
+
+            case 'fixed-orbit':
+            case 'orbit':
+                mat4.rotate(transform, transform, degToRad(deltaY / 4), [1, 0, 0]);
+
+                //z rotation around model z axis
+                var mvZ = vec3.transformMat3(vec3.create(), [0, 0, 1], mat3.fromMat4(mat3.create(), viewer._mvMatrix));
+                mvZ = vec3.normalize(vec3.create(), mvZ);
+                transform = mat4.rotate(mat4.create(), transform, degToRad(deltaX / 4), mvZ);
+
+                break;
+
+            case 'pan':
+                mat4.translate(transform, transform, [deltaX * distance / 150, 0, 0]);
+                mat4.translate(transform, transform, [0, (-1.0 * deltaY) * distance / 150, 0]);
+                break;
+
+            case 'zoom':
+                mat4.translate(transform, transform, [0, 0, deltaX * distance / 20]);
+                mat4.translate(transform, transform, [0, 0, deltaY * distance / 20]);
+                break;
+
+            default:
+                break;
+        }
+
+        //reverse the translation in view space and leave only navigation changes
+        var translation = vec3.negate(vec3.create(), mvOrigin);
+        transform = mat4.translate(mat4.create(), transform, translation);
+
+        //apply transformation in right order
+        viewer._mvMatrix = mat4.multiply(mat4.create(), transform, viewer._mvMatrix);
+    }
+
+    //attach keyboard event callbacks
+    viewer._canvas.setAttribute("tabindex", -1);
+    viewer._canvas.addEventListener('keydown', handleKeyDown, true);
+    viewer._canvas.addEventListener('keyup', handleKeyUp, true);
+
+    processPressedKeys();
 };
 
 /**

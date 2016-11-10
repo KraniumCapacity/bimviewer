@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,11 +28,6 @@ namespace BimViewer.Controllers
             return View();
         }
 
-        public ActionResult ModelViewer()
-        {
-            ViewBag.Message = "This is the model viewer";
-
-            return View();
-        }
+     
     }
 }

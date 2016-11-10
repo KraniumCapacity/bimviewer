@@ -23,6 +23,13 @@ namespace BimViewer
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/threeJS").Include(
+                "~/Scripts/three.js",
+                "~/Scripts/three.min.js",
+                "~/Scripts/three.modules.js",
+                "~/Scripts/ThreeJsViewer.js"
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

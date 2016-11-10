@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "ModelViewerThree";
+}
+
+<h2>ModelViewerThree</h2>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/three.js"></script>
+<script src="~/Scripts/RequestAnimationFrame.js"></script>
+<script src="~/Scripts/ThreeJsViewer.js"></script>
+<script src="~/Scripts/TrackballControls.js"></script>
+<script src="~/Scripts/xbim-viewer.debug.bundle.js"></script>
+
+<canvas id="viewer"></canvas>
+<script >
+    //$(document).ready(function () {
+    //    var viewer = new ThreeJsViewer();
+    //    viewer.init($('#viewer'));
+    //    viewer.loadSerializedModel('/Resources/Data/wall-fixed.js');
+    //    viewer.onclick = function (id) {
+    //        $('#Selection').html(id ? id : 'nothing');
+    //    };
+    //    viewer.animate();
+    //});
+    
+</script>
+
+
+<div id="viewer" style="width:100%; height:100%;"></div>
