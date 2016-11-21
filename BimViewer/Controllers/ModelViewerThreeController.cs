@@ -18,7 +18,7 @@ namespace BimViewer.Controllers
 
         
 
-        public ActionResult saveCoordinates(float x, float y, float z)
+        public void saveCoordinates(float x, float y, float z)
         {
             BimDb db = new BimDb();
             Marker mark = new Marker();
@@ -26,7 +26,7 @@ namespace BimViewer.Controllers
             mark.y = y;
             mark.z = z;
             db.Markers.Add(mark);
-            return RedirectToAction("ModelViewerThree", "ModelViewerThree");
+            db.SaveChanges();
         }
     }
 }

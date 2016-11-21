@@ -135,12 +135,18 @@
             scene.add(marker);
 
             marker.position.set(x, y, z);
-           
-            $.post('@Url.Action("saveCoordinates", "ModelViewerThree", new { x = Model.x, y = Model.y, z = Model.z })', null, function (data) {
-                alert(data);
+
+            var sendData = JSON.stringify({ 'x': x, 'y': y, 'z': z });
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                type: 'POST',
+                url: "ModelViewerThree/saveCoordinates",
+                data: sendData,
+                success: function (data) {
+                    console.log("Marker Coordinates saved");
+                }
             });
-            @*@Url.Action("saveCoordinates", "ModelViewerThree", new { x = Model.x, y = Model.y, z = Model.z} );*@
-           
+
         }
     }
 
