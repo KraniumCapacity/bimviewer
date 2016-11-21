@@ -11,5 +11,6 @@ namespace BimViewer.Database
     {
     
         public DbSet<BIM> Bims { get; set; }
+        public DbSet<Marker> Markers { get; set; }
     }
 }

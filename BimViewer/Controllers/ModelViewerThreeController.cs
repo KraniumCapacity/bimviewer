@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BimViewer.Database;
+using BimViewer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,19 @@ namespace BimViewer.Controllers
         public ActionResult ModelViewerThree()
         {
             return View();
+        }
+
+        
+
+        public ActionResult saveCoordinates(float x, float y, float z)
+        {
+            BimDb db = new BimDb();
+            Marker mark = new Marker();
+            mark.x = x;
+            mark.y = y;
+            mark.z = z;
+            db.Markers.Add(mark);
+            return RedirectToAction("ModelViewerThree", "ModelViewerThree");
         }
     }
 }

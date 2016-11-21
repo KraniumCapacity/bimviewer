@@ -140,3 +140,4 @@ C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.Ifc4.pd
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.Ifc4.xml
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.IO.TableStore.pdb
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.IO.TableStore.xml
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Debug\BimViewer.Migrations.Marker1.resources

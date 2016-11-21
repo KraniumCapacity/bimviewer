@@ -52,19 +52,7 @@ namespace BimViewer.Controllers
             return View(filePaths);
         }
 
-        public ActionResult convertIFCToJson()
-        {
-            if (Request.Files.Count > 0)
-            {
-                var file = Request.Files[0];
-                if (file != null && file.ContentLength > 0)
-                {
-                    
-                }
-            }
-
-            return RedirectToAction("ModelViewer");
-        }
+   
         
     }
 

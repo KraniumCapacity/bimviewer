@@ -4,6 +4,7 @@
     ViewBag.Title = "BIM VIEWER";
 }
 <script src="~/Scripts/xbim-viewer.debug.bundle.js" type="text/javascript"></script>
+<script src="~/Scripts/scenejs.js"></script>
 
 <div class="row">
     <div class="col-md-2 FileList">
@@ -25,10 +26,12 @@
     <div id="content" class="col-md-10">
         <canvas id="viewer" width="800" height="500"></canvas>
         <script type="text/javascript">
-            var viewer = new xViewer('viewer');
-            //viewer.load('/Resources/Data/SampleHouse.wexbim');
-            //viewer.start();
+            var canvas = document.getElementById("viewer");
 
+            var errorCheck = xViewer.check();
+            if (errorCheck.noErrors) {
+                var viewer = new xViewer('viewer'); //this is the viewer that renders the BIM model.
+            }
 
             function setNavigationModeFly() {
                 viewer.navigationMode = 'fly';
@@ -48,16 +51,12 @@
             viewer.on('error', function (arg) {
                 var container = document.getElementById('errors');
                 if (container) {
-                    container.innerHTML = "<pre class='col-md-10' style='color:red; height:50px;'>" + arg.message + "</pre> <br />" + container.innerHTML;
+                    container.innerHTML = "<p class='Error col-md-10' style='height:50px;'>" + arg.message + "</p> <br />" + container.innerHTML;
                 }
             });
-         
-            //viewer.on('loaded', function () {
-            //    var errorBox = document.getElementById('errors');
-            //    errorBox.style.visibility = false;
-            //    viewer.start();
-            //});
 
+    
+            
         </script>
         <div id="errors"></div>
     </div>
@@ -68,8 +67,8 @@
     @* Input for changing navigation modes *@
     <div class="col-md-5 col-md-offset-2">
         <p style="padding-left:80px;">Navigation Options</p>
-        <input type="button" value="Fly" onclick="setNavigationModeFly()" class="btn btn-primary btn-block" />
-        <input type="button" value="Orbit" onclick="setNavigationModeOrbit()" class="btn btn-primary btn-block" />
+        <input type="button" value="Keyboard" onclick="setNavigationModeFly()" class="btn btn-primary btn-block" />
+        <input type="button" value="Mouse" onclick="setNavigationModeOrbit()" class="btn btn-primary btn-block" />
     </div>
 
 
@@ -87,7 +86,16 @@
         </div>
     }
 </div>
-
+<button onclick="viewer.clip()">CLIP</button>
+<button onclick="viewer.unclip()">UNCLIP</button>
+<span>
+    Selected ID: 
+    <span id="productId"></span>
+</span>
+<span>
+    worldpos: 
+    <span id="worldPos"></span>
+</span>
 
 @section Styles {
     <link href="@Url.Content("~/Content/myStyles.css")" rel="stylesheet" type="text/css" />

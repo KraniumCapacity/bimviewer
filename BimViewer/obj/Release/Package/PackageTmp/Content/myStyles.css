@@ -13,3 +13,9 @@ a.LinkNoDecor:hover {
     color:red;
 }
 
+.Error {
+    color:red;
+    border-style:solid;
+    border-width: 1px;
+    border-color:red;
+}

@@ -261,6 +261,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelViewerController.cs" />
+    <Compile Include="Controllers\ModelViewerSceneController.cs" />
     <Compile Include="Controllers\ModelViewerThreeController.cs" />
     <Compile Include="Database\BimDb.cs" />
     <Compile Include="Global.asax.cs">
@@ -274,8 +275,13 @@
     <Compile Include="Migrations\201611031305320_1.Designer.cs">
       <DependentUpon>201611031305320_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611181127467_Marker1.cs" />
+    <Compile Include="Migrations\201611181127467_Marker1.Designer.cs">
+      <DependentUpon>201611181127467_Marker1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BIM.cs" />
+    <Compile Include="Models\Marker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +320,7 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\FlyControls.js" />
     <Content Include="Scripts\gl-matrix.min.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -339,7 +346,6 @@
     <Content Include="Scripts\TrackballControls.js" />
     <Content Include="Scripts\webgl-utils.min.js" />
     <Content Include="Scripts\xbim-viewer.debug.bundle.js" />
-    <Content Include="Scripts\xbim-viewer.debug.bundleImproved.js" />
     <Content Include="Scripts\xbim-viewer.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -362,6 +368,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ModelViewer\ModelViewer.cshtml" />
     <Content Include="Views\ModelViewer\PopulateList.cshtml" />
+    <Content Include="Views\ModelViewerScene\ModelViewerScene.cshtml" />
     <Content Include="Views\ModelViewerThree\ModelViewerThree.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -370,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611031305320_1.resx">
       <DependentUpon>201611031305320_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611181127467_Marker1.resx">
+      <DependentUpon>201611181127467_Marker1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

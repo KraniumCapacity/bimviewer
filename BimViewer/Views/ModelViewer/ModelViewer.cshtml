@@ -4,7 +4,7 @@
     ViewBag.Title = "BIM VIEWER";
 }
 <script src="~/Scripts/xbim-viewer.debug.bundle.js" type="text/javascript"></script>
-<script src="~/Scripts/scenejs.js"></script>
+<script src="~/Scripts/three.js"></script>
 
 <div class="row">
     <div class="col-md-2 FileList">
@@ -26,7 +26,8 @@
     <div id="content" class="col-md-10">
         <canvas id="viewer" width="800" height="500"></canvas>
         <script type="text/javascript">
-            var canvas = document.getElementById("viewer");
+            //var canvas = document.getElementById("viewer");
+            //var gl = canvas.getContext('experimental-webgl');
 
             var errorCheck = xViewer.check();
             if (errorCheck.noErrors) {
@@ -53,54 +54,9 @@
                 if (container) {
                     container.innerHTML = "<p class='Error col-md-10' style='height:50px;'>" + arg.message + "</p> <br />" + container.innerHTML;
                 }
-            });
-
-            // Register a pick handler
-            viewer.on("pick",
-                function (hit) {
-
-                    // The 'name' property on the first name node on the path
-                    // from the picked teapot up to the scene root, eg "blueTeapot"
-                    var name = hit.name;
-                    alert(name);
-                    // Name path, a '.' delimited concatenation of the 'name' properties
-                    // of all name nodes on the path down from teh scene root to the
-                    // picked teapot.
-                    var path = hit.path;
-                    alert(path);
-                    // Two-element array containing the X,Y canvas coordinates at which we picked
-                    var canvasPos = hit.canvasPos;
-
-                    // Three-element array containing the X,Y,Z World-space coordinates at which we picked
-                    var worldPos = hit.worldPos;
-                    alert(worldPos);
-                });
-
-            //window.addEventListener('click', getPos, false);
-
-            //function getPos(e) {
-            //    var pos = getMousePos(canvas, e);
-            //    posx = pos.x;
-            //    posy = pos.y
-            //    alert(posx +','+ posy)
-            //}
-
-            //function getMousePos(canvas, evt) {
-            //    var rect = canvas.getBoundingClientRect();
-            //    return {
-            //        x: evt.clientX - rect.left,
-            //        y: evt.clientY - rect.top
-            //    };
-            //}
-
-            //viewer.on('loaded', function () {
-            //    var errorBox = document.getElementById('errors');
-            //    errorBox.style.visibility = false;
-            //    viewer.start();
-            //});
-
-           
-
+            })
+             
+            
         </script>
         <div id="errors"></div>
     </div>
@@ -135,6 +91,10 @@
 <span>
     Selected ID: 
     <span id="productId"></span>
+</span>
+<span>
+    worldpos: 
+    <span id="worldPos"></span>
 </span>
 
 @section Styles {
