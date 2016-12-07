@@ -124,6 +124,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -256,43 +260,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\ViewerThree.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewerThree.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\ViewerXbim.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewerXbim.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelViewerController.cs" />
-    <Compile Include="Controllers\ModelViewerSceneController.cs" />
     <Compile Include="Controllers\ModelViewerThreeController.cs" />
-    <Compile Include="Database\BimDb.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611011240032_Initial.cs" />
-    <Compile Include="Migrations\201611011240032_Initial.Designer.cs">
-      <DependentUpon>201611011240032_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611031305320_1.cs" />
-    <Compile Include="Migrations\201611031305320_1.Designer.cs">
-      <DependentUpon>201611031305320_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201611181127467_Marker1.cs" />
-    <Compile Include="Migrations\201611181127467_Marker1.Designer.cs">
-      <DependentUpon>201611181127467_Marker1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BIM.cs" />
-    <Compile Include="Models\Marker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\BimsDb.mdf" />
-    <Content Include="App_Data\BimsDb_log.ldf">
-      <DependentUpon>BimsDb.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\ikontrol_background.png" />
+    <Content Include="Content\Images\ikontrol_logo155.png" />
+    <Content Include="Content\Images\viewerThreeControls.PNG" />
+    <Content Include="Content\Images\viewerXbimControls.png" />
+    <Content Include="Content\Images\viewerXbimMouseControls.png" />
     <Content Include="Content\myStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -338,7 +336,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\scenejs.js" />
     <Content Include="Scripts\three.js" />
     <Content Include="Scripts\three.min.js" />
     <Content Include="Scripts\three.modules.js" />
@@ -364,23 +361,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ModelViewer\ModelViewer.cshtml" />
-    <Content Include="Views\ModelViewer\PopulateList.cshtml" />
-    <Content Include="Views\ModelViewerScene\ModelViewerScene.cshtml" />
     <Content Include="Views\ModelViewerThree\ModelViewerThree.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611011240032_Initial.resx">
-      <DependentUpon>201611011240032_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611031305320_1.resx">
-      <DependentUpon>201611031305320_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611181127467_Marker1.resx">
-      <DependentUpon>201611181127467_Marker1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -388,7 +371,28 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelLib\ModelLib.csproj">
+      <Project>{ee5ac050-f24d-409b-8ef4-e8aee4e745b7}</Project>
+      <Name>ModelLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\ViewerThree.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ViewerThree.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\ViewerXbim.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>ViewerXbim.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

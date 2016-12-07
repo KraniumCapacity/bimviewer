@@ -96,9 +96,6 @@ C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramew
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.SqlServer.dll
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.xml
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\EntityFramework.SqlServer.xml
-C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.Migrations.Initial.resources
-C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.Migrations._1.resources
-C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\obj\Release\BimViewer.csproj.GenerateResource.Cache
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\NPOI.dll
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\NPOI.OOXML.dll
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\NPOI.OpenXml4Net.dll
@@ -140,3 +137,9 @@ C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.Ifc4.pd
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.Ifc4.xml
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.IO.TableStore.pdb
 C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Xbim.IO.TableStore.xml
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Data\BimsDb.mdf
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\Data\BimsDb_log.ldf
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\ModelLib.dll
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\System.Numerics.Vectors.dll
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\ModelLib.pdb
+C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\bin\System.Numerics.Vectors.xml

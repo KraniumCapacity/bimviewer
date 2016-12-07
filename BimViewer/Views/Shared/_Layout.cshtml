@@ -8,32 +8,32 @@
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", false);
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body class="backgroundImage">
+    <div class="navbar navbar-inverse navbar-fixed-top navbarColor">
         <div class="container">
             <div class="navbar-header">
+                <a class="navbar-brand"><img src="~/Content/Images/ikontrol_logo155.png" /></a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("BimViewer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Model Viewer", "ModelViewer", "ModelViewer")</li>
+                    <li>@Html.ActionLink("Model Viewer xBIM", "ModelViewer", "ModelViewer")</li>
                     <li>@Html.ActionLink("Model Viewer Three", "ModelViewerThree", "ModelViewerThree")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
+        
+        <footer class="footerText">
             <p>&copy; @DateTime.Now.Year - BIM MODEL VIEWER</p>
         </footer>
     </div>

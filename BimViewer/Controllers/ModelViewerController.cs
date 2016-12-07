@@ -1,4 +1,4 @@
-﻿using BimViewer.Models;
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,7 +47,7 @@ namespace BimViewer.Controllers
         {
             DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~/Resources/Data/"));
             List<FileInfo> files = directory.GetFiles().ToList();
-            List<string> filePaths = files.Where(x => x.Extension == ".wexbim" || x.Extension == ".json").OrderBy(x => x.Name).Select(x => x.Name).ToList();
+            List<string> filePaths = files.Where(x => x.Extension == ".wexbim").OrderBy(x => x.Name).Select(x => x.Name).ToList();
             
             return View(filePaths);
         }

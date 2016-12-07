@@ -1,60 +1,298 @@
-﻿
-@{
-    ViewBag.Title = "ModelViewerThree";
-}
+﻿@model IEnumerable<ModelLib.Model.Marker>
 
-<h2>ModelViewerThree</h2>
-<script src="~/Scripts/jquery-3.1.1.js"></script>
+
+<style>
+    #viewport {
+        border: 2px solid grey;
+        border-radius: 5px;
+        background-color: #095169;
+        width: 800px;
+        height: 600px;
+        margin: 0 auto;
+        padding: 0;
+        position: static;
+    }
+
+    .divOverflow {
+        height: 600px !important;
+        width: 200px !important;
+        overflow-y: auto !important;
+    }
+
+    .MarginTop {
+        margin-top: 20px;
+    }
+</style>
+<div class="jumbotron">
+    <div class="row">
+        <div id="viewport" class="col-md-6"></div>
+        <div class="col-md-6 divOverflow">
+            <table class="table table-striped table-bordered">
+                <caption>Markers</caption>
+                @foreach (ModelLib.Model.Marker mark in Model)
+            {
+                    <tr>
+                        <td>
+                            <b>Marker Id: </b>
+                            <a href="#" onclick="goToMarker(@mark.x.ToString().Replace(",", ".")
+                           ,@mark.y.ToString().Replace(",", ".")
+                           ,@mark.z.ToString().Replace(",", ".")
+                           , @mark.normalX.ToString().Replace(",", ".")
+                           , @mark.normalY.ToString().Replace(",", ".")
+                           , @mark.normalZ.ToString().Replace(",", "."))">
+                                @mark.id
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn-default btn MarginTop btnGreen" onclick="loadMarkers()">Load Markers</button>
+            <button class="btn-default btn MarginTop btnGreen" onclick="clearMarkers()">Clear Markers</button>
+            <button class="btn-default btn MarginTop btnGreen" onclick="resetCameraPosition()">Reset Position</button>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table-condensed MarginTop">
+                <tr>
+                    <td>
+                        <h5>Marker info: </h5>
+                    </td>
+                    <td>
+                        <b>X: </b>
+                        <a href="#" class="LinkNoDecor" id="markX"> </a>
+                    </td>
+                    <td>
+                        <b>Y: </b>
+                        <a href="#" class="LinkNoDecor" id="markY"> </a>
+                    </td>
+                    <td>
+                        <b>Z: </b>
+                        <a href="#" class="LinkNoDecor" id="markZ"> </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <span>
+            Intersecting at:
+            <span id="intersectSpan"></span>
+        </span>
+    </div>
+
+</div>
+
 <script src="~/Scripts/three.js"></script>
-<script src="~/Scripts/RequestAnimationFrame.js"></script>
-<script src="~/Scripts/ThreeJsViewer.js"></script>
 <script src="~/Scripts/TrackballControls.js"></script>
-<script src="~/Scripts/xbim-viewer.debug.bundle.js"></script>
-
-<canvas id="viewer"></canvas>
-<script >
-    //$(document).ready(function () {
-    //    var viewer = new ThreeJsViewer();
-    //    viewer.init($('#viewer'));
-    //    viewer.loadSerializedModel('/Resources/Data/wall-fixed.js');
-    //    viewer.onclick = function (id) {
-    //        $('#Selection').html(id ? id : 'nothing');
-    //    };
-    //    viewer.animate();
-    //});
-
+<script src="~/Scripts/FlyControls.js"></script>
+<script src="~/Scripts/dat.gui.js"></script>
+<script>
+    //variables
+    var viewport;
+    var cube;
     var scene = new THREE.Scene();
-    scene.background = new THREE.Color({ alpha: true });
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    var viewportWidth = 800;
+    var viewportHeight = 600;
+    var flyControls;
+    var intersectMarker;
+    var intersects;
+    var markers = [];
+    var tempMarkers = [];
+    //camera variables
+    var view_angle = 45,
+            aspect = viewportWidth / viewportHeight,
+            near = 0.1,//near clip-plane
+            far = 10000;//far clip-plane
 
-    var loader = new THREE.JSONLoader();
+    //contructors
+    var camera = new THREE.PerspectiveCamera(
+            view_angle,
+            aspect,
+            near,
+            far
+            );
 
-    loader.load(
-        // resource URL
-        '/Resources/Data/.js',
-        // Function when resource is loaded
-        function (geometry, materials) {
-            var material = new THREE.MultiMaterial(materials);
-            var object = new THREE.Mesh(geometry, material);
-            scene.add(object);
-        }
-    );
-    
+    var renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setClearColor(0xffffff, 0);
+
+    var geometry = new THREE.BoxGeometry(2, 2, 2);
+    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    cube = new THREE.Mesh(geometry, material);
+    var rayCaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+    var intersectMarkerGeometry = new THREE.SphereGeometry(0.1, 0.1, 0.1);
+    intersectMarker = new THREE.Mesh(intersectMarkerGeometry, new THREE.MeshNormalMaterial());
 
     camera.position.z = 5;
 
-    var render = function () {
-        requestAnimationFrame(render);
+
+    initialize();
+
+    function initialize() {
+
+        renderer.setSize(viewportWidth, viewportHeight);
+        viewport = document.getElementById('viewport');
+        //add renderer to viewport
+        viewport.appendChild(renderer.domElement);
+        camera.position.set(0, 0, 50);
+
+        //construct FlyControls and define it's behavior
+        flyControls = new THREE.FlyControls(camera);
+        flyControls.movementSpeed = 0.2;
+        flyControls.domElement = viewport;
+        flyControls.rollSpeed = 0.008;
+        flyControls.autoForward = false;
+        flyControls.dragToLook = true;
+        flyControls.domElement = viewport;
+
+
+
+        scene.add(camera);
+        scene.add(cube);
+        scene.add(intersectMarker);
+
+        //adding event to check intersecting
+        viewport.addEventListener("mousemove", checkIntersectOnMouseMove, false);
+        //adding event to play marker
+        viewport.addEventListener("dblclick", placeMarker, false);
+
+        update();
+        loadMarkers();
+    }
+
+
+
+    function update() {
+        requestAnimationFrame(update);
+
+        //Tells the controls how quickly to update. The input of the controls are saved until this is called.
+        flyControls.update(1);
+
+        render();
+    }
+
+    function render() {
         renderer.render(scene, camera);
-    };
+    }
 
-    render();
 
+    function checkIntersectOnMouseMove(event) {
+        //gets correct mouse coordinates relative to the viewport
+        mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1;
+        mouse.y = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;
+        //mouse.x = (event.clientX / viewport.clientWidth) * 2 - 1;
+        //mouse.y = -(event.clientY / viewport.clientHeight) * 2 + 1;
+
+        rayCaster.setFromCamera(mouse, camera);
+
+        intersects = rayCaster.intersectObject(cube);
+
+        //if intersects > 0 there is a collision
+        if (intersects.length > 0) {
+            intersectMarker.position.set(-1, -1, -1);
+            intersectMarker.lookAt(intersects[0].face.normal);
+            intersectMarker.position.copy(intersects[0].point);
+
+            var span = document.getElementById("intersectSpan");
+            span.innerText = "X: " + intersects[0].point.x + " , Y: " + intersects[0].point.y + " , Z: " + intersects[0].point.z;
+        }
+    }
+
+    function placeMarker() {
+        if (intersects.length > 0) {
+            var x = intersects[0].point.x;
+            var y = intersects[0].point.y;
+            var z = intersects[0].point.z;
+            var normal = intersects[0].face.normal;
+            var normalX = normal.x;
+            var normalY = normal.y;
+            var normalZ= normal.z;
+
+            var markerGeometry = new THREE.SphereGeometry(0.05, 0.05, 0.05);
+            var markerMateriel = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+            var marker = new THREE.Mesh(markerGeometry, markerMateriel);
+            scene.add(marker);
+            marker.position.set(x, y, z);
+            markers.push(marker);
+            tempMarkers.push(marker);
+            //use ajax and send data to method in controller
+            var sendData = JSON.stringify({ 'x': x, 'y': y, 'z': z, 'normalX' : normalX, 'normalY' : normalY, 'normalZ' : normalZ });
+            $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                type: 'POST',
+                url: "/ModelViewerThree/saveCoordinates",
+                data: sendData,
+                success: function (data) {
+                    console.log("Marker Coordinates being saved" + data);
+                }
+            });
+        }
+    }
+
+    function loadMarkers(){
+        //loads markers that are currently in the model
+        @{
+            foreach (ModelLib.Model.Marker mark in Model)
+            {
+               <text>
+        var x = @mark.x.ToString().Replace(",", "."); //replace ',' with '.' to avoid unexpected number error
+        var y = @mark.y.ToString().Replace(",", "."); //replace ',' with '.' to avoid unexpected number error
+        var z = @mark.z.ToString().Replace(",", "."); //replace ',' with '.' to avoid unexpected number error
+        var loadedMarker;
+        var loadedMarkerGeometry = new THREE.SphereGeometry(0.05, 0.05, 0.05);
+        var markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        loadedMarker = new THREE.Mesh(loadedMarkerGeometry, markerMaterial);
+        scene.add(loadedMarker);
+        loadedMarker.position.set(x,y,z);
+        markers.push(loadedMarker);
+        </text>
+            }
+        }
+
+        //loads markers that have been added in the current rendering of the page
+        if (tempMarkers.length > 0){
+            for (var i= 0; i < tempMarkers.length; i++){
+                scene.add(tempMarkers[i]);
+            }
+        }
+    }
+
+    function clearMarkers(){
+        for (var i = 0; i < markers.length; i++){
+            scene.remove(markers[i]);
+        }
+    }
+
+    function resetCameraPosition(){
+        camera.position.set(0, 0, 50);
+    }
+
+    function goToMarker(x,y,z, normalX, normalY, normalZ){
+        //camera placement
+        camera.position.x = x + normalX * 2;
+        camera.position.y = y + normalY *2;
+        camera.position.z = z + normalZ *2;
+        camera.lookAt(new THREE.Vector3(x,y,z));
+
+        //update table
+        var xContainer = document.getElementById('markX');
+        var yContainer = document.getElementById('markY');
+        var zContainer = document.getElementById('markZ');
+
+        xContainer.innerText = x;
+        yContainer.innerText = y;
+        zContainer.innerText = z;
+
+    }
 </script>
 
 
-<div id="viewer" style="width:100%; height:100%;"></div>
+

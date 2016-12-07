@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="BimDb-Web.config Connection String" description="BimDb Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\BimViewer\App_Data\BimsDb.mdf;Integrated Security=True;Connect Timeout=30" tags="SqlConnectionString">
+  <parameter name="BimDb-Web.config Connection String" description="BimDb Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Anders\Uddannelse\Hovedopgave\Xbim\BimViewer\ModelLib\Data\BimsDb.mdf;Integrated Security=True;Connect Timeout=30" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Anders\\Uddannelse\\Hovedopgave\\Xbim\\BimViewer\\BimViewer\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='BimDb']/@connectionString" />
   </parameter>
 </parameters>

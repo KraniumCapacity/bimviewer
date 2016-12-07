@@ -1,21 +1,55 @@
 ﻿.FileList {
-    margin-top: 20px!important;
+    margin-top: 20px !important;
 }
 
 .LinkNoDecor {
-    text-decoration:none!important;
-    color:black;
+    text-decoration: none !important;
+    color: black;
 }
 
 a.LinkNoDecor:hover {
-
-    text-decoration:none!important;
-    color:red;
+    text-decoration: none !important;
+    color: red;
 }
 
 .Error {
-    color:red;
-    border-style:solid;
+    color: red;
+    border-style: solid;
     border-width: 1px;
-    border-color:red;
+    border-color: red;
+}
+
+.navbarColor {
+    background-color: #095169!important;
+    
+}
+
+.backgroundImage {
+    background-image:url(/Content/Images/ikontrol_background.png);
+}
+
+.footerText {
+    color:white;
+}
+
+.navBarImage{
+    top:3px;
+    left:25px;
+    position:absolute;
+   
+
+}
+
+.btnGreen {
+    background-color:#92be37;
+    color:white;
+}
+
+.btnGreen:hover {
+    background-color:#7fa62f;
+    color:white;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 3px 12px;
 }

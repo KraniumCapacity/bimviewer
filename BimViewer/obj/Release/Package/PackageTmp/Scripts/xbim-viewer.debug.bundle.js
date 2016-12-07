@@ -1917,7 +1917,7 @@ xViewer.prototype._initMouseEvents = function () {
                 viewer._fire('pick', { id: id });
 
                 viewer._rayCast(lastMouseX, lastMouseY, viewer);
-
+                
             }
         }
 
@@ -2094,44 +2094,63 @@ xViewer.prototype._initMouseEvents = function () {
 };
 
 /*
+*Author: Anders Herold Christensen
 *This method implements ray-casting
 *takes mouse X & Y coordinates from mouse event
 */
 xViewer.prototype._rayCast = function (mouseX, mouseY, viewer) {
+
     var width = viewer._width;
     var height = viewer._height;
 
+    //normalize the mouse coordinates
     var x = (2.0 * mouseX) / (width - 1.0);
     var y = (1.0 - (2.0 * mouseY) / height);
+
     var z = 1.0 //temp value
     var ray_nds = vec3.set(vec3.create(), x, y, z);
 
+    //The rays need to point forward. That is why Z is negatives
     var ray_clip = vec4.set(vec4.create(), ray_nds[0], ray_nds[1], -1, 1);
     
+    //To get the eye(camera) coordinates we go backwards from the clip coordinates by inversing and multiplying with the ray_clip
     var inverse = mat4.create();
     mat4.invert(inverse, viewer._pMatrix);
-    var normalised = mat4.create();
-    mat4.multiply(normalised, inverse, ray_clip);
+    var inversedMultiplied = mat4.create();
+    mat4.multiply(inversedMultiplied, inverse, ray_clip);
 
-    var ray_eye = vec4.set(vec4.create(), normalised[0], normalised[1], -1.0, 0.0);
+    //this is our camera positin
+    var ray_eye = vec4.set(vec4.create(), inversedMultiplied[0], inversedMultiplied[1], -1.0, 0.0);
 
+    //To get world coordinates we invert the view matrix and multiply with our camera vector.
     var invertedViewMatrix = mat4.create();
     mat4.invert(invertedViewMatrix, viewer._mvMatrix);
-    var normalisedViewMatrix = mat4.create();
-    mat4.multiply(normalisedViewMatrix, invertedViewMatrix, ray_eye);
+    var multipliedViewMatrix = mat4.create();
+    mat4.multiply(multipliedViewMatrix, invertedViewMatrix, ray_eye);
 
-    var ray_wor = vec3.set(vec3.create(), normalisedViewMatrix[0], normalisedViewMatrix[1], normalisedViewMatrix[2]);
-    //var invertedViewMatrix = mat4.invert(mat4.create(), viewer._mvMatrix) * ray_eye;
-    //var ray_wor = vec3.set(vec3.create(), invertedViewMatrix[0], invertedViewMatrix[1], invertedViewMatrix[2]);
+    //this is the world coordinates / world position
+    var ray_wor = vec3.set(vec3.create(), multipliedViewMatrix[0], multipliedViewMatrix[1], multipliedViewMatrix[2]);
+
+    //we normalise the values
     var ray_wor = vec3.set(vec3.create(), (2.0 * ray_wor[0]) / (width -1.0), (1.0 - (2.0 * ray_wor[1]) / height), ray_wor[2]);
-    //ray_wor.set((mat4.invert(viewer._mvMatrix) * ray_eye)[0], (mat4.invert(viewer._mvMatrix) * ray_eye)[1], (mat4.invert(viewer._mvMatrix) * ray_eye)[2]);
 
-    //alert("X: " + ray_wor[0] + " , Y: " + ray_wor[1] + " , Z: " + ray_wor[2]);
+    
     var container = document.getElementById("worldPos");
     if (container) {
         container.innerText = "X: " + ray_wor[0] + " , Y: " + ray_wor[1] + " , Z: " + ray_wor[2];
     }
 
+}
+
+/*
+*Tests for intersection with a ray.
+*O is the origin and D the direction. 'pos' is the position of the collision contained in an array. 
+*
+*/
+xViewer.prototype._isIntersecting = function () {
+    
+   
+    
 }
 /**
 *This method implements events for changing the camera when the arrows keys are pressed.
